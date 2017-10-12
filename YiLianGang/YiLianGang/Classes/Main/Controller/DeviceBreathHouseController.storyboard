@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d8c-Y5-ZcN">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Device Breath House Controller-->
+        <scene sceneID="WyI-1o-Ooz">
+            <objects>
+                <tableViewController id="d8c-Y5-ZcN" customClass="DeviceBreathHouseController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="1dl-oP-hXd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="iFN-sT-Wgi">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device会呼吸的家.png" translatesAutoresizingMaskIntoConstraints="NO" id="SYn-aO-0Wp">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="W1V-AQ-iJt"/>
+                                        <constraint firstAttribute="width" constant="100" id="jRd-Du-jjF"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="SYn-aO-0Wp" firstAttribute="centerX" secondItem="iFN-sT-Wgi" secondAttribute="centerX" id="wSa-TI-wJ3"/>
+                                <constraint firstItem="SYn-aO-0Wp" firstAttribute="centerY" secondItem="iFN-sT-Wgi" secondAttribute="centerY" id="ymB-P3-33e"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection id="1hZ-Er-Y4d">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="89" id="xdT-Qc-jyO">
+                                        <rect key="frame" x="0.0" y="136" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xdT-Qc-jyO" id="aGs-fU-leH">
+                                            <frame key="frameInset" width="320" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="npa-Fz-ja1">
+                                                    <segments>
+                                                        <segment title="节能模式"/>
+                                                        <segment title="标准模式"/>
+                                                        <segment title="高效模式"/>
+                                                        <segment title="离家模式"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.043137254899999998" green="0.57647058819999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="d8c-Y5-ZcN" eventType="valueChanged" id="W5L-EP-fcv"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fz-fl-WCq">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="npa-Fz-ja1" firstAttribute="leading" secondItem="aGs-fU-leH" secondAttribute="leadingMargin" constant="20" id="G2i-ra-MxL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="npa-Fz-ja1" secondAttribute="trailing" constant="20" id="Uf5-kh-qiM"/>
+                                                <constraint firstItem="2fz-fl-WCq" firstAttribute="leading" secondItem="aGs-fU-leH" secondAttribute="leadingMargin" constant="20" id="XpW-D7-9l1"/>
+                                                <constraint firstItem="npa-Fz-ja1" firstAttribute="top" secondItem="2fz-fl-WCq" secondAttribute="bottom" constant="10" id="ZLl-b2-g9J"/>
+                                                <constraint firstItem="2fz-fl-WCq" firstAttribute="top" secondItem="aGs-fU-leH" secondAttribute="topMargin" constant="4" id="mJe-fs-byD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="89" id="QIK-Ke-MUS">
+                                        <rect key="frame" x="0.0" y="225" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QIK-Ke-MUS" id="iiy-9k-U3m">
+                                            <frame key="frameInset" width="320" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-Qu-xw2">
+                                                    <segments>
+                                                        <segment title="热"/>
+                                                        <segment title="偏热"/>
+                                                        <segment title="正常"/>
+                                                        <segment title="偏冷"/>
+                                                        <segment title="冷"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.043137254899999998" green="0.57647058819999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="d8c-Y5-ZcN" eventType="valueChanged" id="Kfj-8y-lAE"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="环境温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UC-KE-aQc">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2rb-Qu-xw2" secondAttribute="trailing" constant="20" id="4Lm-Bt-BS0"/>
+                                                <constraint firstItem="4UC-KE-aQc" firstAttribute="top" secondItem="iiy-9k-U3m" secondAttribute="topMargin" constant="4" id="OMw-pv-UMo"/>
+                                                <constraint firstItem="4UC-KE-aQc" firstAttribute="leading" secondItem="iiy-9k-U3m" secondAttribute="leadingMargin" constant="20" id="Pmk-3F-LSg"/>
+                                                <constraint firstItem="2rb-Qu-xw2" firstAttribute="leading" secondItem="iiy-9k-U3m" secondAttribute="leadingMargin" constant="20" id="cKk-g3-HDR"/>
+                                                <constraint firstItem="2rb-Qu-xw2" firstAttribute="top" secondItem="4UC-KE-aQc" secondAttribute="bottom" constant="10" id="x5B-KU-TZD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="89" id="ZRE-li-Dvn">
+                                        <rect key="frame" x="0.0" y="314" width="320" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZRE-li-Dvn" id="PVh-EW-XdX">
+                                            <frame key="frameInset" width="320" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="BFt-aM-ePo">
+                                                    <segments>
+                                                        <segment title="热"/>
+                                                        <segment title="偏湿"/>
+                                                        <segment title="正常"/>
+                                                        <segment title="偏干"/>
+                                                        <segment title="干"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.043137254899999998" green="0.57647058819999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="d8c-Y5-ZcN" eventType="valueChanged" id="uky-XA-bPk"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="环境湿度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-fc-W0y">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BFt-aM-ePo" firstAttribute="leading" secondItem="PVh-EW-XdX" secondAttribute="leadingMargin" constant="20" id="DrW-UU-hpN"/>
+                                                <constraint firstItem="BFt-aM-ePo" firstAttribute="top" secondItem="Rb7-fc-W0y" secondAttribute="bottom" constant="10" id="FM2-St-l34"/>
+                                                <constraint firstItem="Rb7-fc-W0y" firstAttribute="leading" secondItem="PVh-EW-XdX" secondAttribute="leadingMargin" constant="20" id="QwR-pd-1I9"/>
+                                                <constraint firstItem="Rb7-fc-W0y" firstAttribute="top" secondItem="PVh-EW-XdX" secondAttribute="topMargin" constant="4" id="aEO-06-uHo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BFt-aM-ePo" secondAttribute="trailing" constant="20" id="lFK-xh-SJ0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="121" id="ST8-lx-dyS">
+                                        <rect key="frame" x="0.0" y="403" width="320" height="121"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ST8-lx-dyS" id="Cdw-xC-uCS">
+                                            <frame key="frameInset" width="320" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="室内空气状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNH-MM-Faf">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhB-Cb-sgz">
+                                                    <state key="normal" title="刷新"/>
+                                                    <connections>
+                                                        <action selector="refreshCond:" destination="d8c-Y5-ZcN" eventType="touchUpInside" id="g2A-i7-HAE"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4r-Be-oOz">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湿度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRm-Iw-j7S">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pm2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-Fp-3FA">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CO2浓度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTx-Zd-U3D">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="甲醛浓度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaW-dA-2dt">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SNH-MM-Faf" firstAttribute="leading" secondItem="Cdw-xC-uCS" secondAttribute="leadingMargin" constant="20" id="LSj-J7-rgN"/>
+                                                <constraint firstItem="SNH-MM-Faf" firstAttribute="top" secondItem="Cdw-xC-uCS" secondAttribute="topMargin" constant="4" id="VpY-jn-BGO"/>
+                                                <constraint firstItem="Mff-Fp-3FA" firstAttribute="top" secondItem="q4r-Be-oOz" secondAttribute="top" id="Wp4-At-fvy"/>
+                                                <constraint firstItem="zRm-Iw-j7S" firstAttribute="leading" secondItem="Cdw-xC-uCS" secondAttribute="leadingMargin" constant="120" id="ZOV-LG-sDi"/>
+                                                <constraint firstItem="q4r-Be-oOz" firstAttribute="leading" secondItem="Cdw-xC-uCS" secondAttribute="leadingMargin" constant="32" id="bdl-WY-Pd2"/>
+                                                <constraint firstItem="q4r-Be-oOz" firstAttribute="top" secondItem="SNH-MM-Faf" secondAttribute="bottom" constant="20" id="fbn-NH-c7w"/>
+                                                <constraint firstItem="yaW-dA-2dt" firstAttribute="leading" secondItem="Cdw-xC-uCS" secondAttribute="leadingMargin" constant="160" id="gYR-tl-X64"/>
+                                                <constraint firstItem="TTx-Zd-U3D" firstAttribute="top" secondItem="q4r-Be-oOz" secondAttribute="bottom" constant="19" id="ipl-hr-J8o"/>
+                                                <constraint firstItem="VhB-Cb-sgz" firstAttribute="top" secondItem="Cdw-xC-uCS" secondAttribute="topMargin" id="m4X-Pm-Rgq"/>
+                                                <constraint firstItem="zRm-Iw-j7S" firstAttribute="top" secondItem="q4r-Be-oOz" secondAttribute="top" id="og6-XT-vrY"/>
+                                                <constraint firstItem="yaW-dA-2dt" firstAttribute="top" secondItem="TTx-Zd-U3D" secondAttribute="top" id="qcA-fa-f7j"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VhB-Cb-sgz" secondAttribute="trailing" constant="18" id="tof-ep-Gsw"/>
+                                                <constraint firstItem="TTx-Zd-U3D" firstAttribute="leading" secondItem="q4r-Be-oOz" secondAttribute="leading" id="tqq-aS-ocu"/>
+                                                <constraint firstItem="Mff-Fp-3FA" firstAttribute="leading" secondItem="Cdw-xC-uCS" secondAttribute="leadingMargin" constant="200" id="vAj-Ux-FAp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="d8c-Y5-ZcN" id="0MM-Cx-hpE"/>
+                            <outlet property="delegate" destination="d8c-Y5-ZcN" id="nqe-Lv-M6s"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="condCo2Label" destination="TTx-Zd-U3D" id="VAH-Qb-Hh0"/>
+                        <outlet property="condHchoLabel" destination="yaW-dA-2dt" id="Mdv-02-zy0"/>
+                        <outlet property="condHumiLabel" destination="zRm-Iw-j7S" id="fde-GK-gm1"/>
+                        <outlet property="condPmLabel" destination="Mff-Fp-3FA" id="sbC-HG-PNk"/>
+                        <outlet property="condTempLabel" destination="q4r-Be-oOz" id="u3A-eR-KSn"/>
+                        <outlet property="humiditySegment" destination="BFt-aM-ePo" id="qrL-Sx-41F"/>
+                        <outlet property="imageView" destination="SYn-aO-0Wp" id="SM2-Md-aSO"/>
+                        <outlet property="modeSegment" destination="npa-Fz-ja1" id="5DX-1v-L4C"/>
+                        <outlet property="temperatureSegment" destination="2rb-Qu-xw2" id="TPM-Eb-RzV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezi-Kd-Ihj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="151.57421289355324"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="device会呼吸的家.png" width="120" height="120"/>
+    </resources>
+</document>

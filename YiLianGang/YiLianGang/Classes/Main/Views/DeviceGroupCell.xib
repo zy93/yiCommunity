@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceGroupCell" rowHeight="54" id="KGk-i7-Jjw" customClass="DeviceGroupCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="我的家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvR-fX-idr">
+                        <frame key="frameInset" minX="18" minY="16" width="51" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKO-sa-nZM">
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRh-9H-fsg">
+                                <state key="normal" title="修改" backgroundImage="rect1.png">
+                                    <color key="titleColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickModifyButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1AB-ou-vlU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spb-4x-svE">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="Cav-RM-c0r"/>
+                                    <constraint firstAttribute="height" constant="30" id="Yja-EJ-06P"/>
+                                </constraints>
+                                <state key="normal" title="删除" backgroundImage="rect2.png">
+                                    <color key="titleColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kgb-FH-lxN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Spb-4x-svE" firstAttribute="width" secondItem="KRh-9H-fsg" secondAttribute="width" id="FaW-NS-jSQ"/>
+                            <constraint firstItem="Spb-4x-svE" firstAttribute="centerY" secondItem="KRh-9H-fsg" secondAttribute="centerY" id="S3A-ci-Ht8"/>
+                            <constraint firstAttribute="width" constant="140" id="XWx-Xo-1vO"/>
+                            <constraint firstItem="Spb-4x-svE" firstAttribute="height" secondItem="KRh-9H-fsg" secondAttribute="height" id="ezF-sh-mzu"/>
+                            <constraint firstAttribute="trailing" secondItem="Spb-4x-svE" secondAttribute="trailing" constant="8" id="fxm-hf-3y0"/>
+                            <constraint firstItem="Spb-4x-svE" firstAttribute="leading" secondItem="KRh-9H-fsg" secondAttribute="trailing" constant="18" id="hzW-jT-Owk"/>
+                            <constraint firstItem="Spb-4x-svE" firstAttribute="centerY" secondItem="jKO-sa-nZM" secondAttribute="centerY" id="oIj-kZ-TtL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jKO-sa-nZM" secondAttribute="trailing" constant="8" id="Hnq-Nq-LjS"/>
+                    <constraint firstItem="jKO-sa-nZM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WBH-ec-Ztp"/>
+                    <constraint firstAttribute="bottom" secondItem="jKO-sa-nZM" secondAttribute="bottom" constant="6" id="f3a-GO-FVn"/>
+                    <constraint firstItem="jKO-sa-nZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="khL-sO-FIS"/>
+                    <constraint firstItem="zvR-fX-idr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="wAn-t2-06V"/>
+                    <constraint firstItem="zvR-fX-idr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wWI-ih-zaS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deleteButton" destination="Spb-4x-svE" id="NVz-sz-7cW"/>
+                <outlet property="editContentView" destination="jKO-sa-nZM" id="3Xj-Yg-dyP"/>
+                <outlet property="groupLabel" destination="zvR-fX-idr" id="G6p-pD-83s"/>
+                <outlet property="modifyButton" destination="KRh-9H-fsg" id="isw-Yw-5Lk"/>
+            </connections>
+            <point key="canvasLocation" x="286" y="242"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="rect1.png" width="35" height="16"/>
+        <image name="rect2.png" width="35" height="16"/>
+    </resources>
+</document>

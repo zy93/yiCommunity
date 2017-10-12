@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeviceGroupSelectHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分组选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idl-CM-785">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dch-wH-Rwf">
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzL-f0-aR3"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsF-jI-QYX">
+                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="vLF-yO-n7W"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yzL-f0-aR3" firstAttribute="top" secondItem="dch-wH-Rwf" secondAttribute="top" id="ENd-Nb-mf7"/>
+                <constraint firstItem="Idl-CM-785" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="JUM-IJ-gCI"/>
+                <constraint firstItem="rsF-jI-QYX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Kzo-xQ-GTM"/>
+                <constraint firstItem="dch-wH-Rwf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ne4-x0-2Nw"/>
+                <constraint firstItem="yzL-f0-aR3" firstAttribute="leading" secondItem="dch-wH-Rwf" secondAttribute="leading" id="PFb-o9-I2U"/>
+                <constraint firstItem="dch-wH-Rwf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="110" id="VT3-F5-K53"/>
+                <constraint firstAttribute="trailing" secondItem="dch-wH-Rwf" secondAttribute="trailing" constant="20" id="c1Y-Za-zSM"/>
+                <constraint firstItem="Idl-CM-785" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="caw-6F-Y3x"/>
+                <constraint firstItem="yzL-f0-aR3" firstAttribute="trailing" secondItem="dch-wH-Rwf" secondAttribute="trailing" id="g90-3F-sXv"/>
+                <constraint firstAttribute="bottom" secondItem="rsF-jI-QYX" secondAttribute="bottom" constant="-1" id="kl7-l0-Nth"/>
+                <constraint firstAttribute="trailing" secondItem="rsF-jI-QYX" secondAttribute="trailing" constant="20" id="sf1-hE-FyH"/>
+                <constraint firstItem="yzL-f0-aR3" firstAttribute="bottom" secondItem="dch-wH-Rwf" secondAttribute="bottom" id="zj7-uS-r5p"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="groupTextField" destination="dch-wH-Rwf" id="5nQ-ak-5fM"/>
+                <outlet property="selectButton" destination="yzL-f0-aR3" id="4ME-GX-Kb5"/>
+            </connections>
+            <point key="canvasLocation" x="23.5" y="-231"/>
+        </view>
+    </objects>
+</document>

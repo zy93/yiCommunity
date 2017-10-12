@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZFR-NR-Ext">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Device Camera Controller-->
+        <scene sceneID="Qfq-4Q-kCa">
+            <objects>
+                <tableViewController id="ZFR-NR-Ext" customClass="DeviceCameraController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="yNr-Vr-VlX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="jQe-BC-lRP">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device摄像头.png" translatesAutoresizingMaskIntoConstraints="NO" id="iIy-RE-svZ">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="EoM-A7-xeK"/>
+                                        <constraint firstAttribute="height" constant="100" id="w49-EE-8O7"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="iIy-RE-svZ" firstAttribute="centerX" secondItem="jQe-BC-lRP" secondAttribute="centerX" id="2Ff-1Y-xUx"/>
+                                <constraint firstItem="iIy-RE-svZ" firstAttribute="centerY" secondItem="jQe-BC-lRP" secondAttribute="centerY" id="7wm-EB-bl3"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection id="0vh-9a-Mnt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="85" id="Cr2-GZ-wQW">
+                                        <rect key="frame" x="0.0" y="250" width="375" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cr2-GZ-wQW" id="t8h-2R-gdN">
+                                            <frame key="frameInset" width="375" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bB-Qf-z0g">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="bps-4L-RPQ"/>
+                                                        <constraint firstAttribute="width" constant="60" id="gIv-WT-sTM"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_left_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="1QU-II-MmD"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzn-K7-4xK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="fLh-TZ-n6A"/>
+                                                        <constraint firstAttribute="width" constant="60" id="y0k-6w-jOk"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_up_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="NOP-s0-T71"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN8-FV-sJk">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="NbM-rL-Kf5"/>
+                                                        <constraint firstAttribute="height" constant="60" id="Xmz-OO-ejk"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_small_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="6Be-fU-S1U"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hzn-K7-4xK" firstAttribute="leading" secondItem="2bB-Qf-z0g" secondAttribute="trailing" constant="35" id="1w2-fD-y4l"/>
+                                                <constraint firstItem="aN8-FV-sJk" firstAttribute="leading" secondItem="Hzn-K7-4xK" secondAttribute="trailing" constant="35" id="5XS-gZ-yhx"/>
+                                                <constraint firstItem="Hzn-K7-4xK" firstAttribute="centerY" secondItem="t8h-2R-gdN" secondAttribute="centerY" id="8Nn-dQ-rDG"/>
+                                                <constraint firstItem="Hzn-K7-4xK" firstAttribute="centerX" secondItem="t8h-2R-gdN" secondAttribute="centerX" id="BFq-Vj-Ehb"/>
+                                                <constraint firstItem="2bB-Qf-z0g" firstAttribute="centerY" secondItem="t8h-2R-gdN" secondAttribute="centerY" id="nel-de-4lg"/>
+                                                <constraint firstItem="aN8-FV-sJk" firstAttribute="centerY" secondItem="t8h-2R-gdN" secondAttribute="centerY" id="x2g-F1-XdC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="85" id="sju-vu-1te">
+                                        <rect key="frame" x="0.0" y="335" width="375" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sju-vu-1te" id="6zL-zU-0X8">
+                                            <frame key="frameInset" width="375" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2h-E0-Ltn">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="Og3-9h-tiO"/>
+                                                        <constraint firstAttribute="width" constant="60" id="uYC-Xf-GiI"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_right_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="alF-6d-maJ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yS5-H5-c5W">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="QOd-9x-GQJ"/>
+                                                        <constraint firstAttribute="width" constant="60" id="jtF-aS-KIc"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_down_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="YoY-Zh-0VY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t7-He-1ts">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="02I-6G-at2"/>
+                                                        <constraint firstAttribute="width" constant="60" id="5Gc-RO-GTY"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="icon_c_big_s.png"/>
+                                                    <connections>
+                                                        <action selector="clickButton:" destination="ZFR-NR-Ext" eventType="touchUpInside" id="gxM-ER-m5X"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3t7-He-1ts" firstAttribute="leading" secondItem="yS5-H5-c5W" secondAttribute="trailing" constant="35" id="Fye-7S-BKD"/>
+                                                <constraint firstItem="yS5-H5-c5W" firstAttribute="leading" secondItem="T2h-E0-Ltn" secondAttribute="trailing" constant="35" id="Tdu-Tb-Rvd"/>
+                                                <constraint firstItem="T2h-E0-Ltn" firstAttribute="centerY" secondItem="6zL-zU-0X8" secondAttribute="centerY" id="Tvj-iz-oKv"/>
+                                                <constraint firstItem="yS5-H5-c5W" firstAttribute="centerY" secondItem="6zL-zU-0X8" secondAttribute="centerY" id="bSc-RJ-4Me"/>
+                                                <constraint firstItem="3t7-He-1ts" firstAttribute="centerY" secondItem="6zL-zU-0X8" secondAttribute="centerY" id="hIF-Z2-p1o"/>
+                                                <constraint firstItem="yS5-H5-c5W" firstAttribute="centerX" secondItem="6zL-zU-0X8" secondAttribute="centerX" id="qvb-cf-3M8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="ZFR-NR-Ext" id="WSD-zs-0aL"/>
+                            <outlet property="delegate" destination="ZFR-NR-Ext" id="HTa-1C-6oP"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="bigButton" destination="3t7-He-1ts" id="RSE-25-fa1"/>
+                        <outlet property="downButton" destination="yS5-H5-c5W" id="Nji-5g-IPz"/>
+                        <outlet property="imageView" destination="iIy-RE-svZ" id="PI4-St-L6H"/>
+                        <outlet property="leftButton" destination="2bB-Qf-z0g" id="BlC-Ka-ycJ"/>
+                        <outlet property="rightButton" destination="T2h-E0-Ltn" id="xxr-Xu-VlS"/>
+                        <outlet property="smallButton" destination="aN8-FV-sJk" id="jof-IP-cIF"/>
+                        <outlet property="upButton" destination="Hzn-K7-4xK" id="2DM-jP-1AG"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7D-dD-aOF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="151.57421289355324"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="device摄像头.png" width="71" height="104"/>
+        <image name="icon_c_big_s.png" width="124" height="123"/>
+        <image name="icon_c_down_s.png" width="124" height="123"/>
+        <image name="icon_c_left_s.png" width="124" height="123"/>
+        <image name="icon_c_right_s.png" width="124" height="123"/>
+        <image name="icon_c_small_s.png" width="124" height="123"/>
+        <image name="icon_c_up_s.png" width="124" height="123"/>
+    </resources>
+</document>

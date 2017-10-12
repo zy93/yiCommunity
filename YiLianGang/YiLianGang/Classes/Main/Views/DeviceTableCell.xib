@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DeviceTableCell" rowHeight="75" id="KGk-i7-Jjw" customClass="DeviceTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device摄像头.png" translatesAutoresizingMaskIntoConstraints="NO" id="50l-qJ-7sz">
+                        <rect key="frame" x="20" y="6" width="62" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="50l-qJ-7sz" secondAttribute="height" id="JLy-1R-ASC"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摄像头" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hye-YO-5ju">
+                        <rect key="frame" x="106" y="8" width="49" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摄像头onvif" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pK-5L-YUa">
+                        <rect key="frame" x="106" y="31.5" width="75" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海康威视" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCB-ZZ-bV1">
+                        <rect key="frame" x="106" y="52.5" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3pK-5L-YUa" firstAttribute="top" secondItem="hye-YO-5ju" secondAttribute="bottom" constant="4" id="6kA-ot-6ee"/>
+                    <constraint firstItem="50l-qJ-7sz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="C2c-xb-Lyu"/>
+                    <constraint firstItem="50l-qJ-7sz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="CiP-qx-euf"/>
+                    <constraint firstItem="hye-YO-5ju" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="KNd-af-e1Q"/>
+                    <constraint firstItem="hye-YO-5ju" firstAttribute="leading" secondItem="50l-qJ-7sz" secondAttribute="trailing" constant="24" id="NiE-7T-3ua"/>
+                    <constraint firstItem="KCB-ZZ-bV1" firstAttribute="leading" secondItem="50l-qJ-7sz" secondAttribute="trailing" constant="24" id="PXl-wR-3n9"/>
+                    <constraint firstAttribute="bottom" secondItem="50l-qJ-7sz" secondAttribute="bottom" constant="6" id="oxP-Wq-dMk"/>
+                    <constraint firstItem="KCB-ZZ-bV1" firstAttribute="top" secondItem="3pK-5L-YUa" secondAttribute="bottom" constant="4" id="rIp-cy-R3P"/>
+                    <constraint firstItem="3pK-5L-YUa" firstAttribute="leading" secondItem="50l-qJ-7sz" secondAttribute="trailing" constant="24" id="y07-RP-NGs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deviceFactoryLabel" destination="KCB-ZZ-bV1" id="AQ5-aG-VRu"/>
+                <outlet property="deviceImageView" destination="50l-qJ-7sz" id="fVC-0f-PFV"/>
+                <outlet property="deviceModelLabel" destination="3pK-5L-YUa" id="buB-2r-0NY"/>
+                <outlet property="deviceNameLabel" destination="hye-YO-5ju" id="Dz9-22-32j"/>
+            </connections>
+            <point key="canvasLocation" x="32" y="105.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="device摄像头.png" width="71" height="104"/>
+    </resources>
+</document>

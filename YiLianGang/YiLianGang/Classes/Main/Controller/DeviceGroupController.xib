@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceGroupController">
+            <connections>
+                <outlet property="addGroupButton" destination="nvA-ce-Xb3" id="DW9-og-u5y"/>
+                <outlet property="tableView" destination="IIE-dH-x1c" id="ZmC-VP-at2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIE-dH-x1c">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvA-ce-Xb3">
+                    <color key="backgroundColor" red="0.10680409520864487" green="0.82635366916656494" blue="0.61999404430389404" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="vgk-6U-SCw"/>
+                    </constraints>
+                    <color key="tintColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="   添加分组" image="jiahao.png">
+                        <color key="titleColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clickAddGroupButton:" destination="-1" eventType="touchUpInside" id="Lr3-oJ-xOh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="nvA-ce-Xb3" secondAttribute="bottom" constant="8" id="5qY-gT-m4q"/>
+                <constraint firstItem="IIE-dH-x1c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7Yh-Sn-sXb"/>
+                <constraint firstAttribute="trailing" secondItem="nvA-ce-Xb3" secondAttribute="trailing" constant="8" id="FmM-2L-gNB"/>
+                <constraint firstAttribute="trailing" secondItem="IIE-dH-x1c" secondAttribute="trailing" id="cUN-iQ-MBe"/>
+                <constraint firstItem="nvA-ce-Xb3" firstAttribute="top" secondItem="IIE-dH-x1c" secondAttribute="bottom" constant="8" id="ec5-nQ-hTy"/>
+                <constraint firstItem="IIE-dH-x1c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kPx-mh-KFA"/>
+                <constraint firstItem="nvA-ce-Xb3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="uKU-SR-PoA"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="jiahao.png" width="20" height="20"/>
+    </resources>
+</document>

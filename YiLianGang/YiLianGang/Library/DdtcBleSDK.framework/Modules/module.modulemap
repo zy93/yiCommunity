@@ -1,0 +1,6 @@
+framework module DdtcBleSDK {
+  umbrella header "DdtcBleSDK.h"
+
+  export *
+  module * { export * }
+}

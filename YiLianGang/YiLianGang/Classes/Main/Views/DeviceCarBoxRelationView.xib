@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeviceCarBoxRelationView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="按钮" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKJ-Mx-32n">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车载盒子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kst-Jw-12u">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-wd-1DS">
+                    <segments>
+                        <segment title="按钮1"/>
+                        <segment title="按钮2"/>
+                        <segment title="按钮3"/>
+                    </segments>
+                    <color key="tintColor" red="0.043137254899999998" green="0.57647058819999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="segmentChange:" destination="iN0-l3-epB" eventType="valueChanged" id="9wt-3s-04t"/>
+                    </connections>
+                </segmentedControl>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0e3-Ye-FmI">
+                    <connections>
+                        <action selector="changeSwitch:" destination="iN0-l3-epB" eventType="valueChanged" id="w2B-ZG-3HH"/>
+                    </connections>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wKJ-Mx-32n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="0ST-s1-tbX"/>
+                <constraint firstItem="Kst-Jw-12u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="1UO-fJ-clX"/>
+                <constraint firstAttribute="trailing" secondItem="0e3-Ye-FmI" secondAttribute="trailing" constant="16" id="6xR-mU-R3W"/>
+                <constraint firstItem="SBH-wd-1DS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-120" id="MVd-Qc-YZs"/>
+                <constraint firstItem="0e3-Ye-FmI" firstAttribute="leading" secondItem="Kst-Jw-12u" secondAttribute="trailing" constant="10" id="Mcp-6u-wiN"/>
+                <constraint firstItem="0e3-Ye-FmI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="N1J-yy-x4F"/>
+                <constraint firstItem="wKJ-Mx-32n" firstAttribute="top" secondItem="Kst-Jw-12u" secondAttribute="bottom" constant="20" id="QhO-lb-rTW"/>
+                <constraint firstItem="Kst-Jw-12u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Z6m-Dr-vmC"/>
+                <constraint firstAttribute="trailing" secondItem="SBH-wd-1DS" secondAttribute="trailing" constant="20" id="hDj-A9-5St"/>
+                <constraint firstItem="SBH-wd-1DS" firstAttribute="centerY" secondItem="wKJ-Mx-32n" secondAttribute="centerY" id="jtb-ei-uJl"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="nameLabel" destination="Kst-Jw-12u" id="ZOW-gE-RfU"/>
+                <outlet property="relationSwitch" destination="0e3-Ye-FmI" id="Jy5-ei-Ecv"/>
+                <outlet property="typeButton" destination="SBH-wd-1DS" id="dMC-98-F4b"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="316"/>
+        </view>
+    </objects>
+</document>
