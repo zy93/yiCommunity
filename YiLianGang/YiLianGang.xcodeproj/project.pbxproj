@@ -482,6 +482,7 @@
 		2DF9995A1E5C378E0021264C /* SelectUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF999591E5C378E0021264C /* SelectUtil.m */; };
 		2DFB87181D81703A005D3E97 /* 103.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DFB87171D81703A005D3E97 /* 103.png */; };
 		4DF2D1F74AF2D1A6042C2096 /* Pods_YiLianGang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDD0B90F4214D8AB934A3E9 /* Pods_YiLianGang.framework */; };
+		C74CD2421F8F7A58006AE5F2 /* HomePageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74CD2411F8F7A58006AE5F2 /* HomePageController.storyboard */; };
 		C79337911F8CC9CC006E8447 /* DringkingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C793378A1F8CC9CA006E8447 /* DringkingDetailViewController.m */; };
 		C79337921F8CC9CC006E8447 /* UserUseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C793378D1F8CC9CC006E8447 /* UserUseCell.m */; };
 		C79337931F8CC9CC006E8447 /* TDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C79337901F8CC9CC006E8447 /* TDSCell.m */; };
@@ -1204,6 +1205,7 @@
 		2DFB87171D81703A005D3E97 /* 103.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 103.png; sourceTree = "<group>"; };
 		64CBAEB38C2945CD492EA936 /* Pods-YiLianGang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiLianGang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YiLianGang/Pods-YiLianGang.debug.xcconfig"; sourceTree = "<group>"; };
 		8274978E3C8780E61D3E8B9F /* Pods-YiLianGang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiLianGang.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiLianGang/Pods-YiLianGang.release.xcconfig"; sourceTree = "<group>"; };
+		C74CD2411F8F7A58006AE5F2 /* HomePageController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomePageController.storyboard; sourceTree = "<group>"; };
 		C792C38C1F8EDBE600FEF773 /* YiLianGang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YiLianGang.entitlements; sourceTree = "<group>"; };
 		C793378A1F8CC9CA006E8447 /* DringkingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DringkingDetailViewController.m; sourceTree = "<group>"; };
 		C793378B1F8CC9CB006E8447 /* TDSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSCell.h; sourceTree = "<group>"; };
@@ -2201,6 +2203,7 @@
 			children = (
 				2D2933641D5C13F500947C9A /* HomePageController.h */,
 				2D2933651D5C13F500947C9A /* HomePageController.m */,
+				C74CD2411F8F7A58006AE5F2 /* HomePageController.storyboard */,
 				2A0B5B701E7A63C300C95918 /* HomeService */,
 				2D2933671D5C14E300947C9A /* ShopController.h */,
 				2D2933681D5C14E300947C9A /* ShopController.m */,
@@ -2882,6 +2885,7 @@
 				2DB34D541DA8994600722FBF /* deviceControlButton1@2x.png in Resources */,
 				2DD716C01D7588D4005AFB44 /* rect2@3x.png in Resources */,
 				2DADFD811D702F8000B3B7D7 /* ads03.jpg in Resources */,
+				C74CD2421F8F7A58006AE5F2 /* HomePageController.storyboard in Resources */,
 				2D696C2B1DAB9C920024B0ED /* DeviceCooperationCell.xib in Resources */,
 				2D9460271DAA3F59007C258B /* DeviceCameraController.storyboard in Resources */,
 				2DB34D581DA8994600722FBF /* devicePowerSwitch@2x.png in Resources */,

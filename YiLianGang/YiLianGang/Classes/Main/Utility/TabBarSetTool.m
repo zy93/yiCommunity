@@ -41,7 +41,11 @@ static TabBarSetTool *tabBarSetTool;
     [[WeatherTool sharedWeatherTool]sendWeatherRequest];
     
     WN_YL_BaseTabControllerInfo *info = [[WN_YL_BaseTabControllerInfo alloc]init];
-    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:[HomePageController new]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HomePageController" bundle:nil];
+    
+    /* 获取storyboard的InitialViewController 即根控制器*/
+    HomePageController *homePageView = [storyboard instantiateViewControllerWithIdentifier:@"HomePageController"];
+    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:homePageView];
     info.viewController = navi;
     info.title = @"首页";
     info.image = [UIImage imageNamed:@"main_tab00"];

@@ -16,7 +16,16 @@
 
 
 @interface HomePageController ()
-@property(nonatomic,weak) HomePageView *homeView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bottonImageView;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIView *view3;
+@property (weak, nonatomic) IBOutlet UIView *view4;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewButton;
+
 @end
 
 @implementation HomePageController
@@ -24,16 +33,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self doPrettyView];
-    
-    
-    [self.view addSubview:self.homeView];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+   // [self setNaVationBar];
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self.homeView refreshWeather];
-    [self.homeView refreshService];
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.scrollViewButton.frame.size.height+self.topImageView.frame.size.height+self.view1.frame.size.height+self.view2.frame.size.height+self.view3.frame.size.height+self.view4.frame.size.height);
     [self.navigationController setNavigationBarHidden:YES];
     //[self.tabBarController.tabBar setHidden:YES];隐藏
     
@@ -50,42 +57,12 @@
     [self.tabBarController.view.layer addAnimation:transition forKey:nil];
 }
 
--(void)goToMaintenanceViewController
-{
-    MaintenanceViewController *root = [[MaintenanceViewController alloc] init];
-    [self.navigationController pushViewController:root animated:YES];
-}
-
--(void)goToShopViewController
-{
-    ShopController *root = [ShopController new];
-    [self.navigationController pushViewController:root animated:YES];
-}
-
--(void)goToDDController
-{
-    H5DingDingParkController *cpc = [H5DingDingParkController new];
-    //        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:cpc];
-    //        navi.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //        [self presentViewController:navi animated:YES completion:nil];
-    [self.navigationController pushViewController:cpc animated:YES];
-}
-
--(void)goToPrintViewController
-{
-    H5CloudPrintController *cpc = [H5CloudPrintController new];
-    //        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:cpc];
-    //        navi.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //        [self presentViewController:navi animated:YES completion:nil];
-    [self.navigationController pushViewController:cpc animated:YES];
-}
-
 
 -(void)dealloc{
     NSLog(@"HomePageController dealloc");
 }
 -(void)doPrettyView{
-    self.navigationItem.title = @"首页";
+    //self.navigationItem.title = @"首页";
     
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -109,13 +86,25 @@
 }
 */
 
-- (HomePageView *)homeView {
-	if(_homeView == nil) {
-        
-		_homeView = [[NSBundle mainBundle]loadNibNamed:@"HomePageView" owner:nil options:nil].lastObject;;
-        _homeView.frame = self.view.bounds;
-	}
-	return _homeView;
+- (void)setNaVationBar {
+    
+    // 透明状态栏的延伸
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    //可有可无
+    
+    [self.navigationController.navigationBar setBackgroundImage:nil
+     
+                                                 forBarPosition:UIBarPositionAny
+     
+                                                     barMetrics:UIBarMetricsDefault];
+    
+    //一条线
+    
+   // self.navigationController.navigationBar.shadowImage = [UIColor image:[UIColor colorWithRed:0.29f green:0.58f blue:0.92f alpha:1.00f]];//(等号后自定义方法)
+    
 }
+
 
 @end
