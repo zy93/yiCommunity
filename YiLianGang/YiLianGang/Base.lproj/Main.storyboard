@@ -25,11 +25,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="471" y="-116"/>
         </scene>
         <!--My View Controller-->
         <scene sceneID="yRX-2i-QvH">
             <objects>
-                <viewController id="8J4-nV-ene" customClass="MyViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8J4-nV-ene" customClass="MyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FxQ-Tu-OUO"/>
                         <viewControllerLayoutGuide type="bottom" id="awy-P5-Pga"/>

@@ -33,7 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self doPrettyView];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    //self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
    // [self setNaVationBar];
    // [[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     // Do any additional setup after loading the view.
@@ -42,7 +43,7 @@
     [super viewWillAppear:animated];
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.scrollViewButton.frame.size.height+self.topImageView.frame.size.height+self.view1.frame.size.height+self.view2.frame.size.height+self.view3.frame.size.height+self.view4.frame.size.height);
     [self.navigationController setNavigationBarHidden:YES];
-    //[self.tabBarController.tabBar setHidden:YES];隐藏
+    //[self.tabBarController.tabBar setHidden:YES];//隐藏
     
 }
 
@@ -66,15 +67,16 @@
     
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 -(BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
@@ -86,25 +88,6 @@
 }
 */
 
-- (void)setNaVationBar {
-    
-    // 透明状态栏的延伸
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    //可有可无
-    
-    [self.navigationController.navigationBar setBackgroundImage:nil
-     
-                                                 forBarPosition:UIBarPositionAny
-     
-                                                     barMetrics:UIBarMetricsDefault];
-    
-    //一条线
-    
-   // self.navigationController.navigationBar.shadowImage = [UIColor image:[UIColor colorWithRed:0.29f green:0.58f blue:0.92f alpha:1.00f]];//(等号后自定义方法)
-    
-}
 
 
 @end

@@ -14,9 +14,16 @@
 #import "ServiceController.h"
 #import "DeviceController.h"
 #import "PersonalInfoController.h"
+#import "MyViewController.h"
 
 #import "StyleTool.h"
 #import "WeatherTool.h"
+
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 static TabBarSetTool *tabBarSetTool;
 @interface TabBarSetTool()
 @property(nonatomic,strong) WN_YL_BaseTabController *btc;
@@ -47,17 +54,21 @@ static TabBarSetTool *tabBarSetTool;
     HomePageController *homePageView = [storyboard instantiateViewControllerWithIdentifier:@"HomePageController"];
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:homePageView];
     info.viewController = navi;
-    info.title = @"首页";
+    info.title = @"服务";
     info.image = [UIImage imageNamed:@"main_tab00"];
     info.selectedImage = [UIImage imageNamed:@"main_tab00_ok"];
     
     WN_YL_BaseTabControllerInfo *info1 = [[WN_YL_BaseTabControllerInfo alloc]init];
-    navi = [[UINavigationController alloc]initWithRootViewController:[PropertyViewController new]];
-    info1.viewController = navi;
-    info1.title = @"物业";
+    UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    /* 获取storyboard的InitialViewController 即根控制器*/
+    MyViewController *myViewController = [storyboard1 instantiateViewControllerWithIdentifier:@"MyViewController"];
+    UINavigationController *navi1 = [[UINavigationController alloc]initWithRootViewController:myViewController];
+    info1.viewController = navi1;
+    info1.title = @"我的";
     info1.image = [UIImage imageNamed:@"tab_pro_w"];
     info1.selectedImage = [UIImage imageNamed:@"tab_pro"];
-    
+    /*
     WN_YL_BaseTabControllerInfo *info2 = [[WN_YL_BaseTabControllerInfo alloc]init];
     navi = [[UINavigationController alloc]initWithRootViewController:[DeviceController new]];
     info2.viewController = navi;
@@ -80,8 +91,9 @@ static TabBarSetTool *tabBarSetTool;
     info4.title = @"管理";
     info4.image = [UIImage imageNamed:@"main_tab44"];
     info4.selectedImage = [UIImage imageNamed:@"main_tab44_ok"];
+     */
     if ([[NSUserDefaults standardUserDefaults]boolForKey:@"isNeedHidden"]) {
-        NSArray *arr = @[info2];
+        NSArray *arr = @[info1];
         
         [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].tabTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarTintColor;
@@ -91,7 +103,7 @@ static TabBarSetTool *tabBarSetTool;
         self.btc = btc;
         return self.btc;
     }else{
-        NSArray *arr = @[info,info1,info2,info3,info4];
+        NSArray *arr = @[info,info1];
         
         [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].tabTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarTintColor;
@@ -100,6 +112,7 @@ static TabBarSetTool *tabBarSetTool;
         WN_YL_BaseTabController *btc = [[WN_YL_BaseModelTool sharedBaseModelTool]creatTabBarControllerWithArray:arr];
         
         self.btc = btc;
+
         return self.btc;
     }
 }
