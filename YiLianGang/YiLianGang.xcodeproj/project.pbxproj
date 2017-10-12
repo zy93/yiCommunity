@@ -93,6 +93,7 @@
 		2A9E4BFA1E792DA100387662 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9E4BF91E792DA100387662 /* libz.tbd */; };
 		2A9E4BFC1E792DBE00387662 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9E4BFB1E792DBE00387662 /* UserNotifications.framework */; };
 		2A9E4BFE1E792DD100387662 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9E4BFD1E792DD100387662 /* libresolv.tbd */; };
+		2AB278401F8F811600F4403E /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2783F1F8F811600F4403E /* MyViewController.m */; };
 		2D15CE631D51EF3200075119 /* RegisterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D15CE621D51EF3200075119 /* RegisterTableController.m */; };
 		2D19063D1D6710450034A153 /* 公共服务@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D1906351D6710450034A153 /* 公共服务@2x.png */; };
 		2D19063E1D6710450034A153 /* 公共服务@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D1906361D6710450034A153 /* 公共服务@3x.png */; };
@@ -630,6 +631,8 @@
 		2A9E4BF91E792DA100387662 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2A9E4BFB1E792DBE00387662 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		2A9E4BFD1E792DD100387662 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		2AB2783E1F8F811600F4403E /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		2AB2783F1F8F811600F4403E /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		2D15CE611D51EF3200075119 /* RegisterTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTableController.h; sourceTree = "<group>"; };
 		2D15CE621D51EF3200075119 /* RegisterTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTableController.m; sourceTree = "<group>"; };
 		2D1906351D6710450034A153 /* 公共服务@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "公共服务@2x.png"; sourceTree = "<group>"; };
@@ -2214,6 +2217,8 @@
 				2DADFD711D701C4200B3B7D7 /* PersonalInfoController.h */,
 				2DADFD721D701C4200B3B7D7 /* PersonalInfoController.m */,
 				2DADFD741D701C5000B3B7D7 /* PersonalInfoController.storyboard */,
+				2AB2783E1F8F811600F4403E /* MyViewController.h */,
+				2AB2783F1F8F811600F4403E /* MyViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3006,6 +3011,7 @@
 				2D906E721D50991B000AF85C /* MJRefreshAutoGifFooter.m in Sources */,
 				2DBBD1FA1D586C75007B7C4F /* MBProgressHUD.m in Sources */,
 				2D906E791D50991B000AF85C /* MJRefreshNormalHeader.m in Sources */,
+				2AB278401F8F811600F4403E /* MyViewController.m in Sources */,
 				2A0B5B761E7A6F0800C95918 /* MaintenanceView.m in Sources */,
 				2A1CEA261E812E95008D33DC /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				2D906E761D50991B000AF85C /* MJRefreshBackNormalFooter.m in Sources */,
