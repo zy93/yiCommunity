@@ -18,6 +18,7 @@
 #import "DeviceFromGroupTool.h"
 #import "DeviceInfo.h"
 #import "DringkingDetailViewController.h"
+#import "SDCycleScrollView.h"
 
 @interface HomePageController () <SDCycleScrollViewDelegate>
 {
@@ -180,7 +181,8 @@
 }
 #pragma mark - 轻松到家
 - (IBAction)getHomeButton:(id)sender {
-    
+    self.h5View.url = @"https://api.uyess.com/score-mall/?#!/weixin?ts=1507883668";
+    [self.navigationController pushViewController:self.h5View animated:YES];
 }
 
 #pragma mark - 按摩椅

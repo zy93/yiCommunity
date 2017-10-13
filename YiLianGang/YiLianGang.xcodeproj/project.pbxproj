@@ -492,6 +492,7 @@
 		C7A336761F8DF18A00B81204 /* PayMentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A336741F8DF18A00B81204 /* PayMentViewController.xib */; };
 		C7BA19AF1F909C1E0008AF4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */; };
 		C7BA19B11F909CE40008AF4A /* companyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BA19B01F909CE40008AF4A /* companyLogo.png */; };
+		C7BA19B41F90B8C80008AF4A /* PayBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1228,6 +1229,8 @@
 		C7BA19AD1F909C1E0008AF4A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C7BA19B01F909CE40008AF4A /* companyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = companyLogo.png; sourceTree = "<group>"; };
+		C7BA19B21F90B8C80008AF4A /* PayBillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayBillViewController.h; sourceTree = "<group>"; };
+		C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayBillViewController.m; sourceTree = "<group>"; };
 		DBDD0B90F4214D8AB934A3E9 /* Pods_YiLianGang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiLianGang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1640,6 +1643,8 @@
 		2D636C591DB4C86F0081EF37 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C7BA19B21F90B8C80008AF4A /* PayBillViewController.h */,
+				C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */,
 				2D3DE59E1D6D976C00EB6CC5 /* ServiceController.h */,
 				2D3DE59F1D6D976C00EB6CC5 /* ServiceController.m */,
 				2D6ADCB41DB5B33A00C556C4 /* CloudService */,
@@ -3009,6 +3014,7 @@
 				2D9460191DAA28DC007C258B /* DeviceBreathHouseController.m in Sources */,
 				2A657CBC1E7F7C3800788CFA /* MaintenanceContentView.m in Sources */,
 				2D7B29231E5EB2FC00271734 /* DeviceLierdaSwitchController.m in Sources */,
+				C7BA19B41F90B8C80008AF4A /* PayBillViewController.m in Sources */,
 				2D2FD6B21D4AF902003F69AB /* AppDelegate.m in Sources */,
 				2D42E5621D6E8903005361D7 /* ServiceInfo.m in Sources */,
 				2D5618F91D8E6E17002D1D82 /* SystemFunctions.m in Sources */,
