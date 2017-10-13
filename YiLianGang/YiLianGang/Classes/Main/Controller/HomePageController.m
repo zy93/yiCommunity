@@ -27,14 +27,10 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *bottonImageView;
-@property (weak, nonatomic) IBOutlet UIView *view1;
-@property (weak, nonatomic) IBOutlet UIView *view2;
-@property (weak, nonatomic) IBOutlet UIView *view3;
-@property (weak, nonatomic) IBOutlet UIView *view4;
 @property (weak, nonatomic) IBOutlet WOTShortcutView *shortcutScrollView;
 @property (nonatomic, strong)PayMentViewController *h5View;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *parkingBtn;
 
 @property (nonatomic, strong)DeviceFromGroupTool *deviceTool;
 @property (nonatomic, strong)NSMutableArray *deviceArray;
@@ -67,7 +63,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.shortcutScrollView.frame.size.height+self.topImageView.frame.size.height+self.view1.frame.size.height+self.view2.frame.size.height+self.view3.frame.size.height+self.view4.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.parkingBtn.frame)+5);
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];//隐藏
     
@@ -93,7 +89,7 @@
     
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
