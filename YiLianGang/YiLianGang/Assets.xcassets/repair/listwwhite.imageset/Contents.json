@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "listwwhite.png",
+      "filename" : "更多w.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "listwwhite@2x.png",
+      "filename" : "更多w@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "listwwhite@3x.png",
+      "filename" : "更多w@3x.png",
       "scale" : "3x"
     }
   ],

@@ -15,6 +15,7 @@
 #import "StyleTool.h"
 #import "JPUSHService.h"
 #import "MaintenanceListViewController.h"
+#import "UIImage+ImageColorChange.h"
 
 
 @interface LoginTableController ()
@@ -50,6 +51,7 @@
     
     [self doPretteyView];
     [self addTapEndEdit];
+    self.tableView.scrollEnabled = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -87,6 +89,7 @@
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, height*0.8-width/1125*1599, width, width/1125*1599)];
     imageView.image = styleInfo.welcomeImage;
     self.iconImageView.image = styleInfo.logoImage;
+    self.iconImageView.image = [self.iconImageView.image imageChangeColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
     self.loginButton.backgroundColor = styleInfo.welcomeColor;
     [self.registerButton setTitleColor:styleInfo.welcomeColor forState:UIControlStateNormal];
     self.noAcountLabel.textColor = [UIColor colorWithRed:0.1765 green:0.1765 blue:0.1765 alpha:1.0];
@@ -218,7 +221,6 @@
 
 -(void)loginDidSuccess{
 //    [UIApplication sharedApplication].keyWindow.rootViewController = [[TabBarSetTool sharedTabBarSetTool]getTabBarController];
-    
     
     UIViewController *vc = [[TabBarSetTool sharedTabBarSetTool]getTabBarController];
     
