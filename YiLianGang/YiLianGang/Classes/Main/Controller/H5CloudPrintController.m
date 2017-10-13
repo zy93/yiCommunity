@@ -34,6 +34,14 @@
         self.isWebViewLoaded = YES;
     }
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+    
+}
 //获取加密
 -(void)sendRequestToGetSign{
     WS(weakSelf);

@@ -49,6 +49,16 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
+    
+    CATransition *transition = [CATransition animation];
+    [transition setDuration:0.5];
+    [transition setType:@"fade"];
+    [self.tabBarController.view.layer addAnimation:transition forKey:nil];
+}
 /*
 #pragma mark - Navigation
 

@@ -97,6 +97,7 @@ static TabBarSetTool *tabBarSetTool;
         
         [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].tabTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarTintColor;
+        
         [WN_YL_BaseModelTool sharedBaseModelTool].tabSelectTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarSelectTintColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].isOnlyImage = YES;
         WN_YL_BaseTabController *btc = [[WN_YL_BaseModelTool sharedBaseModelTool]creatTabBarControllerWithArray:arr];

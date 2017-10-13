@@ -69,13 +69,16 @@
     mIndividualBnt = [UIButton buttonWithType:UIButtonTypeCustom];
     [mIndividualBnt setFrame:CGRectMake(20, 20, CGRectGetWidth(frame)/2 - 25, 36)];
     [mIndividualBnt setTitle:@"个人报修" forState:UIControlStateNormal];
-    [mIndividualBnt setTitleColor:HEXCOLOR(0x47d2ae) forState:UIControlStateNormal];
+    //[mIndividualBnt setTitleColor:HEXCOLOR(0x47d2ae) forState:UIControlStateNormal];
+    [mIndividualBnt setTitleColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
     mIndividualBnt.tag = 101;
     mIndividualBnt.layer.cornerRadius = 5.f;
-    mIndividualBnt.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+    //mIndividualBnt.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+     mIndividualBnt.layer.borderColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1].CGColor;
     mIndividualBnt.layer.borderWidth = 1.f;
     mIndividualBnt.selected = YES;
-    mIndividualBnt.backgroundColor = HEXCOLOR(0x47d2ae);
+    //mIndividualBnt.backgroundColor = HEXCOLOR(0x47d2ae);
+     mIndividualBnt.backgroundColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1];
     [mIndividualBnt setTitleColor:HEXCOLOR(0xffffff) forState:UIControlStateSelected];
     [mIndividualBnt addTarget:self action:@selector(selectMaintenance:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:mIndividualBnt];
@@ -84,10 +87,12 @@
     mCommonBnt = [UIButton buttonWithType:UIButtonTypeCustom];
     [mCommonBnt setFrame:CGRectMake(CGRectGetMaxX(mIndividualBnt.frame)+10, 20, CGRectGetWidth(mIndividualBnt.frame), 36)];
     [mCommonBnt setTitle:@"公共报修" forState:UIControlStateNormal];
-    [mCommonBnt setTitleColor:HEXCOLOR(0x47d2ae) forState:UIControlStateNormal];
+    //[mCommonBnt setTitleColor:HEXCOLOR(0x47d2ae) forState:UIControlStateNormal];
+    [mCommonBnt setTitleColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
     mCommonBnt.tag = 102;
     mCommonBnt.layer.cornerRadius = 5.f;
-    mCommonBnt.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+    //mCommonBnt.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+    mCommonBnt.layer.borderColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1].CGColor;
     mCommonBnt.layer.borderWidth = 1;
     [mCommonBnt setTitleColor:HEXCOLOR(0xffffff) forState:UIControlStateSelected];
     [mCommonBnt addTarget:self action:@selector(selectMaintenance:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,9 +174,11 @@
     [commBtn setTitleColor:HEXCOLOR(0x22dd44) forState:UIControlStateHighlighted];
     commBtn.tag = 102;
     commBtn.layer.cornerRadius = 5.f;
-    commBtn.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+    //commBtn.layer.borderColor = HEXCOLOR(0x47d2ae).CGColor;
+      commBtn.layer.borderColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1].CGColor;
     commBtn.layer.borderWidth = 1;
-    commBtn.backgroundColor = HEXCOLOR(0x47d2ae);
+    //commBtn.backgroundColor = HEXCOLOR(0x47d2ae);
+    commBtn.backgroundColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1];;
     [self addSubview:commBtn];
     
 }
@@ -179,7 +186,8 @@
 -(void)selectMaintenance:(UIButton *)sender
 {
     if (sender.tag == 101) {
-        [mIndividualBnt setBackgroundColor:HEXCOLOR(0x47d2ae)];
+        //[mIndividualBnt setBackgroundColor:HEXCOLOR(0x47d2ae)];
+        [mIndividualBnt setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
         [mCommonBnt setBackgroundColor:HEXCOLOR(0xffffff)];
         mIndividualBnt.selected = YES;
         mCommonBnt.selected = NO;
@@ -187,7 +195,8 @@
     }
     else {
         [mIndividualBnt setBackgroundColor:HEXCOLOR(0xffffff)];
-        [mCommonBnt setBackgroundColor:HEXCOLOR(0x47d2ae)];
+        //[mCommonBnt setBackgroundColor:HEXCOLOR(0x47d2ae)];
+        [mCommonBnt setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
         mIndividualBnt.selected = NO;
         mCommonBnt.selected = YES;
     }

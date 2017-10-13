@@ -28,6 +28,12 @@
     //[self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

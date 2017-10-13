@@ -105,6 +105,7 @@
         [self goToLoginView];
     }
 }
+
 -(void)goToLoginView{
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userName"];
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userPwd"];

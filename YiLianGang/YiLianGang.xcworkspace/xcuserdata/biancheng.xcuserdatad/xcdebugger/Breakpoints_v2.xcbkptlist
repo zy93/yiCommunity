@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiLianGang/AppDelegate.m"
-            timestampString = "529458314.552882"
+            filePath = "YiLianGang/Classes/LoginAndRegister/Controller/LoginTableController.m"
+            timestampString = "529550888.984577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "-jpushNotificationCenter:willPresentNotification:withCompletionHandler:"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-back:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiLianGang/AppDelegate.m"
-            timestampString = "529458314.55294"
+            filePath = "YiLianGang/Classes/Main/Controller/Lib/MLSelectPhoto/Classes/ViewControllers/MLSelectPhotoNavigationViewController.m"
+            timestampString = "529552074.37892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "-jpushNotificationCenter:willPresentNotification:withCompletionHandler:"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiLianGang/AppDelegate.m"
-            timestampString = "529458314.552983"
+            filePath = "YiLianGang/Classes/Main/Utility/TabBarSetTool.m"
+            timestampString = "529555081.572826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-jpushNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-getTabBarController"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
