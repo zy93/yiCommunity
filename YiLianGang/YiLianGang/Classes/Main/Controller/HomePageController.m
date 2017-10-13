@@ -131,11 +131,11 @@
     {
         DringkingDetailViewController *dringKingView = [[DringkingDetailViewController alloc] init];
         dringKingView.deviceInfo = self.info;
-        //[self.navigationController pushViewController:dringKingView animated:YES];
-        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
-        if (self.mainController) {
-            [self.mainController presentViewController:navi animated:YES completion:nil];
-        }
+        [self.navigationController pushViewController:dringKingView animated:YES];
+//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
+//        if (self.mainController) {
+//            [self.mainController presentViewController:navi animated:YES completion:nil];
+//        }
     }
     
     

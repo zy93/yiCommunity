@@ -63,10 +63,10 @@
     [super viewDidLoad];
     //标题
     if(self.navigationItem){
-        UIFont *font = [UIFont systemFontOfSize:14];
-        NSDictionary *dic = @{NSFontAttributeName:font,
-                              NSForegroundColorAttributeName: [UIColor whiteColor]};
-        self.navigationController.navigationBar.titleTextAttributes =dic;
+        //UIFont *font = [UIFont systemFontOfSize:14];
+//        NSDictionary *dic = @{NSFontAttributeName:font,
+//                              NSForegroundColorAttributeName: [UIColor whiteColor]};
+        //self.navigationController.navigationBar.titleTextAttributes =dic;
         self.navigationItem.title = self.deviceInfo.thingName;
     }
     self.tableView.tableFooterView = [UIView new];
@@ -103,24 +103,24 @@
     self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:self.DeviceUrlStr]];
     self.webSocket.delegate = self;
     [self.webSocket open];
-    if (self.navigationController) {
-        //左边
-        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
-        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        leftButton.frame = CGRectMake(0, 0, 60, 40);
-        [leftButton setTitle:@"        " forState:UIControlStateNormal];
-        [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-        leftButton.titleLabel.font = [UIFont systemFontOfSize:17];
-        
-        leftButton.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
-        [leftButton addTarget:self action:@selector(clickTopLeftButton:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [leftView addSubview:leftButton];
-        leftView.backgroundColor = [UIColor clearColor];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftView];
-        
-    }
+//    if (self.navigationController) {
+//        //左边
+//        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
+//        UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//        leftButton.frame = CGRectMake(0, 0, 60, 40);
+//        [leftButton setTitle:@"        " forState:UIControlStateNormal];
+//        [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//        leftButton.titleLabel.font = [UIFont systemFontOfSize:17];
+//
+//        leftButton.contentHorizontalAlignment =UIControlContentHorizontalAlignmentCenter;
+//        [leftButton addTarget:self action:@selector(clickTopLeftButton:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        [leftView addSubview:leftButton];
+//        leftView.backgroundColor = [UIColor clearColor];
+//
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftView];
+//
+//    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

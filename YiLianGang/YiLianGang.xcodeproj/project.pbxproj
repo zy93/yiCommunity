@@ -490,6 +490,8 @@
 		C79337931F8CC9CC006E8447 /* TDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C79337901F8CC9CC006E8447 /* TDSCell.m */; };
 		C7A336751F8DF18A00B81204 /* PayMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A336731F8DF18A00B81204 /* PayMentViewController.m */; };
 		C7A336761F8DF18A00B81204 /* PayMentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A336741F8DF18A00B81204 /* PayMentViewController.xib */; };
+		C7BA19AF1F909C1E0008AF4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */; };
+		C7BA19B11F909CE40008AF4A /* companyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BA19B01F909CE40008AF4A /* companyLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1223,6 +1225,9 @@
 		C7A336721F8DF18A00B81204 /* PayMentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayMentViewController.h; sourceTree = "<group>"; };
 		C7A336731F8DF18A00B81204 /* PayMentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayMentViewController.m; sourceTree = "<group>"; };
 		C7A336741F8DF18A00B81204 /* PayMentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayMentViewController.xib; sourceTree = "<group>"; };
+		C7BA19AD1F909C1E0008AF4A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		C7BA19B01F909CE40008AF4A /* companyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = companyLogo.png; sourceTree = "<group>"; };
 		DBDD0B90F4214D8AB934A3E9 /* Pods_YiLianGang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiLianGang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2030,6 +2035,7 @@
 			isa = PBXGroup;
 			children = (
 				2DBB90C11D61C655008BAED7 /* kaijitu1.png */,
+				C7BA19B01F909CE40008AF4A /* companyLogo.png */,
 				2DBB90C21D61C655008BAED7 /* icon_ylg@2x.png */,
 				2DBB90C31D61C655008BAED7 /* icon_ylg@3x.png */,
 				2D906E5E1D50991B000AF85C /* Default-568h@2x.png */,
@@ -2222,6 +2228,8 @@
 				2DADFD741D701C5000B3B7D7 /* PersonalInfoController.storyboard */,
 				2AB2783E1F8F811600F4403E /* MyViewController.h */,
 				2AB2783F1F8F811600F4403E /* MyViewController.m */,
+				C7BA19AD1F909C1E0008AF4A /* AboutViewController.h */,
+				C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2717,6 +2725,7 @@
 				2D42E5AF1D6EDF79005361D7 /* DeviceHeaderView.xib in Resources */,
 				2D42E5701D6E8F08005361D7 /* service外卖.png in Resources */,
 				2D9460221DAA36C2007C258B /* device智能家居.png in Resources */,
+				C7BA19B11F909CE40008AF4A /* companyLogo.png in Resources */,
 				2DADFD701D701A8200B3B7D7 /* male.png in Resources */,
 				2D261E4E1D5C427C00C01FE1 /* main_tab44@2x.png in Resources */,
 				2D636C4C1DB462830081EF37 /* DeviceOKAListCell.xib in Resources */,
@@ -3037,6 +3046,7 @@
 				2DE144DE1D743E6E00AF781D /* DevicePopoverController.m in Sources */,
 				2DE1B8631D53157B007168DA /* YLProvince.m in Sources */,
 				2A1CEA2B1E812E95008D33DC /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
+				C7BA19AF1F909C1E0008AF4A /* AboutViewController.m in Sources */,
 				2D906E731D50991B000AF85C /* MJRefreshAutoNormalFooter.m in Sources */,
 				2A1CEA241E812E95008D33DC /* MLSelectPhotoPickerViewController.m in Sources */,
 				2D945FF51DA9DEC6007C258B /* SRConstants.m in Sources */,

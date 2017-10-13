@@ -10,6 +10,7 @@
 #import "TabBarSetTool.h"
 #import "LoginTool.h"
 #import "DeviceTool.h"
+#import "AboutViewController.h"
 
 @interface MyViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *userName;
@@ -61,12 +62,22 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-    [self.tabBarController.tabBar setHidden:NO];
+    //[self.tabBarController.tabBar setHidden:NO];
     
     CATransition *transition = [CATransition animation];
     [transition setDuration:0.5];
     [transition setType:@"fade"];
     [self.tabBarController.view.layer addAnimation:transition forKey:nil];
+}
+- (IBAction)aboutButton:(id)sender {
+//    AboutViewController *aboutViewC = [[AboutViewController alloc] init];
+//    [self.navigationController pushViewController:aboutViewC animated:YES];
+//
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    /* 获取storyboard的InitialViewController 即根控制器*/
+    AboutViewController *aboutViewC = [storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
+    [self.navigationController pushViewController:aboutViewC animated:YES];
 }
 /*
 #pragma mark - Navigation

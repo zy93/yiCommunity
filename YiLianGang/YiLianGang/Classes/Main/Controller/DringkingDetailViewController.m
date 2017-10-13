@@ -30,9 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (self.navigationController) {
-        self.navigationItem.title = @"直饮水";
-    }
+    //if (self.navigationController) {
+        //self.navigationItem.title = @"直饮水";
+    self.title = @"直饮水";
+    //}
+    
     isOn = NO;
     [self setupView];
     //[self loadData];
