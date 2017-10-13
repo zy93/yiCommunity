@@ -34,7 +34,7 @@
 {
     ShortcutButton *btn = [super buttonWithType:buttonType];
     [btn createDelegateBtn];
-    [btn addLongPressBtn];
+    //[btn addLongPressBtn];
     return btn;
 }
 

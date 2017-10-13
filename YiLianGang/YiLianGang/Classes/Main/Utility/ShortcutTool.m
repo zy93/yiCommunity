@@ -48,7 +48,7 @@
 
 -(NSArray *)createDefaultsShortcut
 {
-    NSArray * defAllShortcut = @[@"报事报修",@"云打印",@"丁丁停车"];
+    NSArray * defAllShortcut = @[@"门禁",@"维修",@"物业缴费",@"北菜园"];
     //
     [[NSUserDefaults standardUserDefaults] setValue:defAllShortcut forKey:mUserPhone];
     return defAllShortcut;
