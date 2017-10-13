@@ -15,9 +15,12 @@
 #import "ShopController.h"
 #import "H5CloudPrintController.h"
 #import "H5DingDingParkController.h"
+#import "SDCycleScrollView.h"
 
-
-@interface HomePageController ()
+@interface HomePageController () <SDCycleScrollViewDelegate>
+{
+    NSArray *imageArr;
+}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
@@ -28,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view4;
 @property (weak, nonatomic) IBOutlet WOTShortcutView *shortcutScrollView;
 @property (nonatomic, strong)PayMentViewController *h5View;
+@property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 
 @end
 
@@ -47,6 +51,8 @@
     if ([[UIDevice currentDevice] systemVersion].floatValue>=7.0) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    imageArr = @[[UIImage imageNamed:@"banner1"],[UIImage imageNamed:@"banner1"]];
+    [self loadAutoScrollView];
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -85,6 +91,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 轮播图
+-(void)loadAutoScrollView{
+    self.autoScrollView.localizationImageNamesGroup = imageArr;
+    self.autoScrollView.delegate = self;
+    self.autoScrollView.pageDotColor = [[UIColor alloc] initWithRed:13.0/255.0f green:13.0/255.0f blue:13.0/255.0f alpha:0.2];
+}
+
+//MARK:SDCycleScrollView   Delegate  点击轮播图显示详情
+-(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    
+    
+//    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
+//    detailvc.url = _sliderUrlStrings[index];
+//    [self.navigationController pushViewController:detailvc animated:YES];
+    
+    NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
 }
 
 #pragma mark - 北菜园

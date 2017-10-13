@@ -77,6 +77,7 @@
     [pBackgroupView setFrame:CGRectMake(x, 0, mScrollIconWidth, mScrollIconWidth)];
     pBackgroupView.center = CGPointMake(x, CGRectGetHeight(self.frame)/2);
     [pBackgroupView setImage:[UIImage imageNamed:pData] forState:UIControlStateNormal];
+    [pBackgroupView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@选中",pData]] forState:UIControlStateHighlighted];
     [pBackgroupView addTarget:self action:@selector(clickService:) forControlEvents:UIControlEventTouchUpInside];
     [pBackgroupView addCustomTarget:self action:@selector(clickRemoveService:) events:ShortcutCustomEventsRemove];
     [pBackgroupView addCustomTarget:self action:@selector(logPressService:) events:ShortcutCustomEventsLongpress];
