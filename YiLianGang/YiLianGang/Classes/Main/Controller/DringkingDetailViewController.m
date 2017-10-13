@@ -39,7 +39,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:@"WaterNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTableView) name:@"ReloadDataNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Pay) name:@"PayNotification" object:nil];
+    
    // [self addObserver:self.mDevice forKeyPath:@"fluxPulse" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {

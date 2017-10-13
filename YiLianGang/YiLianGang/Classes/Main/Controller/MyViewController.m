@@ -23,6 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //
+    //self.userName.text = [LoginTool sharedLoginTool].userName;
+    self.userTel.text = [LoginTool sharedLoginTool].userTel;
 }
 
 - (void)didReceiveMemoryWarning {

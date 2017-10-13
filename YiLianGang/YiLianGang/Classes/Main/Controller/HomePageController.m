@@ -15,6 +15,9 @@
 #import "ShopController.h"
 #import "H5CloudPrintController.h"
 #import "H5DingDingParkController.h"
+#import "DeviceFromGroupTool.h"
+#import "DeviceInfo.h"
+#import "DringkingDetailViewController.h"
 
 
 @interface HomePageController ()
@@ -29,6 +32,11 @@
 @property (weak, nonatomic) IBOutlet WOTShortcutView *shortcutScrollView;
 @property (nonatomic, strong)PayMentViewController *h5View;
 
+@property (nonatomic, strong)DeviceFromGroupTool *deviceTool;
+@property (nonatomic, strong)NSMutableArray *deviceArray;
+@property (nonatomic, assign)NSNumber *groupId;
+@property (nonatomic, strong)DeviceInfo *info;
+
 @end
 
 @implementation HomePageController
@@ -36,7 +44,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self doPrettyView];
+    [self sendRequest];
     self.h5View = [[PayMentViewController alloc] init];
+    self.mainController = self;
     //self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
    // [self setNaVationBar];
@@ -109,6 +119,25 @@
 }
 #pragma mark - 直饮水
 - (IBAction)waterButton:(id)sender {
+    if (self.deviceArray.count > 0) {
+        self.info = self.deviceArray[0];
+        if (self.info.state.integerValue==0) {
+            [ToastUtil showToast:@"设备已离线"];
+            return;
+        }
+    }
+    
+    if ([self.info.templateId containsString:@"沃特德"])
+    {
+        DringkingDetailViewController *dringKingView = [[DringkingDetailViewController alloc] init];
+        dringKingView.deviceInfo = self.info;
+        //[self.navigationController pushViewController:dringKingView animated:YES];
+        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
+        if (self.mainController) {
+            [self.mainController presentViewController:navi animated:YES completion:nil];
+        }
+    }
+    
     
 }
 #pragma mark - 停车
@@ -142,6 +171,22 @@
 }
 
 #pragma mark - 获取直饮水设备
+-(void)sendRequest{
+    WS(weakSelf);
+    self.deviceTool = [DeviceFromGroupTool new];
+    self.groupId = @355;
+    [self.deviceTool sendRequestToGetAllDeviceWithGroupId:self.groupId Response:^(NSArray *arr) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (arr) {
+                
+                weakSelf.deviceArray = [arr mutableCopy];
+            }
+            
+        });
+    }];
+    
+}
 
 
 /*

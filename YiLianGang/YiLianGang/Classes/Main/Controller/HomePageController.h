@@ -11,6 +11,7 @@
 #import "WN_YL_BaseViewController.h"
 
 @interface HomePageController : UIViewController
+@property (nonatomic, strong)UIViewController *mainController;
 
 -(void)goToMaintenanceViewController;
 -(void)goToShopViewController;
