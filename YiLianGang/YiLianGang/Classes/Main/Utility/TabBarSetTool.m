@@ -95,7 +95,8 @@ static TabBarSetTool *tabBarSetTool;
     if ([[NSUserDefaults standardUserDefaults]boolForKey:@"isNeedHidden"]) {
         NSArray *arr = @[info1];
         
-        [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
+        //[WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
+        [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [UIColor blackColor];
         [WN_YL_BaseModelTool sharedBaseModelTool].tabTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarTintColor;
         
         [WN_YL_BaseModelTool sharedBaseModelTool].tabSelectTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarSelectTintColor;
@@ -106,7 +107,8 @@ static TabBarSetTool *tabBarSetTool;
     }else{
         NSArray *arr = @[info,info1];
         
-        [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
+       // [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarColor;
+        [WN_YL_BaseModelTool sharedBaseModelTool].tabBarBackGroundColor = [UIColor blackColor];
         [WN_YL_BaseModelTool sharedBaseModelTool].tabTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarTintColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].tabSelectTintColor = [[StyleTool sharedStyleTool]sessionSyle].tabBarSelectTintColor;
         [WN_YL_BaseModelTool sharedBaseModelTool].isOnlyImage = YES;

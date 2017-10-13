@@ -58,6 +58,9 @@
                                             <constraint firstAttribute="width" secondItem="QeO-m9-bpk" secondAttribute="height" multiplier="1:1" id="nhD-8w-fa4"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="RKE"/>
+                                        <connections>
+                                            <action selector="RKEButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="1ga-dQ-0dF"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-9X-YiU">
                                         <rect key="frame" x="191" y="280" width="180" height="179.5"/>
@@ -81,7 +84,6 @@
                                                 <state key="normal" backgroundImage="getHome"/>
                                                 <connections>
                                                     <action selector="getHomeButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="eWO-XO-3GJ"/>
-                                                    <action selector="massageChairButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="q9R-jJ-pGL"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -129,7 +131,7 @@
                                                 <rect key="frame" x="92" y="92" width="87" height="87.5"/>
                                                 <state key="normal" backgroundImage="massageChair"/>
                                                 <connections>
-                                                    <action selector="RKEButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="RKA-9h-0mz"/>
+                                                    <action selector="massageChairButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="ta6-81-jtU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
