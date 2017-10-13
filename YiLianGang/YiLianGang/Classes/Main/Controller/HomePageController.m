@@ -8,6 +8,7 @@
 
 #import "HomePageController.h"
 #import "HomePageView.h"
+#import "WOTShortcutView.h"
 
 #import "MaintenanceViewController.h"
 #import "ShopController.h"
@@ -24,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view2;
 @property (weak, nonatomic) IBOutlet UIView *view3;
 @property (weak, nonatomic) IBOutlet UIView *view4;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewButton;
+@property (weak, nonatomic) IBOutlet WOTShortcutView *shortcutScrollView;
 
 @end
 
@@ -38,10 +39,16 @@
    // [self setNaVationBar];
    // [[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     // Do any additional setup after loading the view.
+    
+    //解决布局顶部空白问题
+    if ([[UIDevice currentDevice] systemVersion].floatValue>=7.0) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.scrollViewButton.frame.size.height+self.topImageView.frame.size.height+self.view1.frame.size.height+self.view2.frame.size.height+self.view3.frame.size.height+self.view4.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.shortcutScrollView.frame.size.height+self.topImageView.frame.size.height+self.view1.frame.size.height+self.view2.frame.size.height+self.view3.frame.size.height+self.view4.frame.size.height);
     [self.navigationController setNavigationBarHidden:YES];
     //[self.tabBarController.tabBar setHidden:YES];//隐藏
     

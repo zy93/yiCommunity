@@ -172,7 +172,7 @@
                                             <constraint firstAttribute="height" constant="185" id="g9M-Fw-rIe"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37b-Ad-Dcq">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37b-Ad-Dcq" customClass="WOTShortcutView">
                                         <rect key="frame" x="0.0" y="180" width="375" height="95"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="BBI-Lc-Y6y"/>
@@ -217,7 +217,7 @@
                     <connections>
                         <outlet property="bottonImageView" destination="WAl-D7-Vch" id="IAZ-oB-qci"/>
                         <outlet property="scrollView" destination="Zbe-pt-QTj" id="pG3-zw-bP7"/>
-                        <outlet property="scrollViewButton" destination="37b-Ad-Dcq" id="OOq-od-3yf"/>
+                        <outlet property="shortcutScrollView" destination="37b-Ad-Dcq" id="pbD-ha-Pn6"/>
                         <outlet property="topImageView" destination="Yrw-eh-uku" id="eEw-jt-XMU"/>
                         <outlet property="view1" destination="BBI-af-vEd" id="lAX-ts-Z81"/>
                         <outlet property="view2" destination="cc0-KX-TKa" id="0da-Lz-8er"/>
