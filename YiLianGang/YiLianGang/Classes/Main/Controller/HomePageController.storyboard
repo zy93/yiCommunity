@@ -206,6 +206,13 @@
                                             <constraint firstAttribute="height" constant="95" id="BBI-Lc-Y6y"/>
                                         </constraints>
                                     </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtv-5W-FT9" customClass="SDCycleScrollView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="XNE-Lt-CGd"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="37b-Ad-Dcq" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" id="2Km-zw-uIH"/>
@@ -215,8 +222,11 @@
                                     <constraint firstItem="sWP-O1-9c5" firstAttribute="top" secondItem="EQ6-dv-bcE" secondAttribute="bottom" id="9w4-cq-3xh"/>
                                     <constraint firstItem="EQ6-dv-bcE" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" id="A7o-b7-knK"/>
                                     <constraint firstItem="37b-Ad-Dcq" firstAttribute="top" secondItem="Yrw-eh-uku" secondAttribute="bottom" id="Cqb-JH-jQc"/>
+                                    <constraint firstAttribute="trailing" secondItem="dtv-5W-FT9" secondAttribute="trailing" id="EVI-D4-aFM"/>
+                                    <constraint firstItem="dtv-5W-FT9" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" id="LRU-Zl-hr2"/>
                                     <constraint firstItem="Yrw-eh-uku" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" id="PEM-Ux-l6s"/>
                                     <constraint firstAttribute="trailing" secondItem="EQ6-dv-bcE" secondAttribute="trailing" id="PFY-wR-HH1"/>
+                                    <constraint firstItem="dtv-5W-FT9" firstAttribute="top" secondItem="Zbe-pt-QTj" secondAttribute="top" id="Ptg-H1-7Dv"/>
                                     <constraint firstItem="EQ6-dv-bcE" firstAttribute="top" secondItem="cc0-KX-TKa" secondAttribute="bottom" id="Ql3-7t-hrg"/>
                                     <constraint firstItem="cc0-KX-TKa" firstAttribute="top" secondItem="BBI-af-vEd" secondAttribute="bottom" id="R92-k9-a55"/>
                                     <constraint firstAttribute="bottom" secondItem="Yrw-eh-uku" secondAttribute="bottom" constant="1000" id="RJk-A9-WAw"/>
@@ -243,6 +253,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="autoScrollView" destination="dtv-5W-FT9" id="2x3-vd-h5y"/>
                         <outlet property="bottonImageView" destination="WAl-D7-Vch" id="IAZ-oB-qci"/>
                         <outlet property="scrollView" destination="Zbe-pt-QTj" id="pG3-zw-bP7"/>
                         <outlet property="shortcutScrollView" destination="37b-Ad-Dcq" id="pbD-ha-Pn6"/>
