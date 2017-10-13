@@ -7,8 +7,14 @@
 //
 
 #import "MyViewController.h"
+#import "TabBarSetTool.h"
+#import "LoginTool.h"
+#import "DeviceTool.h"
 
 @interface MyViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *userTel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyNum;
 
 @end
 

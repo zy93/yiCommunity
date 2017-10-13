@@ -70,7 +70,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxq-Yp-LE8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="management_coin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vxq-Yp-LE8">
                                 <rect key="frame" x="208" y="185" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="8UT-os-fhJ"/>
@@ -148,6 +148,11 @@
                             <constraint firstItem="GHw-py-Aey" firstAttribute="top" secondItem="6a9-XF-w7F" secondAttribute="top" id="ztL-v2-GUb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="moneyNum" destination="hib-Jh-zYZ" id="WGM-KC-qsw"/>
+                        <outlet property="userName" destination="cYf-fq-Y1e" id="pfC-q1-ICH"/>
+                        <outlet property="userTel" destination="0V4-oY-I6T" id="4O9-mx-S4W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E91-9j-t3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,6 +164,7 @@
         <image name="bg" width="375" height="250"/>
         <image name="deviceList" width="85" height="85"/>
         <image name="logout" width="85" height="85"/>
+        <image name="management_coin.png" width="20" height="20"/>
         <image name="message" width="85" height="85"/>
         <image name="头像" width="100" height="100"/>
     </resources>
