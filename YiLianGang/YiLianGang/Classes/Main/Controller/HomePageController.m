@@ -19,6 +19,7 @@
 #import "DeviceInfo.h"
 #import "DringkingDetailViewController.h"
 #import "SDCycleScrollView.h"
+#import "PayBillViewController.h"
 
 @interface HomePageController () <SDCycleScrollViewDelegate>
 {
@@ -167,8 +168,9 @@
 }
 #pragma mark - 物业缴费
 - (IBAction)propertyButton:(id)sender {
-    
-    
+    PayBillViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PayBillViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 #pragma mark - 云打印
 - (IBAction)cloudPrint:(id)sender {
