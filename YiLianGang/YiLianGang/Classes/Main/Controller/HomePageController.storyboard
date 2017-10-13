@@ -46,6 +46,9 @@
                                                     <constraint firstAttribute="width" constant="175" id="v36-2N-Fod"/>
                                                 </constraints>
                                                 <state key="normal" image="park"/>
+                                                <connections>
+                                                    <action selector="parkButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="k0J-AK-zUz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-m9-bpk">
                                                 <rect key="frame" x="190" y="5" width="85" height="85"/>
@@ -75,6 +78,9 @@
                                                     <constraint firstAttribute="height" constant="175" id="rWe-Dk-IM6"/>
                                                 </constraints>
                                                 <state key="normal" image="water"/>
+                                                <connections>
+                                                    <action selector="waterButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="qOY-ll-v2U"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egr-lH-TI1" userLabel="button2">
                                                 <rect key="frame" x="190" y="5" width="85" height="85"/>
@@ -83,6 +89,9 @@
                                                     <constraint firstAttribute="width" constant="85" id="Twa-1a-nlc"/>
                                                 </constraints>
                                                 <state key="normal" image="cloudPrint"/>
+                                                <connections>
+                                                    <action selector="cloudPrint:" destination="x2L-jO-sx0" eventType="touchUpInside" id="TWd-yd-c2m"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-3W-02Q" userLabel="button3">
                                                 <rect key="frame" x="280" y="5" width="85" height="85"/>
@@ -91,6 +100,10 @@
                                                     <constraint firstAttribute="width" constant="85" id="qFI-JO-1A5"/>
                                                 </constraints>
                                                 <state key="normal" image="getHome"/>
+                                                <connections>
+                                                    <action selector="getHomeButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="eWO-XO-3GJ"/>
+                                                    <action selector="massageChairButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="q9R-jJ-pGL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znS-Lh-hHF">
                                                 <rect key="frame" x="190" y="95" width="85" height="85"/>
@@ -99,6 +112,9 @@
                                                     <constraint firstAttribute="height" constant="85" id="x2N-uc-xH2"/>
                                                 </constraints>
                                                 <state key="normal" image="massageChair"/>
+                                                <connections>
+                                                    <action selector="RKEButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="RKA-9h-0mz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,6 +140,9 @@
                                                     <constraint firstAttribute="width" constant="175" id="MDX-gL-3gp"/>
                                                 </constraints>
                                                 <state key="normal" image="repairs"/>
+                                                <connections>
+                                                    <action selector="repairsButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="eHd-yZ-IIp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0U-ux-UhF">
                                                 <rect key="frame" x="190" y="5" width="85" height="85"/>
@@ -132,6 +151,9 @@
                                                     <constraint firstAttribute="height" constant="85" id="fPN-XQ-lwG"/>
                                                 </constraints>
                                                 <state key="normal" image="pay"/>
+                                                <connections>
+                                                    <action selector="propertyButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="Mmk-6q-gfR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,6 +175,9 @@
                                                     <constraint firstAttribute="height" constant="175" id="vID-Ih-KGs"/>
                                                 </constraints>
                                                 <state key="normal" image="farm"/>
+                                                <connections>
+                                                    <action selector="farmButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="gvA-BV-x3a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0R6-9j-AU8">
                                                 <rect key="frame" x="190" y="5" width="85" height="85"/>
@@ -161,6 +186,9 @@
                                                     <constraint firstAttribute="height" constant="85" id="zcs-XU-18F"/>
                                                 </constraints>
                                                 <state key="normal" image="garden"/>
+                                                <connections>
+                                                    <action selector="gardenButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="ZRT-X6-ONB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
