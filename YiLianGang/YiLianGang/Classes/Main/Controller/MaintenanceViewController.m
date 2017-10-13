@@ -40,7 +40,7 @@
     [super viewWillAppear:animated];
     back = [UIButton buttonWithType:UIButtonTypeCustom];
     //替换图标
-    [back setImage:[UIImage imageNamed:@"icon_07"] forState:UIControlStateNormal];
+    [back setImage:[UIImage imageNamed:@"listwwhite"] forState:UIControlStateNormal];
     [back setFrame:CGRectMake(CGRectGetWidth(self.view.frame)-50,  0, 40, 45)];
     [back addTarget:self action:@selector(history:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:back];

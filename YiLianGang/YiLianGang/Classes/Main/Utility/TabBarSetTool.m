@@ -55,8 +55,8 @@ static TabBarSetTool *tabBarSetTool;
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:homePageView];
     info.viewController = navi;
     info.title = @"服务";
-    info.image = [UIImage imageNamed:@"main_tab00"];
-    info.selectedImage = [UIImage imageNamed:@"main_tab00_ok"];
+    info.image = [UIImage imageNamed:@"service"];
+    info.selectedImage = [UIImage imageNamed:@"selectedService"];
     
     WN_YL_BaseTabControllerInfo *info1 = [[WN_YL_BaseTabControllerInfo alloc]init];
     UIStoryboard *storyboard1 = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -66,8 +66,8 @@ static TabBarSetTool *tabBarSetTool;
     UINavigationController *navi1 = [[UINavigationController alloc]initWithRootViewController:myViewController];
     info1.viewController = navi1;
     info1.title = @"我的";
-    info1.image = [UIImage imageNamed:@"tab_pro_w"];
-    info1.selectedImage = [UIImage imageNamed:@"tab_pro"];
+    info1.image = [UIImage imageNamed:@"My"];
+    info1.selectedImage = [UIImage imageNamed:@"selectedMy"];
     /*
     WN_YL_BaseTabControllerInfo *info2 = [[WN_YL_BaseTabControllerInfo alloc]init];
     navi = [[UINavigationController alloc]initWithRootViewController:[DeviceController new]];
