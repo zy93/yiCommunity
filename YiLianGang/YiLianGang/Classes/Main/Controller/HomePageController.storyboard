@@ -25,27 +25,33 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-pt-QTj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="844"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terrace" translatesAutoresizingMaskIntoConstraints="NO" id="yqI-JW-fSV" userLabel="imageView1">
+                                        <rect key="frame" x="0.0" y="225" width="385" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="0ad-lP-bOu"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1" translatesAutoresizingMaskIntoConstraints="NO" id="Yrw-eh-uku" userLabel="TopImageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="385" height="180"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="LDN-Uf-8UG"/>
                                         </constraints>
                                     </imageView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37b-Ad-Dcq" customClass="WOTShortcutView">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="95"/>
+                                        <rect key="frame" x="0.0" y="180" width="385" height="120"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="95" id="BBI-Lc-Y6y"/>
+                                            <constraint firstAttribute="height" constant="120" id="BBI-Lc-Y6y"/>
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtv-5W-FT9" customClass="SDCycleScrollView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="385" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="XNE-Lt-CGd"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNR-3n-JK9">
-                                        <rect key="frame" x="187" y="275" width="1" height="569"/>
+                                        <rect key="frame" x="187" y="300" width="1" height="569"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="569" id="mew-dg-ddU"/>
@@ -53,7 +59,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-m9-bpk">
-                                        <rect key="frame" x="5" y="280" width="179.5" height="179.5"/>
+                                        <rect key="frame" x="5" y="305" width="179.5" height="179.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="QeO-m9-bpk" secondAttribute="height" multiplier="1:1" id="nhD-8w-fa4"/>
                                         </constraints>
@@ -63,7 +69,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-9X-YiU">
-                                        <rect key="frame" x="191" y="280" width="180" height="179.5"/>
+                                        <rect key="frame" x="191" y="305" width="180" height="179.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0U-ux-UhF">
                                                 <rect key="frame" x="0.0" y="92" width="179.5" height="87.5"/>
@@ -104,7 +110,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWK-kL-sze">
-                                        <rect key="frame" x="5" y="464.5" width="179.5" height="179.5"/>
+                                        <rect key="frame" x="5" y="489.5" width="179.5" height="179.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0R6-9j-AU8">
                                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
@@ -157,7 +163,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v26-SJ-HYn">
-                                        <rect key="frame" x="5" y="649" width="179.5" height="179.5"/>
+                                        <rect key="frame" x="5" y="674" width="179.5" height="179.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="v26-SJ-HYn" secondAttribute="height" multiplier="1:1" id="xdC-zB-yd7"/>
                                         </constraints>
@@ -167,7 +173,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-EK-P4f" userLabel="button1">
-                                        <rect key="frame" x="190.5" y="464" width="179.5" height="179.5"/>
+                                        <rect key="frame" x="190.5" y="489" width="179.5" height="179.5"/>
                                         <state key="normal" backgroundImage="water"/>
                                         <connections>
                                             <action selector="waterButton:" destination="x2L-jO-sx0" eventType="touchUpInside" id="qOY-ll-v2U"/>
@@ -197,13 +203,16 @@
                                     <constraint firstItem="ZNR-3n-JK9" firstAttribute="leading" secondItem="v26-SJ-HYn" secondAttribute="trailing" constant="2.5" id="Tek-ad-2IJ"/>
                                     <constraint firstItem="cbJ-EK-P4f" firstAttribute="height" secondItem="SWK-kL-sze" secondAttribute="height" id="ZfO-1s-sAC"/>
                                     <constraint firstItem="QeO-m9-bpk" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" constant="5" id="a5O-1j-d35"/>
+                                    <constraint firstItem="yqI-JW-fSV" firstAttribute="leading" secondItem="Zbe-pt-QTj" secondAttribute="leading" id="cPf-jD-dsK"/>
                                     <constraint firstItem="QeO-m9-bpk" firstAttribute="top" secondItem="37b-Ad-Dcq" secondAttribute="bottom" constant="5" id="ck2-ne-B7Q"/>
                                     <constraint firstItem="CyA-9X-YiU" firstAttribute="width" secondItem="QeO-m9-bpk" secondAttribute="width" id="ctq-Qh-dJN"/>
+                                    <constraint firstItem="yqI-JW-fSV" firstAttribute="bottom" secondItem="37b-Ad-Dcq" secondAttribute="bottom" id="d3A-uB-nBE"/>
                                     <constraint firstItem="cbJ-EK-P4f" firstAttribute="width" secondItem="SWK-kL-sze" secondAttribute="width" id="eUf-m6-uT0"/>
                                     <constraint firstItem="ZNR-3n-JK9" firstAttribute="top" secondItem="37b-Ad-Dcq" secondAttribute="bottom" id="eyg-xw-A9W"/>
                                     <constraint firstItem="SWK-kL-sze" firstAttribute="top" secondItem="QeO-m9-bpk" secondAttribute="bottom" constant="5" id="hQ3-i4-rh0"/>
                                     <constraint firstItem="CyA-9X-YiU" firstAttribute="height" secondItem="QeO-m9-bpk" secondAttribute="height" id="hix-p1-178"/>
                                     <constraint firstItem="cbJ-EK-P4f" firstAttribute="top" secondItem="CyA-9X-YiU" secondAttribute="bottom" constant="5" id="m6g-wv-3Im"/>
+                                    <constraint firstAttribute="trailing" secondItem="yqI-JW-fSV" secondAttribute="trailing" id="sD8-Tq-CFP"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -240,6 +249,7 @@
         <image name="park" width="175" height="175"/>
         <image name="pay" width="175" height="85"/>
         <image name="repairs" width="85" height="85"/>
+        <image name="terrace" width="385" height="75"/>
         <image name="water" width="175" height="175"/>
     </resources>
 </document>

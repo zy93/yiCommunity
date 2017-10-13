@@ -79,6 +79,17 @@
     AboutViewController *aboutViewC = [storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
     [self.navigationController pushViewController:aboutViewC animated:YES];
 }
+
+- (IBAction)informationButton:(id)sender {
+    [ToastUtil showToast:@"敬请期待！"];
+}
+
+- (IBAction)deviceButton:(id)sender {
+    [ToastUtil showToast:@"敬请期待！"];
+}
+
+
+
 /*
 #pragma mark - Navigation
 

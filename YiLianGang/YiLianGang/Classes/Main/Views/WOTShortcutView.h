@@ -10,4 +10,5 @@
 
 @interface WOTShortcutView : UIScrollView <UIScrollViewDelegate>
 
+
 @end

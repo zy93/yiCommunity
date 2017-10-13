@@ -95,10 +95,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gl1-5P-ZSC">
                                 <rect key="frame" x="10" y="252" width="85" height="85"/>
                                 <state key="normal" image="message"/>
+                                <connections>
+                                    <action selector="informationButton:" destination="8J4-nV-ene" eventType="touchUpInside" id="njP-1w-AbK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8W-r8-6ss">
                                 <rect key="frame" x="100" y="252" width="85" height="85"/>
                                 <state key="normal" image="deviceList"/>
+                                <connections>
+                                    <action selector="deviceButton:" destination="8J4-nV-ene" eventType="touchUpInside" id="Cbf-Ll-1g8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXs-9X-a6q">
                                 <rect key="frame" x="280" y="252" width="85" height="85"/>

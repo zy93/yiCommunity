@@ -64,6 +64,7 @@
     }
     CGFloat x = (totoSerArr.count/totoNumber) *(mScrollIconWidth)+(shortcutSpace/2);
     [self setContentOffset:CGPointMake(x, 0)];
+   // UIImage *view = [[UIImage alloc] init];
     
 }
 
@@ -75,7 +76,9 @@
     pBackgroupView.tag = 1000+i;
     NSLog(@"===%f",CGRectGetHeight(self.frame));
     [pBackgroupView setFrame:CGRectMake(x, 0, mScrollIconWidth, mScrollIconWidth)];
-    pBackgroupView.center = CGPointMake(x, CGRectGetHeight(self.frame)/2);
+    
+    pBackgroupView.center = CGPointMake(x, CGRectGetHeight(self.frame)/2-17);
+    
     [pBackgroupView setImage:[UIImage imageNamed:pData] forState:UIControlStateNormal];
     [pBackgroupView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@选中",pData]] forState:UIControlStateHighlighted];
     [pBackgroupView addTarget:self action:@selector(clickService:) forControlEvents:UIControlEventTouchUpInside];
@@ -96,14 +99,17 @@
 
 -(void)clickService:(ShortcutButton *)sender
 {
-    if ([sender.serviceName isEqualToString:@"报事报修"]) {
+    if ([sender.serviceName isEqualToString:@"门禁"]) {
 //        [((HomePageController *)self.viewController) goToMaintenanceViewController];
     }
-    else if ([sender.serviceName isEqualToString:@"云打印"]) {
+    else if ([sender.serviceName isEqualToString:@"维修"]) {
 //        [((HomePageController *)self.viewController) goToPrintViewController];
     }
-    else if ([sender.serviceName isEqualToString:@"丁丁停车"]) {
+    else if ([sender.serviceName isEqualToString:@"物业缴费"]) {
 //        [((HomePageController *)self.viewController) goToDDController];
+        
+    }else if ([sender.serviceName isEqualToString:@"北菜园"])
+    {
         
     }
     

@@ -177,18 +177,19 @@
 }
 #pragma mark - 轻松到家
 - (IBAction)getHomeButton:(id)sender {
-    self.h5View.url = @"https://api.uyess.com/score-mall/?#!/weixin?ts=1507883668";
+    self.h5View.url = @"https://api.uyess.com/score-mall/?#!/weixin/home";
     [self.navigationController pushViewController:self.h5View animated:YES];
 }
 
 #pragma mark - 按摩椅
 - (IBAction)massageChairButton:(id)sender {
-    
+    [ToastUtil showToast:@"敬请期待！"];
 }
 
 #pragma mark - 门禁
 - (IBAction)RKEButton:(id)sender {
     
+    [ToastUtil showToast:@"敬请期待！"];
 }
 
 #pragma mark - 获取直饮水设备
