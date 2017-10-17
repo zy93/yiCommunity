@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WOTShortcutViewDelegate <NSObject>
+
+-(void)JumpinterfaceWithButtonMessage:(NSString *)buttonMessage;
+
+@end
+
 @interface WOTShortcutView : UIScrollView <UIScrollViewDelegate>
+
+@property (nonatomic, weak)id <WOTShortcutViewDelegate> shortcutViewDelegate;
 
 
 @end

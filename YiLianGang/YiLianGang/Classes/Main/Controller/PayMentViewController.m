@@ -18,13 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSLog(@"测试：%@",self.url);
+    //NSLog(@"测试：%@",self.url);
     //NSURL *url = [NSURL URLWithString:self.url];
-    NSURL * url = [NSURL URLWithString:[self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
-    NSLog(@"url:%@",url);
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [self.web loadRequest:request];
     //[self.web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 
 }
@@ -32,6 +27,11 @@
 {
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
+//    NSURL * url = [NSURL URLWithString:[self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
+//    NSLog(@"url:%@",url);
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
+    [self.web loadRequest:request];
     
 }
 

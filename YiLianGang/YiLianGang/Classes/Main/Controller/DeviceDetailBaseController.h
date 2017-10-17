@@ -19,6 +19,7 @@
 @property(nonatomic,strong) NSDictionary *TDSMessageDictionary;
 @property(nonatomic,strong) NSDictionary *fluxSumMessageDictionary;
 @property(nonatomic,strong) NSDictionary *balanceMessageDictionary;
+@property(nonatomic,strong) NSString *DeviceUrlStr;
 
 -(void)sendWebSocketStringWithParam:(NSDictionary*)param;
 -(NSString*)imageAddExStr:(NSString*)imageStr;

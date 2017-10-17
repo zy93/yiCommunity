@@ -183,7 +183,7 @@
     }
     else {
         [[LoginTool sharedLoginTool] sendManagerLoginRequestWithUserName:self.userField.text pass:self.pwdField.text Response:^(NSDictionary *dict) {
-            NSLog(@"测试用户id：%@",dict);
+            //NSLog(@"测试用户id：%@",dict);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([dict[@"code"] intValue] == 200) {
                     dispatch_async(dispatch_get_main_queue(), ^{

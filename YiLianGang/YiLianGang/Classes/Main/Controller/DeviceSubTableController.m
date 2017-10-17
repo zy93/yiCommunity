@@ -50,7 +50,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (arr) {
-                
                 weakSelf.deviceArray = [arr mutableCopy];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
@@ -117,7 +116,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     DeviceInfo *info = self.deviceArray[indexPath.row];
-    NSLog(@"测试：%@",info.templateId);
     if (info.state.integerValue==0 && ![info.templateId containsString:@"海康威视"]) {
         [ToastUtil showToast:@"设备已离线"];
         return;

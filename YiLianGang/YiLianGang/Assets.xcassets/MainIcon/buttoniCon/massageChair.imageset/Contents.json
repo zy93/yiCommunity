@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "massageChair.png",
+      "filename" : "按摩椅.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "massageChair@2x.png",
+      "filename" : "按摩椅@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "massageChair@3x.png",
+      "filename" : "按摩椅@3x.png",
       "scale" : "3x"
     }
   ],

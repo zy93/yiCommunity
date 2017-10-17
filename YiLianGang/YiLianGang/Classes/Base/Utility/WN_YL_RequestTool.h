@@ -8,9 +8,11 @@
 //#define HTTP_HOST @"http://123.56.197.113:8080/"
 #define HTTP_HOST @"http://www.e-harbour.net/"
 #define HTTP_Service @"http://www.yiliangang.net:8012/"
-#define HTTP_NEW @"http://192.168.39.55:8080/"
+#define HTTP_NEW @"http://192.168.38.233:8080/"
 //#define HTTP_Service @"http://192.168.1.100:8080/"
 #define SOCKET_HOST @"moblie.e-harbour.net:8999"
+#define HTTP_CESHIService @"http://219.143.170.98:10011/"
+
 
 #import <Foundation/Foundation.h>
 

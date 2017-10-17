@@ -10,6 +10,6 @@
 
 @interface PayMentViewController : UIViewController
 
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSURL *url;
 
 @end

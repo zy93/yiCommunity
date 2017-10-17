@@ -12,24 +12,8 @@
 @implementation PayContentCell
 @end
 
-
-
-
-
-
 @implementation PayTitleCell
 @end
-
-
-
-
-
-
-
-
-
-
-
 
 
 @interface PayBillViewController () <UITableViewDelegate, UITableViewDataSource>

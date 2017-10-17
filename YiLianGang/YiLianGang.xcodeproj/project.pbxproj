@@ -490,6 +490,7 @@
 		C79337931F8CC9CC006E8447 /* TDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C79337901F8CC9CC006E8447 /* TDSCell.m */; };
 		C7A336751F8DF18A00B81204 /* PayMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A336731F8DF18A00B81204 /* PayMentViewController.m */; };
 		C7A336761F8DF18A00B81204 /* PayMentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A336741F8DF18A00B81204 /* PayMentViewController.xib */; };
+		C7B6F2311F961C7300BB5D41 /* JudgmentTime.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B6F22F1F961C7200BB5D41 /* JudgmentTime.m */; };
 		C7BA19AF1F909C1E0008AF4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */; };
 		C7BA19B11F909CE40008AF4A /* companyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BA19B01F909CE40008AF4A /* companyLogo.png */; };
 		C7BA19B41F90B8C80008AF4A /* PayBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */; };
@@ -1226,6 +1227,8 @@
 		C7A336721F8DF18A00B81204 /* PayMentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayMentViewController.h; sourceTree = "<group>"; };
 		C7A336731F8DF18A00B81204 /* PayMentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayMentViewController.m; sourceTree = "<group>"; };
 		C7A336741F8DF18A00B81204 /* PayMentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayMentViewController.xib; sourceTree = "<group>"; };
+		C7B6F22F1F961C7200BB5D41 /* JudgmentTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JudgmentTime.m; sourceTree = "<group>"; };
+		C7B6F2301F961C7300BB5D41 /* JudgmentTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JudgmentTime.h; sourceTree = "<group>"; };
 		C7BA19AD1F909C1E0008AF4A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C7BA19B01F909CE40008AF4A /* companyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = companyLogo.png; sourceTree = "<group>"; };
@@ -1643,6 +1646,8 @@
 		2D636C591DB4C86F0081EF37 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C7B6F2301F961C7300BB5D41 /* JudgmentTime.h */,
+				C7B6F22F1F961C7200BB5D41 /* JudgmentTime.m */,
 				C7BA19B21F90B8C80008AF4A /* PayBillViewController.h */,
 				C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */,
 				2D3DE59E1D6D976C00EB6CC5 /* ServiceController.h */,
@@ -2958,6 +2963,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YiLianGang/Pods-YiLianGang-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONKit-NoWarning/JSONKit_NoWarning.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
@@ -2965,6 +2971,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONKit_NoWarning.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
@@ -3025,6 +3032,7 @@
 				2DBB90B21D619587008BAED7 /* NSData+ImageContentType.m in Sources */,
 				2D42E5771D6E90ED005361D7 /* ServiceTool.m in Sources */,
 				2D906E6F1D50991B000AF85C /* MJRefreshComponent.m in Sources */,
+				C7B6F2311F961C7300BB5D41 /* JudgmentTime.m in Sources */,
 				2A1CEA1D1E812E95008D33DC /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
 				2DBB90BE1D619587008BAED7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2DB5C25B1DB7187E00ABFB4B /* DeviceCarBoxRelationView.m in Sources */,
