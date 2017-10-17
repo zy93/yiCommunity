@@ -11,7 +11,7 @@
 
 @interface DeviceDetailBaseController ()<SRWebSocketDelegate>
 
-@property(nonatomic,strong) NSString *DeviceUrlStr;
+
 
 @end
 
@@ -22,7 +22,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"WaterNotification" object:nil];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string{
-    NSLog(@"测试：%@",string);
+    //NSLog(@"测试：%@",string);
     NSDictionary *data2 = [string objectFromJSONStringWithParseOptions:JKParseOptionLooseUnicode];
     //NSLog(@"json2.c:%@", [data2 objectForKey:@"data"]);
     //NSLog(@"json2.d:%@", [[data2 objectForKey:@"data"] objectForKey:@"number"]);
@@ -58,6 +58,8 @@
     [self.myActivityIndicatorView stopAnimating];
     [MBProgressHUD showError:@"网络错误"];
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -143,9 +145,7 @@
     NSError *parseError = nil;
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
-    
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
 }
 
 -(void)sendWebSocketStringWithParam:(NSDictionary*)param{
@@ -156,8 +156,8 @@
     //NSLog(@"Error%@",error);
     [self.webSocket sendString:sendStr error:&error];
     if (error.userInfo.allKeys.count>0) {
-        NSLog(@"%@",error.userInfo);
-        [MBProgressHUD showError:@"发送错误"];
+        NSLog(@"测试错误信息%@",error.userInfo);
+        [MBProgressHUD showError:@"发送错误!!"];
     }
 }
 
@@ -176,6 +176,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+}
+
+//- (void)setSocket {
+//    self.webSocket.delegate = nil;
+//    [self.webSocket close];
+//    webSocket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"ws://114.55.57.51:8282"]]];
+//    webSocket.delegate = self;
+//    NSLog(@"Opening Connection...");
+//    [webSocket open];
+//}
 
 
 

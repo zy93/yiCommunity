@@ -280,7 +280,6 @@
 - (WNPageView *)pageView {
 	if(_pageView == nil) {
         NSArray *groupArr = [[DeviceTool sharedDeviceTool]getDeviceSegmentTitles];
-        NSLog(@"测试：%@",groupArr);
         NSMutableArray *titleArr = [NSMutableArray array];
         for (DeviceGroupInfo *info in groupArr) {
             [titleArr addObject:info.groupName];

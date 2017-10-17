@@ -49,6 +49,17 @@
 {
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
+    NSLog(@"测试连接状态：%ld",self.webSocket.readyState);
+    if (self.webSocket.readyState == SR_CLOSED) {
+        //[self.webSocket close];
+        //[self.webSocket open];
+       // [self loadData];
+        [self reConnect];
+    }
+    //[self loadData];
+    //[self.webSocket open];
+    //[self loadData];
+    [self loadTableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +106,7 @@
     
 }
 
+
 #pragma mark - 更新数据
 -(void)loadData
 {
@@ -102,9 +114,7 @@
     [self getPrice];
     [self getBalance];
     [self getFluxSum];
-//    [self.mDevice getDeviceID];
-//    [self.mDevice getFluxPulse];
-   // [self.tableView reloadData];
+
 }
 
 -(void)getTDS
@@ -162,7 +172,6 @@
         [mSwitchBtn setTitle:@"关" forState:UIControlStateNormal];
         isOn = YES;
     }
-    NSLog(@"测试：开关");
 }
 
 #pragma  mark - table delegate & dataSource
@@ -201,7 +210,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"测试结果：%@,%@,%@,%@",self.priceMessageDictionary,self.TDSMessageDictionary,self.fluxSumMessageDictionary,self.balanceMessageDictionary);
+    //NSLog(@"测试结果：%@,%@,%@,%@",self.priceMessageDictionary,self.TDSMessageDictionary,self.fluxSumMessageDictionary,self.balanceMessageDictionary);
     if (indexPath.section==0) {
         TDSCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TDSCell"];
         if (!cell) {
@@ -223,8 +232,8 @@
         //        cell.balance = self.mDevice.balance.integerValue;
         //        cell.price   = self.mDevice.price.integerValue;
         cell.fluxSum = [[self.fluxSumMessageDictionary objectForKey:@"sum"] integerValue];
-        cell.balance = [[self.balanceMessageDictionary objectForKey:@"money"] integerValue];
-        cell.price   = [[self.priceMessageDictionary objectForKey:@"flux"] integerValue];
+        cell.balance = [[self.balanceMessageDictionary objectForKey:@"money"] floatValue];
+        cell.price   = [[self.priceMessageDictionary objectForKey:@"flux"] floatValue]/100;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -233,10 +242,37 @@
 
 -(void)Pay
 {
-    NSLog(@"测试用户id:%@",[LoginTool sharedLoginTool].userID);
+    //NSLog(@"测试用户id:%@",[LoginTool sharedLoginTool].userID);
     PayMentViewController *payMentView= [[PayMentViewController alloc]initWithNibName:@"PayMentViewController" bundle:[NSBundle mainBundle]];
-    payMentView.url = [NSString stringWithFormat:@"http://www.yiliangang.net:8012/JuHeFuPay/pay.jsp?facilitator=0001&carrieroperator=0002&useridpro=%@&thingidpro=%@&productnamepro=%@&productdescpro%@&phonepro=13240371551&redirecturlpro=http://www.yiliangang.net:8012/JuHeFuPay/success.jsp",[LoginTool sharedLoginTool].userID,self.deviceInfo.thingId,PRODUCTNAMEPRO,PRODUCTDESCPRO];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.yiliangang.net:8012/JuHeFuPay/pay.jsp?facilitator=0001&carrieroperator=0002&useridpro=%@&thingidpro=%@&productnamepro=%@&productdescpro%@&phonepro=13240371551&redirecturlpro=http://www.yiliangang.net:8012/JuHeFuPay/success.jsp",[LoginTool sharedLoginTool].userID,self.deviceInfo.thingId,PRODUCTNAMEPRO,PRODUCTDESCPRO];
+    
+    payMentView.url = [NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];;
     [self.navigationController pushViewController:payMentView animated:YES];
+}
+
+#pragma mark - 重新连接socket方法
+-(void)reConnect
+{
+    [self.webSocket close];
+    self.webSocket = nil;
+    if (self.deviceInfo) {
+        self.DeviceUrlStr = self.deviceInfo.harborIp;
+    }
+    //截取ip
+    NSRange range = [self.DeviceUrlStr rangeOfString:@":"];
+    if (range.length>0) {
+        self.DeviceUrlStr = [self.DeviceUrlStr substringWithRange:NSMakeRange(0, range.location)];
+    }
+    //加前缀
+    if(![self.DeviceUrlStr containsString:@"ws://"]){
+        self.DeviceUrlStr = [@"ws://" stringByAppendingString:self.DeviceUrlStr];
+    }
+    NSLog(@"%@",self.DeviceUrlStr);
+    //加后缀
+    self.DeviceUrlStr = [self.DeviceUrlStr stringByAppendingString:@":8999/IotHarborWebsocket"];
+    self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:self.DeviceUrlStr]];
+    self.webSocket.delegate = self;
+    [self.webSocket open];
 }
 
 @end

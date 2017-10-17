@@ -308,15 +308,6 @@
                                                         <constraint firstAttribute="width" constant="225" id="bxd-3L-F0f"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAK-4e-VjP">
-                                                    <rect key="frame" x="298" y="73" width="62" height="30"/>
-                                                    <state key="normal" title="物业登录">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="clickManagerButton:" destination="UQx-Og-eXk" eventType="touchUpInside" id="sx2-R2-0AG"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VW0-Tc-FRe" firstAttribute="leading" secondItem="4x0-mT-bpy" secondAttribute="trailing" id="3EE-T5-YZI"/>
@@ -326,11 +317,9 @@
                                                 <constraint firstItem="QOp-Vn-Heu" firstAttribute="centerX" secondItem="BBf-Tr-K2h" secondAttribute="centerX" id="MdU-bx-JsC"/>
                                                 <constraint firstItem="VW0-Tc-FRe" firstAttribute="centerY" secondItem="umb-ZK-sm0" secondAttribute="centerY" id="Muq-Pr-pqU"/>
                                                 <constraint firstItem="4x0-mT-bpy" firstAttribute="height" secondItem="umb-ZK-sm0" secondAttribute="height" id="NOA-bG-wVr"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZAK-4e-VjP" secondAttribute="trailing" constant="15" id="UHv-lX-Ldb"/>
                                                 <constraint firstItem="VW0-Tc-FRe" firstAttribute="height" secondItem="umb-ZK-sm0" secondAttribute="height" id="WmE-CV-Uyh"/>
                                                 <constraint firstAttribute="trailing" secondItem="VW0-Tc-FRe" secondAttribute="trailing" id="cs4-xh-LdA"/>
                                                 <constraint firstItem="4x0-mT-bpy" firstAttribute="width" secondItem="umb-ZK-sm0" secondAttribute="width" id="dBd-tu-aZZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZAK-4e-VjP" secondAttribute="bottom" constant="50" id="sis-71-1WD"/>
                                                 <constraint firstItem="umb-ZK-sm0" firstAttribute="leading" secondItem="BBf-Tr-K2h" secondAttribute="leading" id="wQq-13-nEJ"/>
                                                 <constraint firstItem="4x0-mT-bpy" firstAttribute="leading" secondItem="umb-ZK-sm0" secondAttribute="trailing" id="yAT-40-wSU"/>
                                                 <constraint firstItem="QOp-Vn-Heu" firstAttribute="top" secondItem="BBf-Tr-K2h" secondAttribute="topMargin" id="yee-bS-IH1"/>
@@ -351,7 +340,6 @@
                         <outlet property="iconImageView" destination="anX-p0-DoU" id="LNV-pp-tKL"/>
                         <outlet property="loginButton" destination="NZw-BF-etq" id="8XM-Nm-bnz"/>
                         <outlet property="logoCell" destination="aKU-C8-L6r" id="hG5-fS-sTY"/>
-                        <outlet property="managerLoginBtn" destination="ZAK-4e-VjP" id="y8q-Dc-9g5"/>
                         <outlet property="noAcountLabel" destination="bc5-64-Pjs" id="rYs-Mb-E42"/>
                         <outlet property="pwdField" destination="MRv-16-qhJ" id="3pM-mn-g1C"/>
                         <outlet property="registerButton" destination="8f7-nm-Kaw" id="Teb-4z-k4w"/>

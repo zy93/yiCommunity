@@ -25,7 +25,7 @@
 @property (nonatomic, strong) UIImageView *mLine4Img;
 
 @property (nonatomic, assign) NSInteger fluxSum;
-@property (nonatomic, assign) NSInteger price;
-@property (nonatomic, assign) NSInteger balance;
+@property (nonatomic, assign) CGFloat price;
+@property (nonatomic, assign) CGFloat balance;
 
 @end

@@ -77,7 +77,7 @@
     NSLog(@"===%f",CGRectGetHeight(self.frame));
     [pBackgroupView setFrame:CGRectMake(x, 0, mScrollIconWidth, mScrollIconWidth)];
     
-    pBackgroupView.center = CGPointMake(x, CGRectGetHeight(self.frame)/2-17);
+    pBackgroupView.center = CGPointMake(x, CGRectGetHeight(self.frame)/2);
     
     [pBackgroupView setImage:[UIImage imageNamed:pData] forState:UIControlStateNormal];
     [pBackgroupView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@选中",pData]] forState:UIControlStateHighlighted];
@@ -101,16 +101,27 @@
 {
     if ([sender.serviceName isEqualToString:@"门禁"]) {
 //        [((HomePageController *)self.viewController) goToMaintenanceViewController];
+        if ([self.shortcutViewDelegate respondsToSelector:@selector(JumpinterfaceWithButtonMessage:)]) {
+            [self.shortcutViewDelegate JumpinterfaceWithButtonMessage:@"门禁"];
+        }
     }
     else if ([sender.serviceName isEqualToString:@"维修"]) {
 //        [((HomePageController *)self.viewController) goToPrintViewController];
+        if ([self.shortcutViewDelegate respondsToSelector:@selector(JumpinterfaceWithButtonMessage:)]) {
+            [self.shortcutViewDelegate JumpinterfaceWithButtonMessage:@"维修"];
+        }
     }
     else if ([sender.serviceName isEqualToString:@"物业缴费"]) {
 //        [((HomePageController *)self.viewController) goToDDController];
+        if ([self.shortcutViewDelegate respondsToSelector:@selector(JumpinterfaceWithButtonMessage:)]) {
+            [self.shortcutViewDelegate JumpinterfaceWithButtonMessage:@"物业缴费"];
+        }
         
     }else if ([sender.serviceName isEqualToString:@"北菜园"])
     {
-        
+        if ([self.shortcutViewDelegate respondsToSelector:@selector(JumpinterfaceWithButtonMessage:)]) {
+            [self.shortcutViewDelegate JumpinterfaceWithButtonMessage:@"北菜园"];
+        }
     }
     
 }
@@ -139,7 +150,6 @@
         [btn hiddenDeleteBtn];
     }
 }
-
 
 
 -(void)goToTabBarWithIndex:(int)index{

@@ -12,6 +12,7 @@
 #import "SelectUtil.h"
 #import "ProtocolViewController.h"
 #import "AppDelegate.h"
+#import "UIImage+ImageColorChange.h"
 @interface RegisterController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -24,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *communityField;
 @property (weak, nonatomic) IBOutlet UITextField *detailAddressField;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
-@property (weak, nonatomic) IBOutlet UIImageView *checkImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconLogo;
+
 
 @property(nonatomic,strong) RegisterInfoTool *registerTool;
 @property(nonatomic,strong) YLCountry *selectCountry;
@@ -37,16 +39,21 @@
 @end
 
 @implementation RegisterController
-- (IBAction)clickCheckButton:(id)sender {
-    //点击勾
-    self.isCheck = !self.isCheck;
-    if (self.isCheck) {
-        //如果划勾了
-        self.checkImageView.image = [UIImage imageNamed:@"reg_gou"];
-    }else{
-        //没划勾
-        self.checkImageView.image = [UIImage new];
-    }
+//- (IBAction)clickCheckButton:(id)sender {
+//    //点击勾
+//    self.isCheck = !self.isCheck;
+//    if (self.isCheck) {
+//        //如果划勾了
+//        self.checkImageView.image = [UIImage imageNamed:@"reg_gou"];
+//    }else{
+//        //没划勾
+//        self.checkImageView.image = [UIImage new];
+//    }
+//}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.iconLogo.image = [self.iconLogo.image imageChangeColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
 }
 - (IBAction)clickYlgProtocolButton:(id)sender {
     //点击协议

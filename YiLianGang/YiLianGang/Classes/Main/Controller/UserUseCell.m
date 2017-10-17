@@ -174,17 +174,18 @@
 {
     _fluxSum = fluxSum;
     [self.mFluxSumLab setText:[NSString stringWithFormat:@"已用：%ldL",fluxSum/1000]];
+    
 }
 
 #pragma mark - 价格
--(void)setPrice:(NSInteger)price
+-(void)setPrice:(CGFloat)price
 {
     _price = price;
-    [self.mPriceLab setText:[NSString stringWithFormat:@"%ld元/L",price]];
+    [self.mPriceLab setText:[NSString stringWithFormat:@"%.2f元/L",price]];
 }
 
 #pragma mark -
--(void)setBalance:(NSInteger)balance
+-(void)setBalance:(CGFloat)balance
 {
     _balance = balance;
     NSInteger surplusWater;
@@ -194,7 +195,7 @@
        surplusWater = balance/_price;
     }
     
-    [self.mBalanceLab setText:[NSString stringWithFormat:@"%ld元(%ldL)",balance,surplusWater]];
+    [self.mBalanceLab setText:[NSString stringWithFormat:@"%.2f元(%ldL)",balance,surplusWater]];
 }
 
 -(void)payMent

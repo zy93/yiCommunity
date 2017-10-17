@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E79DEBC47C6F4E772955A71CC1E16E6A'
+               BlueprintIdentifier = 'C2EBCB37CBD44EF5118E1F6A8AF0D97B'
                BlueprintName = 'SDCycleScrollView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SDCycleScrollView.framework'>

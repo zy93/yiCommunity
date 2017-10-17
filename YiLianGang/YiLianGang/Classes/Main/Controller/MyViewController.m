@@ -26,6 +26,12 @@
     // Do any additional setup after loading the view.
     //
     //self.userName.text = [LoginTool sharedLoginTool].userName;
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
     self.userTel.text = [LoginTool sharedLoginTool].userTel;
 }
 

@@ -20,8 +20,10 @@
 #import "DringkingDetailViewController.h"
 #import "SDCycleScrollView.h"
 #import "PayBillViewController.h"
+#import "DeviceTool.h"
+#import "JudgmentTime.h"
 
-@interface HomePageController () <SDCycleScrollViewDelegate>
+@interface HomePageController () <SDCycleScrollViewDelegate,WOTShortcutViewDelegate>
 {
     NSArray *imageArr;
 }
@@ -35,8 +37,13 @@
 
 @property (nonatomic, strong)DeviceFromGroupTool *deviceTool;
 @property (nonatomic, strong)NSMutableArray *deviceArray;
+@property (nonatomic, strong)NSArray *groupArray;
 @property (nonatomic, assign)NSNumber *groupId;
 @property (nonatomic, strong)DeviceInfo *info;
+@property (nonatomic, strong)DeviceTool *deviceT;
+@property (nonatomic, assign)BOOL isPayView;
+@property (nonatomic, strong)JudgmentTime *jumdgmentTime;
+
 
 @end
 
@@ -45,9 +52,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self doPrettyView];
-    [self sendRequest];
+    self.jumdgmentTime = [[JudgmentTime alloc] init];
     self.h5View = [[PayMentViewController alloc] init];
     self.mainController = self;
+    self.shortcutScrollView.shortcutViewDelegate = self;
     //self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
    // [self setNaVationBar];
@@ -65,6 +73,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.parkingBtn.frame)+5);
+    [self sendRequest];
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];//隐藏
     
@@ -121,26 +130,31 @@
 #pragma mark - 北菜园
 
 - (IBAction)gardenButton:(id)sender {
-    self.h5View.url = @"https://shop13299823.wxrrd.com/feature/10257418";
-    [self.navigationController pushViewController:self.h5View animated:YES];
+    [self gardenMethod];
 }
 
 #pragma mark - 多利农庄
 
 - (IBAction)farmButton:(id)sender {
-    self.h5View.url = @"https://wx.tonysfarm.com/public/index/index_shop_app.html?customerId=7e144bf108b94505a890ec3a7820db8d&applicationId=899A6191575A4E46AF62BA3D7096387E&rid=99749";
+     NSString *urlString = @"https://wx.tonysfarm.com/public/index/index_shop_app.html?customerId=7e144bf108b94505a890ec3a7820db8d&applicationId=899A6191575A4E46AF62BA3D7096387E&rid=99749";
+    self.h5View.url = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:self.h5View animated:YES];
 }
 
 #pragma mark - 报修
 - (IBAction)repairsButton:(id)sender {
-    
-    MaintenanceViewController *root = [[MaintenanceViewController alloc] init];
-    [self.navigationController pushViewController:root animated:YES];
+    [self repairsMethod];
+//    MaintenanceViewController *root = [[MaintenanceViewController alloc] init];
+//    [self.navigationController pushViewController:root animated:YES];
 }
 #pragma mark - 直饮水
 - (IBAction)waterButton:(id)sender {
-    if (self.deviceArray.count > 0) {
+    
+    if (self.deviceArray.count == 0) {
+        [ToastUtil showToast:@"未绑定设备"];
+        return;
+    }else
+    {
         self.info = self.deviceArray[0];
         if (self.info.state.integerValue==0) {
             [ToastUtil showToast:@"设备已离线"];
@@ -153,10 +167,6 @@
         DringkingDetailViewController *dringKingView = [[DringkingDetailViewController alloc] init];
         dringKingView.deviceInfo = self.info;
         [self.navigationController pushViewController:dringKingView animated:YES];
-//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
-//        if (self.mainController) {
-//            [self.mainController presentViewController:navi animated:YES completion:nil];
-//        }
     }
     
     
@@ -166,11 +176,27 @@
     H5DingDingParkController *cpc = [H5DingDingParkController new];
     [self.navigationController pushViewController:cpc animated:YES];
 }
+
+#pragma mark - 智水小荷
+- (IBAction)capacityWater:(id)sender {
+    [ToastUtil showToast:@"敬请期待！"];
+}
+
+#pragma mark - 更多
+- (IBAction)moreButton:(id)sender {
+    [ToastUtil showToast:@"敬请期待！"];
+}
+
 #pragma mark - 物业缴费
 - (IBAction)propertyButton:(id)sender {
-    PayBillViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PayBillViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
-
+    [self judgmentTime];
+    if (!_isPayView) {
+        [self propertyMethod];
+    }else
+    {
+        [ToastUtil showToast:@"敬请期待！"];
+    }
+    
 }
 #pragma mark - 云打印
 - (IBAction)cloudPrint:(id)sender {
@@ -179,7 +205,8 @@
 }
 #pragma mark - 轻松到家
 - (IBAction)getHomeButton:(id)sender {
-    self.h5View.url = @"https://api.uyess.com/score-mall/?#!/weixin/home";
+    NSString *urlString = @"https://api.uyess.com/score-mall/?#!/weixin/home";
+    self.h5View.url = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:self.h5View animated:YES];
 }
 
@@ -198,20 +225,101 @@
 -(void)sendRequest{
     WS(weakSelf);
     self.deviceTool = [DeviceFromGroupTool new];
-    self.groupId = @355;
-    [self.deviceTool sendRequestToGetAllDeviceWithGroupId:self.groupId Response:^(NSArray *arr) {
+    //获取groupId -- start
+    //NSArray *groupArr;
+    //dispatch_async(dispatch_get_main_queue()
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.groupArray = [[DeviceTool sharedDeviceTool] getDeviceSegmentTitles];
+//    });
+    [[DeviceTool sharedDeviceTool] sendRequestToGetAllGroupResponse:^(NSArray *arr) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (arr) {
+            weakSelf.groupArray = [arr mutableCopy];
+            if (self.groupArray.count > 0) {
+                DeviceGroupInfo *groupInfo = self.groupArray[0];
+                self.groupId = [NSNumber numberWithInteger:groupInfo.groupId.integerValue];
+            }else
+            {
                 
-                weakSelf.deviceArray = [arr mutableCopy];
+                return;
             }
+            [self.deviceTool sendRequestToGetAllDeviceWithGroupId:self.groupId Response:^(NSArray *arr) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if (arr) {
+                        weakSelf.deviceArray = [arr mutableCopy];
+                    }
+                    
+                });
+            }];
             
         });
     }];
     
+    
+    
+    
+    NSLog(@"groupId:%@",self.groupId);
+    //获取groupId -- end
+    //self.groupId = @344;
+    
 }
 
+#pragma mark - WOTShortcutViewDelegate
+-(void)JumpinterfaceWithButtonMessage:(NSString *)buttonMessage
+{
+    if ([buttonMessage isEqualToString:@"门禁"]) {
+        [ToastUtil showToast:@"敬请期待！"];
+    }
+    
+    if ([buttonMessage isEqualToString:@"物业缴费"]) {
+        [self propertyMethod];
+    }
+    
+    if ([buttonMessage isEqualToString:@"维修"]) {
+        [self repairsMethod];
+
+    }
+    
+    if ([buttonMessage isEqualToString:@"北菜园"]) {
+        [self gardenMethod];
+    }
+    
+}
+
+-(void)propertyMethod
+{
+    PayBillViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PayBillViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)repairsMethod
+{
+    MaintenanceViewController *root = [[MaintenanceViewController alloc] init];
+    [self.navigationController pushViewController:root animated:YES];
+}
+
+-(void)gardenMethod
+{
+    NSString *urlString = @"https://shop13299823.wxrrd.com/feature/10257418";
+    self.h5View.url = [NSURL URLWithString:urlString];
+    [self.navigationController pushViewController:self.h5View animated:YES];
+}
+
+-(void)judgmentTime
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *DateTime = [formatter stringFromDate:date];
+    _isPayView = [self.jumdgmentTime compareDate:DateTime withDate:@"2017/11/01"];
+}
 
 /*
 #pragma mark - Navigation

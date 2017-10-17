@@ -44,10 +44,10 @@
                         <constraints>
                             <constraint firstItem="HoT-7E-1ug" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3Xy-ui-oIK"/>
                             <constraint firstAttribute="trailing" secondItem="GTP-FT-Hls" secondAttribute="trailing" id="88N-5d-e4u"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OOI-sR-RbX" secondAttribute="bottom" constant="100" id="9XD-hR-uVk"/>
                             <constraint firstItem="OOI-sR-RbX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9xu-hh-b06"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GTP-FT-Hls" secondAttribute="bottom" id="Gf6-lv-yMU"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HoT-7E-1ug" secondAttribute="bottom" constant="60" id="UDT-0F-pAW"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OOI-sR-RbX" secondAttribute="bottom" constant="100" id="XVb-Jp-qlr"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HoT-7E-1ug" secondAttribute="bottom" constant="60" id="kcc-LE-Xwc"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GTP-FT-Hls" secondAttribute="bottom" id="m8w-Rz-sPJ"/>
                             <constraint firstItem="GTP-FT-Hls" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="pmO-lK-TVe"/>
                             <constraint firstItem="GTP-FT-Hls" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ppn-Df-tcM"/>
                         </constraints>
