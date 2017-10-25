@@ -20,7 +20,7 @@
     BOOL isValidMonth1 = [[formatter stringFromDate:date] intValue] > month;
     BOOL isValidMonth2 = [[formatter stringFromDate:date] intValue] == month;
     [formatter setDateFormat:@"dd"];
-    BOOL isValidDay = [[formatter stringFromDate:date] intValue] > day;
+    BOOL isValidDay = [[formatter stringFromDate:date] intValue] >= day;
     if (isValidYear) {
         return NO;
     }

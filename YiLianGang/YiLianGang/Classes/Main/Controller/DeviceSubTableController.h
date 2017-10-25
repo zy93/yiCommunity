@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface DeviceSubTableController : UITableViewController
 -(instancetype)initWithGroupId:(NSNumber *)groupId;
 @property(nonatomic,weak) UIViewController *mainController;
+
 @end

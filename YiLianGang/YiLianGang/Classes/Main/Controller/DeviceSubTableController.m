@@ -21,6 +21,7 @@
 #import "DeviceLierdaSwitchController.h"
 #import "DeviceTywgCurtainController.h"
 #import "SDWebImageManager.h"
+#import "DeviceController.h"
 #import "DringkingDetailViewController.h"
 
 #define Main_Screen_Height      [[UIScreen mainScreen] bounds].size.height
@@ -50,6 +51,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (arr) {
+                
                 weakSelf.deviceArray = [arr mutableCopy];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
@@ -65,7 +67,7 @@
     [super viewDidLoad];
     [self sendRequest];
     self.tableView.tableFooterView = [UIView new];
-    
+    //self.tableView.backgroundColor = [UIColor blackColor];
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -116,6 +118,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     DeviceInfo *info = self.deviceArray[indexPath.row];
+    NSLog(@"测试：%@",info.templateId);
     if (info.state.integerValue==0 && ![info.templateId containsString:@"海康威视"]) {
         [ToastUtil showToast:@"设备已离线"];
         return;
@@ -224,12 +227,42 @@
     }
     else if ([info.templateId containsString:@"沃特德"])
     {
-        DringkingDetailViewController *dringKingView = [[DringkingDetailViewController alloc] init];
-        dringKingView.deviceInfo = info;
-        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
-        if (self.mainController) {
-            [self.mainController presentViewController:navi animated:YES completion:nil];
-        }
+        
+        NSDictionary *dict = @{@"deviceInfo":info};
+        NSNotification *notification = [NSNotification notificationWithName:@"JumpNotification" object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+       // NSLog(@"测试父视图：%@",self.superView);
+        
+//        UIViewController *target = nil;
+//        for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+//            if ([controller isKindOfClass:[DeviceController class]]) { //这里判断是否为你想要跳转的页面
+//                //controller.deviceInfo = info;
+//                NSDictionary *dict = @{@"deviceInfo":info};
+//                NSNotification *notification = [NSNotification notificationWithName:@"JumpNotification" object:nil userInfo:dict];
+//                [[NSNotificationCenter defaultCenter] postNotification:notification];
+//                return;
+//            }
+//
+//        }
+    
+        
+//        NSLog(@"测试：%@",self.navigationController.viewControllers);
+//        UIViewController *target = nil;
+//        for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+//            if ([controller isKindOfClass:[DringkingDetailViewController class]]) { //这里判断是否为你想要跳转的页面
+//                //controller.deviceInfo = info;
+//                target = controller;
+//            }
+//        }
+//        if (target) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"WaterNotification" object:nil];
+//            [self.navigationController popToViewController:target animated:YES]; //跳转
+//        }
+       // dringKingView.deviceInfo = info;
+//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:dringKingView];
+//        if (self.mainController) {
+//            [self.mainController presentViewController:navi animated:YES completion:nil];
+//        }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

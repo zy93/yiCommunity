@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UIView *mLine;
 @property (nonatomic, strong) UILabel *mStateLab;
 @property (nonatomic, strong) UIImageView *mArrowIV;
-
+                                    
 @end
 
 
@@ -225,6 +225,7 @@
     
     return cell;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

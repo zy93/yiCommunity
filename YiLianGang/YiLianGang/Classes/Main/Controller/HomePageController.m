@@ -22,6 +22,8 @@
 #import "PayBillViewController.h"
 #import "DeviceTool.h"
 #import "JudgmentTime.h"
+#import "DeviceDescribeViewController.h"
+
 
 @interface HomePageController () <SDCycleScrollViewDelegate,WOTShortcutViewDelegate>
 {
@@ -79,6 +81,9 @@
     
 }
 
+
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
@@ -125,6 +130,10 @@
 //    [self.navigationController pushViewController:detailvc animated:YES];
     
     NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
+    if (index == 0) {
+        DeviceDescribeViewController *detailvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DeviceDescribeViewController"];
+        [self.navigationController pushViewController:detailvc animated:YES];
+    }
 }
 
 #pragma mark - 北菜园
@@ -149,7 +158,8 @@
 }
 #pragma mark - 直饮水
 - (IBAction)waterButton:(id)sender {
-    
+
+     
     if (self.deviceArray.count == 0) {
         [ToastUtil showToast:@"未绑定设备"];
         return;
@@ -168,7 +178,6 @@
         dringKingView.deviceInfo = self.info;
         [self.navigationController pushViewController:dringKingView animated:YES];
     }
-    
     
 }
 #pragma mark - 停车
@@ -205,7 +214,7 @@
 }
 #pragma mark - 轻松到家
 - (IBAction)getHomeButton:(id)sender {
-    NSString *urlString = @"https://api.uyess.com/score-mall/?#!/weixin/home";
+    NSString *urlString = @"https://api.uyess.com/gzh/index.php?uyes_qd_no=uyes_hz_ylg";
     self.h5View.url = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:self.h5View animated:YES];
 }
@@ -235,11 +244,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.groupArray = [arr mutableCopy];
             if (self.groupArray.count > 0) {
-                DeviceGroupInfo *groupInfo = self.groupArray[0];
+                DeviceGroupInfo *groupInfo = self.groupArray[0];//要修改为0
                 self.groupId = [NSNumber numberWithInteger:groupInfo.groupId.integerValue];
             }else
             {
-                
                 return;
             }
             [self.deviceTool sendRequestToGetAllDeviceWithGroupId:self.groupId Response:^(NSArray *arr) {
@@ -254,10 +262,6 @@
             
         });
     }];
-    
-    
-    
-    
     NSLog(@"groupId:%@",self.groupId);
     //获取groupId -- end
     //self.groupId = @344;
@@ -272,17 +276,23 @@
     }
     
     if ([buttonMessage isEqualToString:@"物业缴费"]) {
-        [self propertyMethod];
+        [self judgmentTime];
+        if (!_isPayView) {
+            [self propertyMethod];
+        }else
+        {
+            [ToastUtil showToast:@"敬请期待！"];
+        }
     }
     
     if ([buttonMessage isEqualToString:@"维修"]) {
         [self repairsMethod];
-
     }
     
     if ([buttonMessage isEqualToString:@"北菜园"]) {
         [self gardenMethod];
     }
+    
     
 }
 
@@ -305,6 +315,7 @@
     [self.navigationController pushViewController:self.h5View animated:YES];
 }
 
+
 -(void)judgmentTime
 {
     NSDate *date = [NSDate date];
@@ -318,7 +329,10 @@
     
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *DateTime = [formatter stringFromDate:date];
+   // NSString *aDataTime =@"2017/11/02";
     _isPayView = [self.jumdgmentTime compareDate:DateTime withDate:@"2017/11/01"];
+    
+    
 }
 
 /*

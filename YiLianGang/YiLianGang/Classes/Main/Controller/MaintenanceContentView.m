@@ -315,7 +315,7 @@
                               @"title":@"开始维修",
                               };
         
-        NSString *url = [NSString stringWithFormat:@"%@WY/info/info_confirmInfo",HTTP_Service];
+        NSString *url = [NSString stringWithFormat:@"%@KP/info/info_confirmInfo",HTTP_Service];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [YYUtil PostImagesToServer:url dicPostParams:dic dicImages:fileDic block:^(NSInteger httpCode, NSData *data) {
@@ -338,7 +338,7 @@
                               @"title":@"维修完成",
                               };
         
-        NSString *url = [NSString stringWithFormat:@"%@WY/info/info_mainInfo",HTTP_Service];
+        NSString *url = [NSString stringWithFormat:@"%@KP/info/info_mainInfo",HTTP_Service];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [YYUtil PostImagesToServer:url dicPostParams:dic dicImages:fileDic block:^(NSInteger httpCode, NSData *data) {

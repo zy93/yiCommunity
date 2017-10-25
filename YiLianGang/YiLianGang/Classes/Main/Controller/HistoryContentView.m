@@ -415,7 +415,7 @@
                           @"star":[NSString stringWithFormat:@"%d",(int)evealu+1],
                           };
     
-    NSString *url = [NSString stringWithFormat:@"%@WY/info/info_evaluation",HTTP_Service];
+    NSString *url = [NSString stringWithFormat:@"%@KP/info/info_evaluation",HTTP_Service];
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
     [hud setLabelText:@"提交中"];

@@ -19,6 +19,7 @@
 #import "DeviceGroupController.h"
 #import "DeviceSceneController.h"
 #import "DeviceOKAListController.h"
+#import "DringkingDetailViewController.h"
 
 @interface DeviceController ()<WNPageViewDelegate,UIPopoverPresentationControllerDelegate,DeviceToolDelegate,DeviceHeaderViewDelegate,DeviceAddDelegate,DevicePopoverControllerDelegate>
 @property(nonatomic,strong) WNPageView *pageView;
@@ -29,6 +30,8 @@
 @property(nonatomic,strong) UIBarButtonItem *leftItem;
 @property(nonatomic,strong) UIBarButtonItem *rightItem;
 @property(nonatomic,strong) DevicePopoverController *popoverController;
+@property(nonatomic,strong) DringkingDetailViewController *dringKing;
+//@property(nonatomic,strong) DeviceSubTableController *deviceSubTable;
 
 @end
 
@@ -36,28 +39,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self doPrettyView];
-    [self addNaviButton];
-    self.tableView.pagingEnabled = NO;
+    //[self addNaviButton];
+    self.tableView.scrollEnabled = NO;
     
+    self.tableView.pagingEnabled = NO;
+    //self.deviceSubTable = [[DeviceSubTableController alloc] init];
+    //self.deviceSubTable.delegate = self;
+    //self.tableView.delegate = self;
     
     // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpGoBackinterface:) name:@"JumpNotification" object:nil];
 }
 -(void)dealloc{
     NSLog(@"DeviceController dealloc");
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"JumpNotification" object:nil];
 }
 -(void)addNaviButton{
     //左边
     UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    /*
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeSystem];
     leftButton.frame = CGRectMake(0, 0, 40, 40);
     [leftButton setBackgroundImage:[UIImage imageNamed:@"device_leftButton"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(clickTopLeftButton:) forControlEvents:UIControlEventTouchUpInside];
     self.leftButton = leftButton;
     [leftView addSubview:leftButton];
-    leftView.backgroundColor = [UIColor clearColor];
+     */
+    leftView.backgroundColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1];
     self.leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftView];
     self.navigationItem.leftBarButtonItem = self.leftItem;
     //右边
@@ -153,6 +163,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     CATransition *transition = [CATransition animation];
     [transition setDuration:0.5];
     [transition setType:@"fade"];
@@ -160,6 +171,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     //[self refreshView];
 }
 
@@ -176,22 +188,29 @@
     });
 }
 -(void)doPrettyView{
-    self.navigationItem.title = @"添加设备";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.title = @"设备列表";
+    //self.navigationItem.rightBarButtonItem = nil;
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    /*
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    
+    */
     self.view.backgroundColor = [UIColor whiteColor];
-    DeviceHeaderView *deviceHeaderView = [[NSBundle mainBundle]loadNibNamed:@"DeviceHeaderView" owner:nil options:nil].lastObject;
-    deviceHeaderView.backgroundColor = [[StyleTool sharedStyleTool]sessionSyle].headerColor;
-    self.deviceHeaderHeight = self.view.frame.size.width*0.5933;
+    
+//    DeviceHeaderView *deviceHeaderView = [[NSBundle mainBundle]loadNibNamed:@"DeviceHeaderView" owner:nil options:nil].lastObject;
+//    deviceHeaderView.backgroundColor = [[StyleTool sharedStyleTool]sessionSyle].headerColor;
+//    self.deviceHeaderHeight = self.view.frame.size.width*0.5933;
+//    self.devicePageViewHeight =self.view.frame.size.height-self.deviceHeaderHeight-48;
+//    deviceHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.deviceHeaderHeight);
+//    self.tableView.tableHeaderView = deviceHeaderView;
+//    deviceHeaderView.delegate =self;
     self.devicePageViewHeight =self.view.frame.size.height-self.deviceHeaderHeight-48;
-    deviceHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.deviceHeaderHeight);
-    self.tableView.tableHeaderView = deviceHeaderView;
-    deviceHeaderView.delegate =self;
-    self.tableView.bounces = NO;
+   // [self.tableView.tableHeaderView removeFromSuperview];
+    //self.tableView.bounces = NO;
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -206,7 +225,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        //cell.selectionStyle = uitableviewcellselect
         cell.backgroundColor = [UIColor clearColor];
         
     }
@@ -293,11 +313,16 @@
             subController.mainController = self;
             [controllerArr addObject:subController];
         }
-		_pageView = [[WNPageView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.width*0.5933, self.view.frame.size.width,  self.view.frame.size.height-self.view.frame.size.width*0.5933-48) withNameArrayTitle:titleArr controllers:controllerArr delegate:self];
+        _pageView = [[WNPageView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.width*0.5933, self.view.frame.size.width,  self.view.frame.size.height-65) withNameArrayTitle:titleArr controllers:controllerArr delegate:self];
+//        _pageView = [[WNPageView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.width*0.5933, self.view.frame.size.width,  self.view.frame.size.height) withNameArrayTitle:titleArr controllers:controllerArr delegate:self];
+       // _pageView.backgroundColor = [UIColor blackColor];
+        NSLog(@"测试高：%f",self.view.frame.size.height);
         [_pageView setPageEnable:NO];
         [DeviceTool sharedDeviceTool].delegate = self;
+        
 	}
 	return _pageView;
+    
 }
 
 - (DevicePopoverController *)popoverController {
@@ -306,6 +331,64 @@
         _popoverController.delegate = self;
     }
 	return _popoverController;
+    
 }
+
+
+#pragma mark -跳转通知
+-(void)jumpGoBackinterface:(NSNotification *)notification
+{
+    if ([notification.userInfo objectForKey:@"deviceInfo"]) {
+//        self.dringKing = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+//        for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+//            if ([controller isKindOfClass:[DringkingDetailViewController class]]) { //这里判断是否为你想要跳转的页面
+//                //controller.deviceInfo = info;
+//
+//            }
+//        }
+//        //dringKing.deviceInfo = [notification.userInfo objectForKey:@"deviceInfo"];
+//        [self.dringKing setValue:[notification.userInfo objectForKey:@"deviceInfo"] forKey:@"deviceInfo"];
+//        [self.navigationController popToViewController:self.dringKing animated:YES];
+//
+//
+        
+        //UIViewController *target = nil;
+        for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+            if ([controller isKindOfClass:[DringkingDetailViewController class]]) { //这里判断是否为你想要跳转的页面
+                //controller.deviceInfo = info;
+                self.dringKing = controller;
+                self.dringKing.deviceInfo = [notification.userInfo objectForKey:@"deviceInfo"];
+                [self.navigationController popToViewController:self.dringKing animated:YES];
+                return;
+            }
+            
+        }
+ 
+        self.dringKing = [[DringkingDetailViewController alloc] init];
+        self.dringKing.deviceInfo = [notification.userInfo objectForKey:@"deviceInfo"];
+        [self.navigationController pushViewController:self.dringKing animated:YES];
+    
+
+        
+//        UIViewController *controll = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+//        if ([controll isKindOfClass:[DringkingDetailViewController class]]) {
+//            self.dringKing = (DringkingDetailViewController *)controll;
+//            self.dringKing.deviceInfo = [notification.userInfo objectForKey:@"deviceInfo"];
+//            [self.navigationController popToViewController:self.dringKing animated:YES];
+//        }
+//        else
+//        {
+//            self.dringKing = [[DringkingDetailViewController alloc] init];
+//            self.dringKing.deviceInfo = [notification.userInfo objectForKey:@"deviceInfo"];
+//            [self.navigationController pushViewController:self.dringKing animated:YES];
+//        }
+        
+        
+
+    }
+
+}
+
+
 
 @end

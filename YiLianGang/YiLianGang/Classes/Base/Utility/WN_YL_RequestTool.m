@@ -63,6 +63,7 @@
 
 -(void)sendPostRequestWithUri:(NSString*)uri andParam:(NSDictionary<NSString*,NSString*>*)param
 {
+    NSLog(@"参数：%@",param);
     NSMutableString *urlStr = [[HTTP_Service stringByAppendingString:uri] mutableCopy];
     NSMutableString *str = [NSMutableString new];
     if (param.count>0) {
@@ -120,7 +121,7 @@
             }else{
                 [self.delegate requestTool:self isSuccess:NO dict:nil];
             }
-            NSLog(@"%@",dict);
+            NSLog(@"测试121%@",dict);
             
         }else{
             [self.delegate requestTool:self isSuccess:NO dict:nil];

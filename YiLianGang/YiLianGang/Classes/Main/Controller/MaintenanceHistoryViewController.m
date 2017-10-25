@@ -17,6 +17,7 @@
     MaintenanceHistoryView *mView;
     WN_YL_RequestTool *request;
 }
+
 @end
 
 @implementation MaintenanceHistoryViewController
@@ -51,7 +52,7 @@
 -(void)createRequest
 {
     NSDictionary *dic = @{@"phone":[LoginTool sharedLoginTool].userTel};
-    [request sendPostRequestWithUri:@"WY/info/info_queryByPhone" andParam:dic];
+    [request sendPostRequestWithUri:@"KP/info/info_queryByPhone" andParam:dic];
 }
 
 -(void)goToHistoryContentViewControllerWith:(NSDictionary *)dic

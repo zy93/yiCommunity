@@ -40,6 +40,8 @@
 
 -(instancetype)initWithFrame:(CGRect)frame withNameArrayTitle:(NSArray *)titleArr controllers:(NSArray *)controllers delegate:(id<WNPageViewDelegate>)delegate{
     if (self = [super initWithFrame:frame]) {
+        NSLog(@"测试view高度：%f",self.frame.size.height);
+
         self.currentPage = 0;
         self.segMaxX = 0;
         [self addObserver:self forKeyPath:@"currentPage" options:NSKeyValueObservingOptionOld context:nil];
@@ -82,16 +84,18 @@
 
 - (UIScrollView *)pageScrollView {
 	if(_pageScrollView == nil) {
-		_pageScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, SegementHeight, self.frame.size.width, self.frame.size.height-SegementHeight)];
-        
+//        _pageScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, SegementHeight, self.frame.size.width, self.frame.size.height-SegementHeight)];原
+        _pageScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, SegementHeight, self.frame.size.width, self.frame.size.height-SegementHeight)];
         _pageScrollView.backgroundColor = self.pageViewBackgroundColor;
         for (int i = 0; i<self.controllers.count; i++) {
             UIViewController *vc = self.controllers[i];
             [self.viewController addChildViewController:vc];
-            vc.view.frame = CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height-SegementHeight);
+            vc.view.frame = CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height-SegementHeight-50);
             [_pageScrollView addSubview:vc.view];
+            NSLog(@"测试view高度：%f",self.frame.size.height);
+            NSLog(@"测试高度：%f,%f",vc.view.frame.size.width,vc.view.frame.size.height);
         }
-        _pageScrollView.contentSize = CGSizeMake(self.controllers.count*self.frame.size.width, self.frame.size.height-SegementHeight);
+        //_pageScrollView.contentSize = CGSizeMake(self.controllers.count*self.frame.size.width, self.frame.size.height-SegementHeight);
         _pageScrollView.pagingEnabled = YES;
         _pageScrollView.scrollEnabled = YES;
         _pageScrollView.showsHorizontalScrollIndicator = NO;

@@ -13,6 +13,9 @@
 #import "RegisterInfoTool.h"
 #import "MBProgressHUD+KR.h"
 #import "BRPlaceholderTextView.h"
+#import "ServiceReturnInformation.h"
+#import "PromptMessageViewController.h"
+
 @interface DeviceAddInfoController ()<UITextFieldDelegate,UITextViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *deviceNameTexFld;
 @property (weak, nonatomic) IBOutlet UITextField *deviceGroupSelectTexFld;
@@ -138,16 +141,27 @@
     }
     
     [[DeviceTool sharedDeviceTool]sendInfoWithSendInfo:info response:^(NSDictionary *dict) {
+        NSLog(@"返回的数据：%@",dict);
+        if ([dict objectForKey:@"data"]) {
+            ServiceReturnInformation *returnInfo = [ServiceReturnInformation sharedReturnInfo];
+            returnInfo.returnInfoDictionary =[dict objectForKey:@"data"];
+        }
+        NSLog(@"返回的数据：%@",[dict objectForKey:@"data"]);
         if (dict) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"%ld",((NSNumber*)dict[@"error_code"]).longValue);
+                //NSLog(@"%ld",((NSNumber*)dict[@"error_code"]).longValue);
                 NSInteger errorIndex =((NSNumber*)dict[@"error_code"]).integerValue;
                 if (errorIndex == 0) {
-                    [MBProgressHUD showSuccess:@"设备添加成功"];
-                    if ([self.delegate respondsToSelector:@selector(deviceDidAdded)]) {
-                        [self.delegate deviceDidAdded];
-                    }
-                    [self clickTopLeftButton:nil];
+//                    PromptMessageViewController *prompMessage = [[PromptMessageViewController alloc] init];
+//                    [self.navigationController pushViewController:prompMessage animated:YES];
+                    
+                    PromptMessageViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PromptMessageViewController"];
+                    [self.navigationController pushViewController:vc animated:YES];
+//                    [MBProgressHUD showSuccess:@"设备添加成功"];
+//                    if ([self.delegate respondsToSelector:@selector(deviceDidAdded)]) {
+//                        [self.delegate deviceDidAdded];//添加设备
+//                    }
+                    //[self clickTopLeftButton:nil];
                 }else if (errorIndex > 0 && errorIndex < 15 &&errorIndex<self.errorMsgArr.count) {
                     
                     NSString *errorStr = [NSString stringWithFormat:@"%@",self.errorMsgArr[errorIndex]];

@@ -236,7 +236,7 @@
                           @"address":userAddr,
                           @"title":@"维修申请",
                           @"appointmentTime":[NSString stringWithFormat:@"%.0f",[self dateToTimestamp:mDate]]};
-    NSString *url = [NSString stringWithFormat:@"%@KP/info/info_intoInfo",HTTP_NEW];
+    NSString *url = [NSString stringWithFormat:@"%@KP/info/info_intoInfo",HTTP_Service];
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
     [self addSubview:hud];

@@ -14,12 +14,14 @@
 #import "PayMentViewController.h"
 #import "LoginTool.h"
 //#import "SetDeviceInfoCell.h"
+#import "DeviceController.h"
 
 @interface DringkingDetailViewController ()<UITableViewDelegate, UITableViewDataSource>//, SetDeviceInfoCellDelegate>
 {
     //UITableView *mTable;
     UIButton *mSwitchBtn;
     BOOL isOn;
+    UIBarButtonItem *deviceListButton;
 }
 
 
@@ -48,6 +50,16 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //deviceListButton = [UIBarButtonItem buttonWithType:UIButtonTypeCustom];
+    deviceListButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"listwwhite"] style:UIBarButtonItemStyleBordered target:self action:@selector(deviceListMethod)];
+    //替换图标
+//    [deviceListButton setImage:[UIImage imageNamed:@"listwwhite"] forState:UIControlStateNormal];
+//    [deviceListButton setFrame:CGRectMake(CGRectGetWidth(self.view.frame)-50,  0, 40, 45)];
+//    [deviceListButton addTarget:self action:@selector(deviceListMethod) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = deviceListButton;
+   // [self.navigationController.navigationBar addSubview:deviceListButton];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = item; 
     [self.tabBarController.tabBar setHidden:YES];
     NSLog(@"测试连接状态：%ld",self.webSocket.readyState);
     if (self.webSocket.readyState == SR_CLOSED) {
@@ -60,6 +72,13 @@
     //[self.webSocket open];
     //[self loadData];
     [self loadTableView];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //deviceListButton.hidden = YES;
+    //self.navigationItem.rightBarButtonItem
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,6 +110,7 @@
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
+     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     // [self.view addSubview:self.tableView];
@@ -210,7 +230,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"测试结果：%@,%@,%@,%@",self.priceMessageDictionary,self.TDSMessageDictionary,self.fluxSumMessageDictionary,self.balanceMessageDictionary);
+    NSLog(@"测试结果：%@,%@,%@,%@",self.priceMessageDictionary,self.TDSMessageDictionary,self.fluxSumMessageDictionary,self.balanceMessageDictionary);
     if (indexPath.section==0) {
         TDSCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TDSCell"];
         if (!cell) {
@@ -263,6 +283,7 @@
     if (range.length>0) {
         self.DeviceUrlStr = [self.DeviceUrlStr substringWithRange:NSMakeRange(0, range.location)];
     }
+    
     //加前缀
     if(![self.DeviceUrlStr containsString:@"ws://"]){
         self.DeviceUrlStr = [@"ws://" stringByAppendingString:self.DeviceUrlStr];
@@ -273,6 +294,14 @@
     self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:self.DeviceUrlStr]];
     self.webSocket.delegate = self;
     [self.webSocket open];
+
+}
+
+#pragma mark - 设备列表
+-(void)deviceListMethod
+{
+    DeviceController *deviceController = [[DeviceController alloc] init];
+    [self.navigationController pushViewController:deviceController animated:YES];
 }
 
 @end

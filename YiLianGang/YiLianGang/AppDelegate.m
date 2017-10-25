@@ -71,6 +71,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSLog(@"进入前台了！");
+    NSNotification *notification = [NSNotification notificationWithName:@"wifiNotification" object:nil userInfo:nil];
+    //第三步：通过“通知中心”发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

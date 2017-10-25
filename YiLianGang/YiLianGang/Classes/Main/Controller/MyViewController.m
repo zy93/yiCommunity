@@ -11,6 +11,10 @@
 #import "LoginTool.h"
 #import "DeviceTool.h"
 #import "AboutViewController.h"
+#import "HCScanQRViewController.h"
+#import "DeviceAddInfoController.h"
+#import "DeviceController.h"
+
 
 @interface MyViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *userName;
@@ -32,6 +36,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    [self.tabBarController.tabBar setHidden:NO];
     self.userTel.text = [LoginTool sharedLoginTool].userTel;
 }
 
@@ -91,9 +96,53 @@
 }
 
 - (IBAction)deviceButton:(id)sender {
-    [ToastUtil showToast:@"敬请期待！"];
+    //[ToastUtil showToast:@"敬请期待！"];
+    DeviceController *deviceController = [[DeviceController alloc] init];
+    [self.navigationController pushViewController:deviceController animated:YES];
 }
 
+- (IBAction)addDevice:(id)sender {
+    HCScanQRViewController *scan = [[HCScanQRViewController alloc]init];
+    //调用此方法来获取二维码信息
+    __weak typeof(self) safe = self;
+    [scan successfulGetQRCodeInfo:^(NSString *QRCodeInfo) {
+        __strong typeof(safe) strongSelf = safe;
+        NSLog(@"%@",QRCodeInfo);
+        [strongSelf dismissViewControllerAnimated:NO completion:nil];
+        if (QRCodeInfo.length>0) {
+            NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:[QRCodeInfo dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+            if(dict){
+                NSLog(@"%@",dict);
+                DeviceSendInfo *info = [DeviceTool sharedDeviceTool].deviceSendInfo;
+                info.ProduceTime = dict[@"ProduceTime"];
+                info.localID = dict[@"localID"];
+                info.model = dict[@"model"];
+                info.producer = dict[@"producer"];
+                info.type = dict[@"type"];
+                if (dict[@"ip"]){
+                    info.ip = dict[@"ip"];
+                }
+                if (dict[@"userName"]) {
+                    info.userName = dict[@"userName"];
+                }
+                if (dict[@"password"]) {
+                    info.password = dict[@"password"];
+                }
+                //进入设备编辑界面
+                UINavigationController *dvc = [UIStoryboard storyboardWithName:@"DeviceAddInfoController" bundle:nil].instantiateInitialViewController;
+                DeviceAddInfoController *daic = dvc.viewControllers[0];
+                daic.delegate = self;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    dvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                    [strongSelf presentViewController:dvc animated:YES completion:nil];
+                });
+            }
+        }
+        
+        
+    }];
+    [self presentViewController:scan animated:YES completion:nil];
+}
 
 
 /*

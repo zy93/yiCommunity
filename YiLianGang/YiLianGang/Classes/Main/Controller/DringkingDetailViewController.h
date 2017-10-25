@@ -14,6 +14,7 @@
 @interface DringkingDetailViewController :DeviceDetailBaseController
 @property(nonatomic, strong)UIButton *backBT;
 @property(nonatomic, strong)UIImageView *titleImv;
+//@property(nonatomic,strong) DeviceInfo *dringdeviceInfo;
 
 //@property (nonatomic, strong)DrinkingWater *mDevice;
 
