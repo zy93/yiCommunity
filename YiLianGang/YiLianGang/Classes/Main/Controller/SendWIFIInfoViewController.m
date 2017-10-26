@@ -101,40 +101,25 @@
                                 @"userNameWifi":self.wifiNameTextField.text,
                                 @"passWordWifi":self.wifiPassWordTextField.text
                                 };
-        NSData *messageData = [NSJSONSerialization dataWithJSONObject:self.dataDictionary options:NSJSONWritingPrettyPrinted error:nil];
-        NSNumber *dateLenght = @(messageData.length);
-        
-//        self.sendDictionary = @{@"dateLenght":dateLenght,@"date":self.dataDictionary};
-        
         NSDictionary *dataDictionary =@{@"data":self.dataDictionary};
         self.sendDictionary = @{@"nameValuePairs":dataDictionary};
-        NSLog(@"测试发送出去的数据：%@",self.sendDictionary);
         NSData *data = [NSJSONSerialization dataWithJSONObject:self.sendDictionary options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //去掉多余的换行和空格
+        jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"发送出去的数据json：%@",self.sendDictionary);
+        //编译数据
         NSData *buildData = [self buildDate:data];
-        
-//        NSData *buildData = [self build1Date:data];
-        
-        //Byte *dataByte = (Byte *)[data bytes];
-        unsigned int frameLength = (int)data.length + 2;
-        NSData *frameData = [NSData dataWithBytes:&frameLength length:4];
-        [mutableData appendData:frameData];
-        
-        [mutableData appendData:data];
-        
-        Byte *dataByte = (Byte *)[frameData bytes];
-        unsigned int checkByte = dataByte[0]+dataByte[1];
-        NSData *checkData = [NSData dataWithBytes:&checkByte length:2];
-        [mutableData appendData:checkData];
-        
-        NSLog(@"测试：%@",buildData);
-        
+        NSLog(@"发送数据：%@",buildData);
         [self.socket writeData:buildData withTimeout:- 1 tag:0];
     }
 }
 
 -(NSData *)buildDate:(NSData *)data
 {
-    char buf[1024];
+    char buf[2048];
     memset((char *)buf, 0, sizeof(buf));
     char *chars = buf;
     //char *chars;
