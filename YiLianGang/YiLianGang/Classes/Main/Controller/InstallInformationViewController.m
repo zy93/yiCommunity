@@ -10,10 +10,13 @@
 #import "WOTDatePickerView.h"
 #import "JudgmentTime.h"
 #import "OrderTool.h"
+#import "MBProgressHUD+Extension.h"
+#import "MBProgressHUDUtil.h"
+#import "HomePageController.h"
 
 
 
-@interface InstallInformationViewController ()<UITextFieldDelegate>
+@interface InstallInformationViewController ()<UITextFieldDelegate,OrderToolDelegate>
 {
     NSString *time;
 }
@@ -35,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [OrderTool sharedOrderTool].delegate = self;
     // Do any additional setup after loading the view.
     self.nameText.delegate = self;
     self.productNameText.delegate = self;
@@ -148,6 +152,7 @@
 
 - (IBAction)orderButton:(id)sender {
     NSLog(@"测试：%@",self.nameText.text);
+    [self.view endEditing:YES];
     BOOL isName = (self.nameText.text == nil) ||[self.nameText.text isEqualToString:@""];
     BOOL isProductName = self.productNameText.text == nil||[self.productNameText.text isEqualToString:@""];
     BOOL isTelText = self.telText.text == nil||[self.telText.text isEqualToString:@""];
@@ -217,6 +222,28 @@
                                     return NO;
                                 }
                     }
+}
+
+-(void)OrderToolDidmake:(BOOL)isSuccess withDict:(NSDictionary *)dict
+{
+    if (isSuccess) {
+    [MBProgressHUDUtil showLoadingWithMessage:@"设备添加成功" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+        [MBProgressHUD hide:YES afterDelay:3 complete:^{
+            UIViewController *target = nil;
+            for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+                if ([controller isKindOfClass:[HomePageController class]]) { //这里判断是否为你想要跳转的页面
+                    target = controller;
+                }
+            }
+            if (target) {
+                [self.navigationController popToViewController:target animated:YES]; //跳转
+            }
+        }];
+    }];
+}else
+{
+    [MBProgressHUDUtil showMessage:@"设备添加失败" toView:self.view];
+}
 }
 
 /*

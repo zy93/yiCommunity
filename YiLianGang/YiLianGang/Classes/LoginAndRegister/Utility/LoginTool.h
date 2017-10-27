@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 typedef void(^LoginFinishBlock) (NSDictionary *dict);
+
 @protocol LoginToolDelegate<NSObject>
 -(void)loginToolDidLogin:(BOOL)isSuccess withDict:(NSDictionary*)dict;
 @end
+
 @interface LoginTool : NSObject
 +(instancetype)sharedLoginTool;
 @property(nonatomic,strong) NSString *userName;
@@ -29,4 +31,5 @@ typedef void(^LoginFinishBlock) (NSDictionary *dict);
 //物业登录
 -(void)sendManagerLoginRequestWithUserName:(NSString *)userN pass:(NSString *)pass Response:(LoginFinishBlock)block;
 @property(nonatomic,weak) id<LoginToolDelegate> delegate;
+
 @end

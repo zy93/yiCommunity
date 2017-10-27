@@ -41,17 +41,19 @@ static OrderTool *orderTool;
 -(void)requestTool:(WN_YL_RequestTool*)requestTool isSuccess:(BOOL)isSuccess dict:(NSDictionary*)dict
 {
     NSLog(@"返回信息%@",dict);
+    BOOL isSuccess1;
     if ([dict objectForKey:@"code"] == @200) {
-        [ToastUtil showToast:@"预约成功！"];
+       // [ToastUtil showToast:@"预约成功！"];
+        isSuccess1 = YES;
     }
     else
     {
-        [ToastUtil showToast:@"预约失败！"];
+        isSuccess1 = NO;
+       // [ToastUtil showToast:@"预约失败！"];
     }
-    if (requestTool == self.orderRequest) {
-        if (self.block) {
-            self.block(dict);
-        }
+    
+    if ([_delegate respondsToSelector:@selector(OrderToolDidmake)]) {
+        [_delegate OrderToolDidmake:isSuccess1 withDict:dict];
     }
 }
 @end

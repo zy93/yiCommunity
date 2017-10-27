@@ -10,6 +10,9 @@
 #import "GCDAsyncSocket.h"
 #import "GCDAsyncUdpSocket.h"
 #import "ServiceReturnInformation.h"
+#import "MBProgressHUDUtil.h"
+#import "MBProgressHUD+Extension.h"
+#import "MyViewController.h"
 
 @interface SendWIFIInfoViewController ()<GCDAsyncSocketDelegate,GCDAsyncUdpSocketDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *wifiNameTextField;
@@ -37,6 +40,7 @@
 }
 
 - (IBAction)sendWifiInfo:(id)sender {
+    [self.view endEditing:YES];
     [self connectedSocket];//连接服务器
     
 }
@@ -66,7 +70,26 @@
     uint16_t port = [sock connectedPort];
     NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"接收到服务器返回的数据 tcp [%@:%d] %@", ip, port, s);
-      [self.socket readDataWithTimeout:-1 tag:0];//读取服务器的数据
+    if ([s isEqualToString:@"0"]) {
+        [MBProgressHUDUtil showLoadingWithMessage:@"设备添加成功" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+            [MBProgressHUD hide:YES afterDelay:3 complete:^{
+                UIViewController *target = nil;
+                for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
+                    if ([controller isKindOfClass:[MyViewController class]]) { //这里判断是否为你想要跳转的页面
+                        target = controller;
+                    }
+                }
+                if (target) {
+                    [self.navigationController popToViewController:target animated:YES]; //跳转
+                }
+            }];
+        }];
+    }else
+    {
+        [MBProgressHUDUtil showMessage:@"设备添加失败" toView:self.view];
+    }
+    
+    [self.socket readDataWithTimeout:-1 tag:0];//读取服务器的数据
 }
 
 #pragma mark - 连接成功回调方法

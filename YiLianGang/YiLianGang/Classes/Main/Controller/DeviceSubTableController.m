@@ -232,7 +232,6 @@
         NSNotification *notification = [NSNotification notificationWithName:@"JumpNotification" object:nil userInfo:dict];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
        // NSLog(@"测试父视图：%@",self.superView);
-        
 //        UIViewController *target = nil;
 //        for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
 //            if ([controller isKindOfClass:[DeviceController class]]) { //这里判断是否为你想要跳转的页面

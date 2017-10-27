@@ -68,7 +68,7 @@
     if ([[UIDevice currentDevice] systemVersion].floatValue>=7.0) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    imageArr = @[[UIImage imageNamed:@"banner1"],[UIImage imageNamed:@"banner1"]];
+    imageArr = @[[UIImage imageNamed:@"banner"],[UIImage imageNamed:@"banner1"]];
     [self loadAutoScrollView];
 
 }
@@ -240,6 +240,7 @@
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        self.groupArray = [[DeviceTool sharedDeviceTool] getDeviceSegmentTitles];
 //    });
+    
     [[DeviceTool sharedDeviceTool] sendRequestToGetAllGroupResponse:^(NSArray *arr) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.groupArray = [arr mutableCopy];
@@ -255,6 +256,9 @@
                     
                     if (arr) {
                         weakSelf.deviceArray = [arr mutableCopy];
+                    }else
+                    {
+                        weakSelf.deviceArray = nil;
                     }
                     
                 });

@@ -47,7 +47,7 @@
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginJPushSuccess:) name:kJPFNetworkDidLoginNotification object:nil];
-    [JPUSHService setupWithOption:launchOptions appKey:@"e1f11aceccc46127d8ad1676" channel:@"APP Store" apsForProduction:NO ];
+    [JPUSHService setupWithOption:launchOptions appKey:@"75e36ba58c40013577df92f4" channel:@"APP Store" apsForProduction:NO ];
     
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -131,7 +131,6 @@
          self.welcomeController = nil;
      }];
     //    [self addCoverViewAnimation];
-    
 }
 -(void)loginToolDidLogin:(BOOL)isSuccess withDict:(NSDictionary*)dict{
     if (isSuccess) {
