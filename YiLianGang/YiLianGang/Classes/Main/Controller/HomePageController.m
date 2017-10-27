@@ -262,7 +262,7 @@
             
         });
     }];
-    NSLog(@"groupId:%@",self.groupId);
+   // NSLog(@"groupId:%@",self.groupId);
     //获取groupId -- end
     //self.groupId = @344;
     

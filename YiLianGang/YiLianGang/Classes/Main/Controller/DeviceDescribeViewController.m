@@ -27,8 +27,10 @@
 {
     [super viewWillAppear:animated];
     // self.imageScrollView.contentSize = CGSizeMake(self.view.frame.size.width,CGRectGetMaxY(self.bottomImageView.frame)+50);
-    self.imageScrollView.contentSize = CGSizeMake(self.view.frame.size.width,1000);
+    //self.imageScrollView.contentSize = CGSizeMake(self.view.frame.size.width,self.topImageView.height+self.bottomImageView.height);
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tabBarController.tabBar setHidden:YES];
+    
 }
 
 - (IBAction)ordersButton:(id)sender {

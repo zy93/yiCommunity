@@ -17,7 +17,7 @@
 #import "MyViewController.h"
 
 #import "StyleTool.h"
-#import "WeatherTool.h"
+//#import "WeatherTool.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -45,7 +45,7 @@ static TabBarSetTool *tabBarSetTool;
     if (self.btc) {
         return self.btc;
     }
-    [[WeatherTool sharedWeatherTool]sendWeatherRequest];
+    //[[WeatherTool sharedWeatherTool]sendWeatherRequest];
     
     WN_YL_BaseTabControllerInfo *info = [[WN_YL_BaseTabControllerInfo alloc]init];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HomePageController" bundle:nil];

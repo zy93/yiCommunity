@@ -194,7 +194,7 @@
 
     }
     else {
-        [mIndividualBnt setBackgroundColor:HEXCOLOR(0xffffff)];
+        [mIndividualBnt setBackgroundColor:HEXCOLOR(0xffffff)];//#0c7ee2
         //[mCommonBnt setBackgroundColor:HEXCOLOR(0x47d2ae)];
         [mCommonBnt setBackgroundColor:[UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1]];
         mIndividualBnt.selected = NO;

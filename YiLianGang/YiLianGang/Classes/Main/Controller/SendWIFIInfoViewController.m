@@ -79,6 +79,7 @@
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err;
 {
     NSLog(@"连接失败!");
+    [self connected];
 }
 
 //发送数据
@@ -109,7 +110,7 @@
         jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];
         data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"发送出去的数据json：%@",self.sendDictionary);
+        NSLog(@"发送出去的数据json：%@",jsonStr);
         //编译数据
         NSData *buildData = [self buildDate:data];
         NSLog(@"发送数据：%@",buildData);
@@ -155,7 +156,7 @@
     charsLen +=2;
  
 
-    NSData *result = [NSData dataWithBytes:&chars length:charsLen];
+    NSData *result = [NSData dataWithBytes:&buf length:charsLen];
     
     return result;
 }
@@ -180,7 +181,7 @@
     for (int i = 0; i < length; i++) {
         sum ^= chars[i];
     }
-    sum &= 0x000000ff;
+   // sum &= 0x000000ff;
     return  sum;
 }
 
@@ -188,46 +189,41 @@
 
 -(NSData *)build1Date:(NSData *)data
 {
-    Byte sendByte[1024];
-    int byteLength = 0;
-    Byte *dataByte = (Byte *)[data bytes];
-    //帧长度
-    unsigned int dataLen = (int)data.length+2;
-    Byte abyte[4];
-    abyte[0] = ((dataLen>> 24) &0xff);
-    abyte[1] = ((dataLen>> 16) &0xff);
-    abyte[2] = ((dataLen>> 8) &0xff);
-    abyte[3] = (0xff & dataLen);
+    char buf[2048];
+    memset((char *)buf, 0, sizeof(buf));
+    char *chars = buf;
+    int  charsLen = 0;
+    char *dataChar = (char *)[data bytes];
+    
+    //有效数据的长度
+    unsigned int dataLen = (int)data.length+2 ;
+    //int转换char*
+    char *byte = [self intToByte:4 num:dataLen];
+    //补充帧长度
     for (int i = 0; i<4; i++) {
-        sendByte[i] = abyte[i];
+        *(unsigned char *)chars = byte[i];//报错
+        chars +=1;
     }
-    byteLength +=4;
+    charsLen +=4;
     
-    //有效数据
-    for (int i = 4; i<data.length; i++) {
-        sendByte[i] = dataByte[i-4];
+    //补充有效数据
+    for (int i = 0; i<data.length; i++) {
+        *(unsigned char *)chars = *dataChar++;
+        chars +=1;
     }
-    byteLength +=data.length;
+    charsLen +=data.length;
     
-    //校验和
-    unsigned short sum = 0;
-    for (int i = 0; i < byteLength; i++) {
-        sum ^= sendByte[i];
-    }
-    sum &= 0x000000ff;
-    
-    Byte sumbyte[2];
-    sumbyte[0] = ((dataLen>> 8) &0xff);
-    sumbyte[1] = (dataLen &0xff);
+    //计算校验和
+    unsigned short sum = [self checkNum:buf len:charsLen];
+    char *byte2 = [self intToByte:2 num:sum];
     
     for (int i = 0; i<2; i++) {
-        sendByte[i+byteLength] = sumbyte[i];
-        
+        *(unsigned char *)chars = byte2[i];
+        chars +=1;
     }
-    byteLength +=2;
+    charsLen +=2;
     
-    
-    NSData *adata = [NSData dataWithBytes:sendByte length:byteLength];
+    NSData *adata = [NSData dataWithBytes:&buf length:charsLen];
     return adata;
 }
 //-(Byte )byteFromInt:(int)len num:(int)num
