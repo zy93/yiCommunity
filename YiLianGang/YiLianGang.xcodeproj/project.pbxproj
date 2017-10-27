@@ -498,6 +498,8 @@
 		C7BA19AF1F909C1E0008AF4A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19AE1F909C1E0008AF4A /* AboutViewController.m */; };
 		C7BA19B11F909CE40008AF4A /* companyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BA19B01F909CE40008AF4A /* companyLogo.png */; };
 		C7BA19B41F90B8C80008AF4A /* PayBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */; };
+		C7DC7DA11FA32F880055813A /* MBProgressHUD+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC7D9F1FA32F870055813A /* MBProgressHUD+Extension.m */; };
+		C7DC7DA41FA337700055813A /* MBProgressHUDUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC7DA31FA3376F0055813A /* MBProgressHUDUtil.m */; };
 		C7F908531F99A0260044F56E /* ServiceReturnInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F908521F99A0260044F56E /* ServiceReturnInformation.m */; };
 		C7F908561F99A84E0044F56E /* PromptMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F908551F99A84E0044F56E /* PromptMessageViewController.m */; };
 		C7F908591F99BBD30044F56E /* SendWIFIInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F908581F99BBD30044F56E /* SendWIFIInfoViewController.m */; };
@@ -1250,6 +1252,10 @@
 		C7BA19B01F909CE40008AF4A /* companyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = companyLogo.png; sourceTree = "<group>"; };
 		C7BA19B21F90B8C80008AF4A /* PayBillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayBillViewController.h; sourceTree = "<group>"; };
 		C7BA19B31F90B8C80008AF4A /* PayBillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayBillViewController.m; sourceTree = "<group>"; };
+		C7DC7D9F1FA32F870055813A /* MBProgressHUD+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extension.m"; sourceTree = "<group>"; };
+		C7DC7DA01FA32F880055813A /* MBProgressHUD+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extension.h"; sourceTree = "<group>"; };
+		C7DC7DA21FA3376F0055813A /* MBProgressHUDUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDUtil.h; sourceTree = "<group>"; };
+		C7DC7DA31FA3376F0055813A /* MBProgressHUDUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDUtil.m; sourceTree = "<group>"; };
 		C7F908511F99A0260044F56E /* ServiceReturnInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceReturnInformation.h; sourceTree = "<group>"; };
 		C7F908521F99A0260044F56E /* ServiceReturnInformation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceReturnInformation.m; sourceTree = "<group>"; };
 		C7F908541F99A84E0044F56E /* PromptMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromptMessageViewController.h; sourceTree = "<group>"; };
@@ -1959,6 +1965,10 @@
 				2A915F6C1E7B91AD00060DE7 /* YYUtil.m */,
 				2A628ACC1E8FA7C500A49D12 /* UIDevice+Resolutions.h */,
 				2A628ACD1E8FA7C500A49D12 /* UIDevice+Resolutions.m */,
+				C7DC7DA01FA32F880055813A /* MBProgressHUD+Extension.h */,
+				C7DC7D9F1FA32F870055813A /* MBProgressHUD+Extension.m */,
+				C7DC7DA21FA3376F0055813A /* MBProgressHUDUtil.h */,
+				C7DC7DA31FA3376F0055813A /* MBProgressHUDUtil.m */,
 				2A9E4BE51E792D2A00387662 /* JPush */,
 				2DF8C2CC1E66BE0F00DC5A6D /* Company3rdSDK */,
 				2D7B29171E5EABE500271734 /* KxMenu */,
@@ -3095,6 +3105,7 @@
 				2D5618F91D8E6E17002D1D82 /* SystemFunctions.m in Sources */,
 				2D636C4B1DB462830081EF37 /* DeviceOKAListCell.m in Sources */,
 				2A1CEA1E1E812E95008D33DC /* MLSelectPhotoPickerDatas.m in Sources */,
+				C7DC7DA41FA337700055813A /* MBProgressHUDUtil.m in Sources */,
 				2D6CB2141DACCDD4009FBE29 /* DASCameraController.m in Sources */,
 				2D696C041DAB256F0024B0ED /* DeviceSceneInfo.m in Sources */,
 				2DBB90B21D619587008BAED7 /* NSData+ImageContentType.m in Sources */,
@@ -3166,6 +3177,7 @@
 				2D6CB2191DACCE1B009FBE29 /* DASCarBoxController.m in Sources */,
 				2D61AF5E1DB08D29008BD775 /* UIColor+RCColor.m in Sources */,
 				2D7B291A1E5EABE500271734 /* KxMenu.m in Sources */,
+				C7DC7DA11FA32F880055813A /* MBProgressHUD+Extension.m in Sources */,
 				2D906E771D50991B000AF85C /* MJRefreshBackStateFooter.m in Sources */,
 				2A915F731E7BDB3400060DE7 /* MaintenanceListViewController.m in Sources */,
 				2D261E271D5C262000C01FE1 /* TabBarSetTool.m in Sources */,

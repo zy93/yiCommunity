@@ -143,6 +143,7 @@
 /**点击登录按钮*/
 - (IBAction)clickLoginButton:(id)sender {
     [LoginTool sharedLoginTool].isManager = _isManagerLogin;
+    [self.view endEditing:YES];
     if (_isManagerLogin == NO) {
         [ToastUtil showLoadingToast:@"登陆中"];
         [LoginTool sharedLoginTool].userName = self.userField.text;
