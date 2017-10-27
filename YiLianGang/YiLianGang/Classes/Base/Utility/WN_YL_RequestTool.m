@@ -44,7 +44,8 @@
         __strong typeof (safe)strongSelf = safe;
         if (error == nil) {
             
-            NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSLog(@"接收原始数据：%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments | NSJSONReadingMutableContainers |NSJSONReadingMutableLeaves error:nil];
             NSLog(@"delegate %@",self.delegate);
             if ([dict[@"error_code"] intValue] == 0) {
                 [strongSelf.delegate requestTool:self isSuccess:YES dict:dict];
