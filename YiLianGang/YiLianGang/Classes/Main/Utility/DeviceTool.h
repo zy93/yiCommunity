@@ -15,6 +15,9 @@ typedef void (^AddDeviceBlock)(NSDictionary *dict);
 typedef void (^DeviceGroupBlock)(NSArray *arr);
 typedef void (^DeleteDeviceBlock)(NSDictionary *dict);
 typedef void (^PermissionDeviceBlock)(NSDictionary *dict);
+typedef void (^GetThingNameBlock)(NSDictionary *dict);
+typedef void (^RegisterThingNameBlock)(NSDictionary *dict);
+
 
 @protocol DeviceToolDelegate<NSObject>
 @optional
@@ -48,4 +51,10 @@ typedef void (^PermissionDeviceBlock)(NSDictionary *dict);
 -(void)sendPermissionWithThingId:(NSString *)thingId userTel:(NSString *)tel state:(BOOL)isPermission response:(PermissionDeviceBlock)block;
 
 -(NSString *)imageAddExStr:(NSString *)imageStr;
+
+//获取用户物体域名
+-(void)getThingNameWithUserTel:(NSString *)userTel response:(GetThingNameBlock)block;
+
+//注册用户物体域名
+-(void)registerThingNameWithUserTel:(NSString *)userTel userId:(NSString *)userId response:(RegisterThingNameBlock)block;
 @end

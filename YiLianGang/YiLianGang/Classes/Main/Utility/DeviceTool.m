@@ -21,12 +21,16 @@ static DeviceTool *deviceTool;
 @property(nonatomic,strong) WN_YL_RequestTool *addDeviceRequest;
 @property(nonatomic,strong) WN_YL_RequestTool *deleteDeviceRequest;
 @property(nonatomic,strong) WN_YL_RequestTool *permissionDeviceRequest;
-
+@property(nonatomic,strong) WN_YL_RequestTool *getThingNameRequest;
+@property(nonatomic,strong) WN_YL_RequestTool *registerThingNameRequest;
 
 @property(nonatomic,copy) AddDeviceBlock addDeviceBlock;
 @property(nonatomic,copy) DeleteDeviceBlock deleteDeviceBlock;
 @property(nonatomic,copy) DeviceGroupBlock groupBlock;
 @property(nonatomic,copy) PermissionDeviceBlock permissionBlock;
+@property(nonatomic,copy) GetThingNameBlock getThingNameBlock;
+@property(nonatomic,copy) RegisterThingNameBlock registerThingNameBlock;
+
 @end
 @implementation DeviceTool
 +(instancetype)sharedDeviceTool{
@@ -74,6 +78,18 @@ static DeviceTool *deviceTool;
     else if (requestTool == self.permissionDeviceRequest) {
         if (self.permissionBlock) {
             self.permissionBlock(dict);
+        }
+    }
+    else if (requestTool == self.getThingNameRequest) {
+        NSLog(@"%@",dict);
+        if (self.getThingNameBlock) {
+            self.getThingNameBlock(dict);
+        }
+    }
+    else if (requestTool == self.registerThingNameRequest) {
+        NSLog(@"%@",dict);
+        if (self.registerThingNameBlock) {
+            self.registerThingNameBlock(dict);
         }
     }
     
@@ -207,6 +223,29 @@ static DeviceTool *deviceTool;
     [self.permissionDeviceRequest sendPostRequestWithExStr:@"Service_Platform/thing/thingPermission.do" andParam:@{@"userId":[LoginTool sharedLoginTool].userID, @"state":@(state), @"permissionUser":tel, @"thingId":thingId}];
     self.permissionDeviceRequest.delegate = self;
 }
+
+
+-(void)getThingNameWithUserTel:(NSString *)userTel response:(GetThingNameBlock)block
+{
+    self.getThingNameBlock = block;
+    self.getThingNameRequest = [WN_YL_RequestTool new];
+    [self.getThingNameRequest sendGetRequestWithExStr:@"Service_Platform/user/thing_name/getThingName.do" andParam:@{@"userTel":userTel}];
+    self.getThingNameRequest.delegate = self;
+}
+
+
+-(void)registerThingNameWithUserTel:(NSString *)userTel userId:(NSString *)userId response:(RegisterThingNameBlock)block
+{
+    self.registerThingNameBlock = block;
+    self.registerThingNameRequest = [WN_YL_RequestTool new];
+    NSDictionary *dic = @{@"userTel":userTel,@"userId":userId,@"thingDomainName":userTel};
+    dic = @{@"nameValuePairs":dic};
+    [self.registerThingNameRequest sendPostJsonRequestWithExStr:@"Service_Platform/user/thing_name/register.do" andParam:dic];
+    self.registerThingNameRequest.delegate = self;
+}
+
+
+
 
 -(void)clearGroupAndDeviceInfo{
     //清除分组和设备信息

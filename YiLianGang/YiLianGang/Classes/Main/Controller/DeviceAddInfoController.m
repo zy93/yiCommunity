@@ -112,6 +112,14 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self getUserThingName];
+}
+
+
 -(void)clickTopLeftButton:(UIButton*)button{
 //    if (self.navigationController) {
 //        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -317,6 +325,41 @@
 -(BOOL)disablesAutomaticKeyboardDismissal{
     return NO;
 }
+
+
+#pragma mark - 添加用户物体域名
+-(void)getUserThingName
+{
+    [[DeviceTool sharedDeviceTool] getThingNameWithUserTel:[LoginTool sharedLoginTool].userTel response:^(NSDictionary *dict) {
+        NSString *erro = dict[@"error_code"];
+        if ([erro isEqualToString:@"1"]) {
+            //未注册物体域名
+            [self registerUserThingName];
+        }
+        else if ([erro isEqualToString:@"0"]) {
+            //已注册物体域名，不操作
+        }
+        else {
+            [MBProgressHUD showError:dict[@"error_msg"]];
+        }
+    }];
+}
+
+-(void)registerUserThingName
+{
+    [[DeviceTool sharedDeviceTool] registerThingNameWithUserTel:[LoginTool sharedLoginTool].userTel userId:[LoginTool sharedLoginTool].userID response:^(NSDictionary *dict) {
+        NSString *erro = dict[@"error_code"];
+        if ([erro isEqualToString:@"0"]) {
+            NSLog(@"用户注册物体域名成功");
+        }
+        else {
+            [MBProgressHUD showError:dict[@"error_msg"]];
+        }
+    }];
+}
+
+
+
 #pragma mark UITextViewDelegate
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
