@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="gku-IV-gyo" customClass="PayContentCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gku-IV-gyo" id="V08-ms-Aa1">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4g-bh-F9s">
+                        <rect key="frame" x="55" y="22" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZS-jZ-Kef">
+                        <rect key="frame" x="318" y="15" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mq1-cH-Qe9">
+                        <rect key="frame" x="318" y="35" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.99351602790000004" green="0.85288792849999995" blue="0.58729624749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-aC-hRY">
+                        <rect key="frame" x="20" y="17.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="kMg-CC-NRR"/>
+                            <constraint firstAttribute="height" constant="30" id="ogd-Pk-B2c"/>
+                        </constraints>
+                        <state key="normal" image="noSelected"/>
+                        <state key="selected" image="Selected"/>
+                        <connections>
+                            <action selector="clickSelected:" destination="gku-IV-gyo" eventType="touchUpInside" id="qvy-W8-5Zy"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="i4g-bh-F9s" firstAttribute="centerY" secondItem="V08-ms-Aa1" secondAttribute="centerY" id="BSD-XO-a7q"/>
+                    <constraint firstAttribute="trailing" secondItem="dZS-jZ-Kef" secondAttribute="trailing" constant="15" id="Hob-Ai-ZRh"/>
+                    <constraint firstItem="dZS-jZ-Kef" firstAttribute="top" secondItem="V08-ms-Aa1" secondAttribute="top" constant="15" id="MCy-xi-SsE"/>
+                    <constraint firstItem="Q6m-aC-hRY" firstAttribute="leading" secondItem="V08-ms-Aa1" secondAttribute="leading" constant="20" id="PW3-zt-MdN"/>
+                    <constraint firstAttribute="bottom" secondItem="Mq1-cH-Qe9" secondAttribute="bottom" constant="8" id="Qb2-dC-nO7"/>
+                    <constraint firstItem="i4g-bh-F9s" firstAttribute="leading" secondItem="Q6m-aC-hRY" secondAttribute="trailing" constant="5" id="ch3-qh-abA"/>
+                    <constraint firstItem="Q6m-aC-hRY" firstAttribute="centerY" secondItem="V08-ms-Aa1" secondAttribute="centerY" id="fQw-hV-icX"/>
+                    <constraint firstAttribute="trailing" secondItem="Mq1-cH-Qe9" secondAttribute="trailing" constant="15" id="zEF-93-TXG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="price" destination="dZS-jZ-Kef" id="wY9-n0-dpf"/>
+                <outlet property="selectedBuuton" destination="Q6m-aC-hRY" id="ZoD-4m-zyL"/>
+                <outlet property="state" destination="Mq1-cH-Qe9" id="QRJ-bl-O1l"/>
+                <outlet property="title" destination="i4g-bh-F9s" id="nt9-91-P62"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Selected" width="20" height="20"/>
+        <image name="noSelected" width="20" height="20"/>
+    </resources>
+</document>
