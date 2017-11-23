@@ -45,7 +45,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
 
 @property (nonatomic, weak) UICollectionView *mainView; // 显示图片的collectionView
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, strong) NSArray *imagePathsGroup;
+@property (nonatomic, strong) NSMutableArray *imagePathsGroup;
 @property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, assign) NSInteger totalItemsCount;
 @property (nonatomic, weak) UIControl *pageControl;
@@ -92,7 +92,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     _currentPageDotColor = [UIColor whiteColor];
     _pageDotColor = [UIColor lightGrayColor];
     _bannerImageViewContentMode = UIViewContentModeScaleToFill;
-    
+    _imagePathsGroup = [NSMutableArray new];
     self.backgroundColor = [UIColor lightGrayColor];
     
 }
@@ -292,7 +292,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     [self setupPageControl];
 }
 
-- (void)setImagePathsGroup:(NSArray *)imagePathsGroup
+- (void)setImagePathsGroup:(NSMutableArray *)imagePathsGroup
 {
     [self invalidateTimer];
     
@@ -329,14 +329,48 @@ NSString * const ID = @"SDCycleScrollViewCell";
             [temp addObject:urlString];
         }
     }];
+
     self.imagePathsGroup = [temp copy];
+    NSLog(@"打印：%@",self.imagePathsGroup);
 }
 
 - (void)setLocalizationImageNamesGroup:(NSArray *)localizationImageNamesGroup
 {
     _localizationImageNamesGroup = localizationImageNamesGroup;
     self.imagePathsGroup = [localizationImageNamesGroup copy];
+    NSLog(@"打印：%@",self.imagePathsGroup);
 }
+
+-(void)setLocAndURL:(NSArray *)locaArr urlArr:(NSArray *)urlArr
+{
+    if (urlArr.count == 0) {
+        [self setLocalizationImageNamesGroup:locaArr];
+        return;
+    }
+    
+    NSMutableArray *result = [NSMutableArray new];
+    [result addObjectsFromArray:locaArr];
+    
+    
+    NSMutableArray *temp = [NSMutableArray new];
+    [urlArr enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * stop) {
+        NSString *urlString;
+        if ([obj isKindOfClass:[NSString class]]) {
+            urlString = obj;
+        } else if ([obj isKindOfClass:[NSURL class]]) {
+            NSURL *url = (NSURL *)obj;
+            urlString = [url absoluteString];
+        }
+        if (urlString) {
+            [temp addObject:urlString];
+        }
+    }];
+    [result addObjectsFromArray:temp];
+    
+    self.imagePathsGroup = [result copy];
+    //NSLog(@"%@",self.imagePathsGroup);
+}
+
 
 - (void)setTitlesGroup:(NSArray *)titlesGroup
 {

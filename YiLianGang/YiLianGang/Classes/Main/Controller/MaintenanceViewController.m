@@ -24,6 +24,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"报事报修";
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(SkipNotificationAction:)
+                                                 name:@"skipNotification"
+                                               object:nil];
     self.view.backgroundColor = [UIColor whiteColor];
     mMaintenanceView = [[MaintenanceView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, CGRectGetHeight(self.view.frame))];
     [self.view addSubview:mMaintenanceView];
@@ -67,6 +71,17 @@
     if (weakVc != nil) {
         [weakVc presentViewController:self animated:YES completion:nil];
     }
+}
+
+-(void)SkipNotificationAction:(NSNotification *)notification
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"skipNotification" object:nil];
+
 }
 
 

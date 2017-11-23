@@ -18,7 +18,7 @@
 #import "UIImage+ImageColorChange.h"
 
 
-@interface LoginTableController ()
+@interface LoginTableController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableViewCell *logoCell;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *noAcountLabel;
@@ -52,6 +52,8 @@
     [self doPretteyView];
     [self addTapEndEdit];
     self.tableView.scrollEnabled = NO;
+    self.userField.delegate  = self;
+    self.pwdField.delegate = self;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -142,10 +144,20 @@
 
 /**点击登录按钮*/
 - (IBAction)clickLoginButton:(id)sender {
+    if (self.userField.text.length==0&&self.pwdField.text.length==0){
+        [MBProgressHUD showError:@"用户名和密码未填写"];
+        return ;
+    }else if (self.userField.text.length==0){
+        [MBProgressHUD showError:@"用户名未填写"];
+        return ;
+    }else if (self.pwdField.text.length==0) {
+        [MBProgressHUD showError:@"密码未填写"];
+        return ;
+    }
     [LoginTool sharedLoginTool].isManager = _isManagerLogin;
     [self.view endEditing:YES];
     if (_isManagerLogin == NO) {
-        [ToastUtil showLoadingToast:@"登陆中"];
+        [ToastUtil showLoadingToast:@"登录中"];
         [LoginTool sharedLoginTool].userName = self.userField.text;
         [LoginTool sharedLoginTool].password = self.pwdField.text;
         [[LoginTool sharedLoginTool] sendLoginRequestWithResponse:^(NSDictionary *dict) {
@@ -196,7 +208,7 @@
                 }
                 else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showError:@"用户名或密码不正确"];
+                        //[MBProgressHUD showError:@"用户名或密码不正确"];
                     });
                 }
                 
@@ -222,7 +234,9 @@
 
 -(void)loginDidSuccess{
 //    [UIApplication sharedApplication].keyWindow.rootViewController = [[TabBarSetTool sharedTabBarSetTool]getTabBarController];
-    
+    NSNotification *notification = [NSNotification notificationWithName:kJPFNetworkDidLoginNotification object:nil userInfo:nil];
+
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
     UIViewController *vc = [[TabBarSetTool sharedTabBarSetTool]getTabBarController];
     
     [UIView transitionFromView:[UIApplication sharedApplication].keyWindow.rootViewController.view
@@ -285,6 +299,12 @@
 
     
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
 }
 
 

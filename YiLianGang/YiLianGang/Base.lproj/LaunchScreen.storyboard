@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,42 +14,23 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="aNa-B1-uoe"/>
+                        <viewControllerLayoutGuide type="bottom" id="vgn-4J-mIc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="qld-je-7DE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kaijitu1.png" translatesAutoresizingMaskIntoConstraints="NO" id="GTP-FT-Hls">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openimage" translatesAutoresizingMaskIntoConstraints="NO" id="FHd-ye-ROd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="社区生活            " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOI-sR-RbX">
-                                <rect key="frame" x="125.5" y="546" width="122.5" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Ssg-cB-7JV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="           可以如此简单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoT-7E-1ug">
-                                <rect key="frame" x="111.5" y="586" width="152.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HoT-7E-1ug" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3Xy-ui-oIK"/>
-                            <constraint firstAttribute="trailing" secondItem="GTP-FT-Hls" secondAttribute="trailing" id="88N-5d-e4u"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OOI-sR-RbX" secondAttribute="bottom" constant="100" id="9XD-hR-uVk"/>
-                            <constraint firstItem="OOI-sR-RbX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9xu-hh-b06"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HoT-7E-1ug" secondAttribute="bottom" constant="60" id="kcc-LE-Xwc"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GTP-FT-Hls" secondAttribute="bottom" id="m8w-Rz-sPJ"/>
-                            <constraint firstItem="GTP-FT-Hls" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="pmO-lK-TVe"/>
-                            <constraint firstItem="GTP-FT-Hls" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ppn-Df-tcM"/>
+                            <constraint firstItem="FHd-ye-ROd" firstAttribute="leading" secondItem="qld-je-7DE" secondAttribute="leading" id="SUw-gl-vdo"/>
+                            <constraint firstItem="vgn-4J-mIc" firstAttribute="top" secondItem="FHd-ye-ROd" secondAttribute="bottom" id="bQ9-zD-fOB"/>
+                            <constraint firstAttribute="trailing" secondItem="FHd-ye-ROd" secondAttribute="trailing" id="gVF-6U-8fg"/>
+                            <constraint firstItem="FHd-ye-ROd" firstAttribute="top" secondItem="qld-je-7DE" secondAttribute="top" id="x1o-De-xkC"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -60,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="kaijitu1.png" width="750" height="1334"/>
+        <image name="openimage" width="375" height="667"/>
     </resources>
 </document>

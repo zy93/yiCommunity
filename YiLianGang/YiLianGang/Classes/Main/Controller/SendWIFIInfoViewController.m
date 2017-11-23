@@ -41,7 +41,15 @@
 
 - (IBAction)sendWifiInfo:(id)sender {
     [self.view endEditing:YES];
-    [self connectedSocket];//连接服务器
+    BOOL isWifiName = [self.wifiNameTextField.text isEqualToString:@""];
+    BOOL isWifiPassWord = [self.wifiPassWordTextField.text isEqualToString:@""];
+    if (isWifiName || isWifiPassWord) {
+        [MBProgressHUDUtil showMessage:@"请填写完整信息后，再发送！" toView:self.view];
+    }
+    else
+    {
+        [self connectedSocket];//连接服务器
+    }
     
 }
 
@@ -69,25 +77,23 @@
     NSString *ip = [sock connectedHost];
     uint16_t port = [sock connectedPort];
     NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments error:nil];
+    NSLog(@"返回数据:%@",dic);
     NSLog(@"接收到服务器返回的数据 tcp [%@:%d] %@", ip, port, s);
-    if ([s isEqualToString:@"0"]) {
-        [MBProgressHUDUtil showLoadingWithMessage:@"设备添加成功" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
-            [MBProgressHUD hide:YES afterDelay:3 complete:^{
-                UIViewController *target = nil;
-                for (UIViewController * controller in self.navigationController.viewControllers) { //遍历
-                    if ([controller isKindOfClass:[MyViewController class]]) { //这里判断是否为你想要跳转的页面
-                        target = controller;
-                    }
-                }
-                if (target) {
-                    [self.navigationController popToViewController:target animated:YES]; //跳转
-                }
+    NSString *code = dic[@"error_code"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (code.integerValue == 0) {
+            [MBProgressHUDUtil showLoadingWithMessage:@"发送成功" toView:self.view whileExcusingBlock:^(MBProgressHUD *hud) {
+                [hud hide:YES afterDelay:1.f complete:^{
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }];
             }];
-        }];
-    }else
-    {
-        [MBProgressHUDUtil showMessage:@"设备添加失败" toView:self.view];
-    }
+        }else
+        {
+            [MBProgressHUDUtil showMessage:@"发送失败" toView:self.view];
+        }
+    });
+    
     
     [self.socket readDataWithTimeout:-1 tag:0];//读取服务器的数据
 }

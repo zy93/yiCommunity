@@ -102,8 +102,8 @@ typedef enum {
 /** 本地图片数组 */
 @property (nonatomic, strong) NSArray *localizationImageNamesGroup;
 
-
-
+//张雨加的代码
+-(void)setLocAndURL:(NSArray *)locaArr urlArr:(NSArray*)urlArr;
 
 
 //////////////////////  滚动控制API //////////////////////

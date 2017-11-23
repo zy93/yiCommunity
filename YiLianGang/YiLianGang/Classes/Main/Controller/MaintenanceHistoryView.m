@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "MaintenanceContentView.h"
 
+
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 @interface HistoryCell()
@@ -80,9 +81,6 @@
 @end
 
 
-
-
-
 @interface MaintenanceHistoryView ()<UITableViewDelegate, UITableViewDataSource>
 {
     UITableView *mTable;
@@ -128,6 +126,7 @@
     mTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-64) style:UITableViewStylePlain];
     mTable.dataSource = self;
     mTable.delegate = self;
+    [mTable setTableFooterView:[UIView new]];
     mTable.backgroundColor = HEXCOLOR(0xefefef);
     [self addSubview:mTable];
 }

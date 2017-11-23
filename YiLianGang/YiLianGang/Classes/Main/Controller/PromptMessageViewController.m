@@ -22,13 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeNetwork) name:@"wifiNotification" object:nil];
+
     
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeNetwork) name:@"wifiNotification" object:nil];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,11 +47,6 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-   
-}
 
 #pragma mark - 获取当前网络名称
 -(void)getwifiNameFromsystem
@@ -60,6 +56,10 @@
     for (NSString *ifnam in ifs) {
         info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
         self.wifiName = info[@"SSID"];
+        if ([self.wifiName isEqualToString:@"USR-C215"]) {
+            SendWIFIInfoViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SendWIFIInfoViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
 //        NSString *str2 = info[@"BSSID"];
 //        NSString *str3 = [[ NSString alloc] initWithData:info[@"SSIDDATA"] encoding:NSUTF8StringEncoding];
         
@@ -70,10 +70,6 @@
 -(void)judgeNetwork
 {
     [self getwifiNameFromsystem];
-    //if ([self.wifiName isEqualToString:@"USR-C215"]) {
-        SendWIFIInfoViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SendWIFIInfoViewController"];
-        [self.navigationController pushViewController:vc animated:YES];
-   // }
 }
 
 -(void)dealloc

@@ -15,6 +15,7 @@ static LoginTool *loginTool;
 @property(nonatomic,copy) LoginFinishBlock block;
 @end
 @implementation LoginTool
+
 +(instancetype)sharedLoginTool{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -22,16 +23,21 @@ static LoginTool *loginTool;
     });
     return loginTool;
 }
+
 -(void)sendLoginRequest{
     self.loginRequest = [WN_YL_RequestTool new];
     self.loginRequest.delegate = self;
     [self.loginRequest sendPostRequestWithExStr:@"Service_Platform/user/login.do" andParam:@{@"tel":self.userName,@"password":self.password}];
     //[self.loginRequest sendPostRequestWithExStr:@"KP/user/user_validationUser" andParam:@{@"tel":self.userName,@"password":self.password}];
+
 }
+
+
 -(void)sendLoginRequestWithResponse:(LoginFinishBlock)block{
     self.block = block;
     [self sendLoginRequest];
 }
+
 
 -(void)sendManagerLoginRequestWithUserName:(NSString *)userN pass:(NSString *)pass Response:(LoginFinishBlock)block
 {
@@ -50,8 +56,10 @@ static LoginTool *loginTool;
         if (self.block) {
             self.block(dict);
         }
+    
     }
 }
+
 -(void)setUserIDWithOriginDict:(NSDictionary *)dict{
     NSDictionary *userIdDict;
     if([(dict[@"data"]) isKindOfClass:[NSDictionary class]]){

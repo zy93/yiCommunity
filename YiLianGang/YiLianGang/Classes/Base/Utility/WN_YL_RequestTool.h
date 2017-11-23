@@ -4,10 +4,11 @@
 //
 //  Created by Way_Lone on 16/8/2.
 //  Copyright © 2016年 Way_Lone. All rights reserved.
-//
+
 //#define HTTP_HOST @"http://123.56.197.113:8080/"
 #define HTTP_HOST @"http://www.e-harbour.net/"//登陆用到这个接口
 #define HTTP_Service @"http://www.yiliangang.net:8012/"
+//#define HTTP_ZL @"http://192.168.38.93:8080/"
 #define HTTP_NEW @"http://192.168.38.233:8080/"
 //#define HTTP_Service @"http://192.168.1.100:8080/"
 #define SOCKET_HOST @"moblie.e-harbour.net:8999"

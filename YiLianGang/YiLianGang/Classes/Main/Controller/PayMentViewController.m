@@ -27,9 +27,6 @@
 {
     [super viewWillAppear:animated];
     [self.tabBarController.tabBar setHidden:YES];
-//    NSURL * url = [NSURL URLWithString:[self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
-//    NSLog(@"url:%@",url);
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
     [self.web loadRequest:request];
     

@@ -14,13 +14,13 @@
 #import "WelcomeView.h"
 #import "StyleTool.h"
 #import "WeatherTool.h"
-
+#import "WXApi.h"
 #import "JPUSHService.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate ()<LoginToolDelegate, JPUSHRegisterDelegate>
+@interface AppDelegate ()<LoginToolDelegate, JPUSHRegisterDelegate,WXApiDelegate>
 @property(nonatomic,strong) UIView *coverView;
 @property(nonatomic,strong) WelcomeController *welcomeController;
 @end
@@ -31,6 +31,7 @@
     //LoginViewController *lvc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     [self judgeIsNeedHidden];
     [self comfirmIfHasLoginSaved];
+    //清楚通知小红点
     
     [[UINavigationBar appearance]setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -51,7 +52,65 @@
     
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [WXApi registerApp:@"wx6fcad0227e60327c"];
     return YES;
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+#pragma mark - 微信支付回调方法
+- (void)onResp:(BaseResp*)resp
+{
+    
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    NSString *strTitle;
+    
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    
+    if([resp isKindOfClass:[PayResp class]])
+    {
+        // 支付返回结果，实际支付结果需要去微信服务器端查询
+        strTitle = [NSString stringWithFormat:@"支付结果"];
+        
+        switch (resp.errCode) {
+            case WXSuccess:
+            {
+                strMsg = @"支付结果：成功！";
+                //                [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                
+                //NSNotification *notification = [NSNotification notificationWithName:ORDER_PAY_NOTIFICATION object:@"success"];
+                //[[NSNotificationCenter defaultCenter] postNotification:notification];
+                //NSNotification *rechargeNoti = [NSNotification notificationWithName:RECHARGE_PAY_NOTIFICATION object:@"recharge_success"];
+                //[[NSNotificationCenter defaultCenter] postNotification:rechargeNoti];
+                
+                break;
+            }
+                
+            default:
+            {
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                break;
+            }
+        }
+    }
+    
+    //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    //    [alert show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -72,9 +131,15 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     NSLog(@"进入前台了！");
-    NSNotification *notification = [NSNotification notificationWithName:@"wifiNotification" object:nil userInfo:nil];
-    //第三步：通过“通知中心”发送通知
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    //清楚小红点
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [JPUSHService resetBadge];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        NSNotification *notification = [NSNotification notificationWithName:@"wifiNotification" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    });
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -106,7 +171,10 @@
         [LoginTool sharedLoginTool].delegate = self;
         
     }else{
-        [self goToLoginView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self goToLoginView];
+        });
+        
     }
 }
 
@@ -132,6 +200,7 @@
      }];
     //    [self addCoverViewAnimation];
 }
+
 -(void)loginToolDidLogin:(BOOL)isSuccess withDict:(NSDictionary*)dict{
     if (isSuccess) {
         if([[dict[@"error_code"]stringValue] isEqualToString:@"0"]){
@@ -253,7 +322,7 @@
     if (!strIsEmpty([LoginTool sharedLoginTool].userTel)) {
         NSString *alias = [NSString stringWithFormat:@"%@%@",[LoginTool sharedLoginTool].userTel,[LoginTool sharedLoginTool].isManager == YES? @"A":@"B"];
         [JPUSHService setTags:[NSSet setWithObject:@"iOS"] alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-            NSLog(@"********set Alias:%@",alias);
+            //NSLog(@"********set Alias:%@",alias);
         }];
     }
 }

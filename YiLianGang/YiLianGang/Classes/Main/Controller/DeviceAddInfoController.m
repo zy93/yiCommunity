@@ -113,11 +113,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)clickTopLeftButton:(UIButton*)button{
-    if (self.navigationController) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }
+//    if (self.navigationController) {
+//        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - 保存信息
 -(void)saveInfo{
     [DeviceTool sharedDeviceTool].deviceSendInfo.thingName = self.deviceNameTexFld.text;
     [DeviceTool sharedDeviceTool].deviceSendInfo.groupId = [NSNumber numberWithInteger:self.groupId.integerValue] ;
@@ -290,7 +292,6 @@
             NSMutableArray *mutaArr = [NSMutableArray array];
             for (YLRegion *info in arr) {
                 [mutaArr addObject:info.countyName];
-                
             }
             UIView *view = [UIApplication sharedApplication].keyWindow;
 

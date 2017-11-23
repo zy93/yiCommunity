@@ -23,6 +23,11 @@
 #import "DeviceTool.h"
 #import "JudgmentTime.h"
 #import "DeviceDescribeViewController.h"
+#import "NoticeRequestTool.h"
+#import "NoticeDetailsViewController.h"
+#import "DoorLockDescribeViewController.h"
+#import "MBProgressHUDUtil.h"
+#import "DoorLockListViewController.h"
 
 
 @interface HomePageController () <SDCycleScrollViewDelegate,WOTShortcutViewDelegate>
@@ -33,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet WOTShortcutView *shortcutScrollView;
-@property (nonatomic, strong)PayMentViewController *h5View;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *autoScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *parkingBtn;
 
@@ -45,6 +49,8 @@
 @property (nonatomic, strong)DeviceTool *deviceT;
 @property (nonatomic, assign)BOOL isPayView;
 @property (nonatomic, strong)JudgmentTime *jumdgmentTime;
+@property (nonatomic, strong) NSMutableArray *imageUrlStrings;
+@property (nonatomic, strong) NSArray *noticeInfoArray;
 
 
 @end
@@ -54,22 +60,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self doPrettyView];
+    self.noticeInfoArray = [[NSArray alloc] init];
+    self.imageUrlStrings = [[NSMutableArray alloc] init];
+    
     self.jumdgmentTime = [[JudgmentTime alloc] init];
-    self.h5View = [[PayMentViewController alloc] init];
     self.mainController = self;
     self.shortcutScrollView.shortcutViewDelegate = self;
+    
     //self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
    // [self setNaVationBar];
    // [[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     // Do any additional setup after loading the view.
-    
     //解决布局顶部空白问题
     if ([[UIDevice currentDevice] systemVersion].floatValue>=7.0) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     imageArr = @[[UIImage imageNamed:@"banner"],[UIImage imageNamed:@"banner1"]];
-    [self loadAutoScrollView];
+   
+    [self getData];
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -109,30 +118,61 @@
 -(BOOL)prefersStatusBarHidden{
     return NO;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - action
+-(void)selfPushVCWithUrl:(NSString *)url
+{
+    PayMentViewController *h5 = [[PayMentViewController alloc] init];
+    h5.url = [NSURL URLWithString:url];
+    [self.navigationController pushViewController:h5 animated:YES];
+}
+
+
 #pragma mark - 轮播图
 -(void)loadAutoScrollView{
-    self.autoScrollView.localizationImageNamesGroup = imageArr;
+    //
+//    self.autoScrollView.localizationImageNamesGroup = imageArr;
+//    self.autoScrollView.imageURLStringsGroup = _imageUrlStrings;
+    
+    [self.autoScrollView setLocAndURL:imageArr urlArr:_imageUrlStrings];
+    
     self.autoScrollView.delegate = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    });
     self.autoScrollView.pageDotColor = [[UIColor alloc] initWithRed:13.0/255.0f green:13.0/255.0f blue:13.0/255.0f alpha:0.2];
 }
 
 //MARK:SDCycleScrollView   Delegate  点击轮播图显示详情
+#pragma mark -点击轮播图显示详情--显示公告详情
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
-    
-//    WOTH5VC *detailvc = [[UIStoryboard storyboardWithName:@"spaceMain" bundle:nil] instantiateViewControllerWithIdentifier:@"WOTworkSpaceDetailVC"];
-//    detailvc.url = _sliderUrlStrings[index];
-//    [self.navigationController pushViewController:detailvc animated:YES];
-    
+
     NSLog(@"%@+%ld",cycleScrollView.titlesGroup[index],index);
     if (index == 0) {
         DeviceDescribeViewController *detailvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DeviceDescribeViewController"];
         [self.navigationController pushViewController:detailvc animated:YES];
+    }else if(index == 1)
+    {
+        DoorLockListViewController *doorList = [[UIStoryboard storyboardWithName:@"DoorLockListViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"DoorLockListViewController"];
+        [self.navigationController pushViewController:doorList animated:YES];
+        
+    }else
+    {
+        if (self.noticeInfoArray.count == 0 || [[self.noticeInfoArray[index-2] objectForKey:@"title"]isEqualToString:@""] || [self.noticeInfoArray[index-2] objectForKey:@"title"] == NULL) {
+            [MBProgressHUDUtil showMessage:@"没有公告！" toView:self.view];
+            return;
+        }
+        NSLog(@"信息%@",self.noticeInfoArray);
+        NoticeDetailsViewController *noticeDetailsVC = [[NoticeDetailsViewController alloc] init];
+        noticeDetailsVC.titleStr = [self.noticeInfoArray[index-2] objectForKey:@"title"];
+        noticeDetailsVC.contentStr = [self.noticeInfoArray[index-2] objectForKey:@"content"];
+        noticeDetailsVC.releaseTimeStr = [self cutOutString:[self.noticeInfoArray[index-2] objectForKey:@"releaseTime"]];
+        [self.navigationController pushViewController:noticeDetailsVC animated:YES];
     }
 }
 
@@ -146,8 +186,8 @@
 
 - (IBAction)farmButton:(id)sender {
      NSString *urlString = @"https://wx.tonysfarm.com/public/index/index_shop_app.html?customerId=7e144bf108b94505a890ec3a7820db8d&applicationId=899A6191575A4E46AF62BA3D7096387E&rid=99749";
-    self.h5View.url = [NSURL URLWithString:urlString];
-    [self.navigationController pushViewController:self.h5View animated:YES];
+    [self selfPushVCWithUrl:urlString];
+   
 }
 
 #pragma mark - 报修
@@ -188,7 +228,11 @@
 
 #pragma mark - 智水小荷
 - (IBAction)capacityWater:(id)sender {
-    [ToastUtil showToast:@"敬请期待！"];
+
+    NSString *urlString = @"http://www.yiliangang.net:8012/page/ManDun/box.html";
+    //NSString *urlString = @"http://www.apple.com";
+    [self selfPushVCWithUrl:urlString];
+    //[ToastUtil showToast:@"敬请期待！"];
 }
 
 #pragma mark - 更多
@@ -215,8 +259,7 @@
 #pragma mark - 轻松到家
 - (IBAction)getHomeButton:(id)sender {
     NSString *urlString = @"https://api.uyess.com/gzh/index.php?uyes_qd_no=uyes_hz_ylg";
-    self.h5View.url = [NSURL URLWithString:urlString];
-    [self.navigationController pushViewController:self.h5View animated:YES];
+    [self selfPushVCWithUrl:urlString];
 }
 
 #pragma mark - 按摩椅
@@ -315,8 +358,7 @@
 -(void)gardenMethod
 {
     NSString *urlString = @"https://shop13299823.wxrrd.com/feature/10257418";
-    self.h5View.url = [NSURL URLWithString:urlString];
-    [self.navigationController pushViewController:self.h5View animated:YES];
+    [self selfPushVCWithUrl:urlString];
 }
 
 
@@ -334,10 +376,76 @@
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *DateTime = [formatter stringFromDate:date];
    // NSString *aDataTime =@"2017/11/02";
-    _isPayView = [self.jumdgmentTime compareDate:DateTime withDate:@"2017/11/01"];
+    _isPayView = [self.jumdgmentTime compareDate:DateTime withDate:@"2017/11/3"];
     
     
 }
+
+-(void)getData
+{
+    [self requestNoticePictureUrl:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadAutoScrollView];
+        });
+    }];
+}
+
+
+-(void)requestNoticePictureUrl:(void(^)())complete
+{
+    NSString *pictureHttp = @"http://www.yiliangang.net:8012/ylgPlatform";
+    [[NoticeRequestTool sharedNoticeTool] sendNoticeRequestWithResponse:^(NSDictionary *dict) {
+        if ([[dict objectForKey:@"code"] intValue] == 200) {
+            self.noticeInfoArray = [dict objectForKey:@"msg"];
+            if (self.noticeInfoArray != nil && ![self.noticeInfoArray isKindOfClass:[NSNull class]] && self.noticeInfoArray.count != 0) {
+                for (NSDictionary *ok in [dict objectForKey:@"msg"]) {
+                    NSLog(@"字段：%@",[ok objectForKey:@"picture"]);
+                    NSString *pictureStr = [pictureHttp stringByAppendingString:[ok objectForKey:@"picture"]];
+                    [self.imageUrlStrings addObject:pictureStr];
+                }
+                NSLog(@"图片array：%@",self.imageUrlStrings);
+            }
+            
+            complete();
+        }else
+        {
+            NSLog(@"失败！！");
+            complete();
+        }
+    }];
+}
+
+#pragma mark - 截取字符串--保留年、月、日
+-(NSString *)cutOutString:(NSString *)timeString
+{
+    NSString *str = [timeString substringToIndex:11];
+    NSLog(@"截取的值为：%@",str);
+    return str;
+}
+
+
+//-(void)requestNoticePictureUrl
+//{
+//    NSString *pictureHttp = @"http://www.yiliangang.net:8012/ylgPlatform";
+//    [[NoticeRequestTool sharedNoticeTool] sendNoticeRequestWithResponse:^(NSDictionary *dict) {
+//
+//        if (dict) {
+//            NSLog(@"公告信息：%@",[dict objectForKey:@"msg"] );
+//            for (NSDictionary *ok in [dict objectForKey:@"msg"]) {
+//                NSLog(@"字段：%@",[ok objectForKey:@"picture"]);
+//                NSString *pictureStr = [pictureHttp stringByAppendingString:[ok objectForKey:@"picture"]];
+//                [self.imageUrlStrings addObject:pictureStr];
+//
+//            }
+//            NSLog(@"图片array：%@",self.imageUrlStrings);
+//
+//        }else
+//        {
+//
+//        }
+//
+//    }];
+//}
 
 /*
 #pragma mark - Navigation

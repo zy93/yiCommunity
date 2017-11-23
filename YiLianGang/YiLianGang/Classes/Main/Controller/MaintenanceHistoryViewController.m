@@ -11,6 +11,8 @@
 #import "HistoryContentViewController.h"
 #import "WN_YL_RequestTool.h"
 #import "LoginTool.h"
+#import "MBProgressHUDUtil.h"
+#import "MBProgressHUD+Extension.h"
 
 @interface MaintenanceHistoryViewController ()<WN_YL_RequestToolDelegate>
 {
@@ -64,10 +66,19 @@
 
 #pragma mark - request delegate
 -(void)requestTool:(WN_YL_RequestTool *)requestTool isSuccess:(BOOL)isSuccess dict:(NSDictionary *)dict{
+    NSLog(@"数据：%@",dict);
     __weak MaintenanceHistoryView *weak_view = mView;
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([dict[@"code"] integerValue]==200) {
-            [weak_view setData:dict[@"msg"]];
+            NSArray *msgArray = dict[@"msg"];
+            if (msgArray.count == 0) {
+                [MBProgressHUDUtil showMessage:@"没有维修记录" toView:self.view];
+
+            }else
+            {
+                [weak_view setData:dict[@"msg"]];
+            }
+            
         }
     });
 }

@@ -13,7 +13,7 @@
 #import "ProtocolViewController.h"
 #import "AppDelegate.h"
 #import "UIImage+ImageColorChange.h"
-@interface RegisterController ()
+@interface RegisterController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
@@ -39,6 +39,27 @@
 @end
 
 @implementation RegisterController
+
+#pragma mark view
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.isCheck = YES;
+    self.nameField.delegate = self;
+    self.pwdField.delegate = self;
+    self.pwdAgainField.delegate = self;
+    self.communityField.delegate = self;
+    self.detailAddressField.delegate = self;
+    self.registerButton.layer.cornerRadius = 5;
+    self.registerButton.layer.masksToBounds = YES;
+    
+    self.registerTool = [RegisterInfoTool sharedRegisterInfoTool];
+    [self sendRequestToSelectCountryHandler:nil];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
 //- (IBAction)clickCheckButton:(id)sender {
 //    //点击勾
 //    self.isCheck = !self.isCheck;
@@ -166,22 +187,7 @@
         }];
     }];
 }
-#pragma mark view
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.isCheck = YES;
-    
-    self.registerButton.layer.cornerRadius = 5;
-    self.registerButton.layer.masksToBounds = YES;
-    
-    self.registerTool = [RegisterInfoTool sharedRegisterInfoTool];
-    [self sendRequestToSelectCountryHandler:nil];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+
 
 #pragma mark 选择城市
 -(void)sendRequestToSelectCountryHandler:(void(^)(NSArray* strArr,NSArray* objArr))block {
@@ -335,6 +341,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.view endEditing:YES];
+}
+
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    [self.view endEditing:YES];
+//    return YES;
+//}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
 }
 
 /*

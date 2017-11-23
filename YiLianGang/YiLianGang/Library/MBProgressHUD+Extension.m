@@ -10,7 +10,7 @@
 
 @implementation MBProgressHUD (Extension)
 
-+(void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay complete:(Complete)complete
+-(void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay complete:(Complete)complete
 {
     NSMutableDictionary *dic = [NSMutableDictionary new];
     [dic setObject:@(animated) forKey:@"animated"];

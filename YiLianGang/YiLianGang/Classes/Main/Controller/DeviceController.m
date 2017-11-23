@@ -20,6 +20,7 @@
 #import "DeviceSceneController.h"
 #import "DeviceOKAListController.h"
 #import "DringkingDetailViewController.h"
+#import "MJRefresh.h"
 
 @interface DeviceController ()<WNPageViewDelegate,UIPopoverPresentationControllerDelegate,DeviceToolDelegate,DeviceHeaderViewDelegate,DeviceAddDelegate,DevicePopoverControllerDelegate>
 @property(nonatomic,strong) WNPageView *pageView;
@@ -42,8 +43,9 @@
     [self doPrettyView];
     //[self addNaviButton];
     self.tableView.scrollEnabled = NO;
-    
     self.tableView.pagingEnabled = NO;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshView)];
+    [self.tableView.mj_header beginRefreshing];
     //self.deviceSubTable = [[DeviceSubTableController alloc] init];
     //self.deviceSubTable.delegate = self;
     //self.tableView.delegate = self;
@@ -96,7 +98,8 @@
     popVc.permittedArrowDirections = UIPopoverArrowDirectionUp;
     popVc.delegate = self;
     self.popoverController.controller = self;
-    [self presentViewController:self.popoverController animated:YES completion:nil];
+   // [self presentViewController:self.popoverController animated:YES completion:nil];
+    [self.navigationController pushViewController:self.popoverController animated:YES];
     
 }
 -(void)clickTopRightButton:(UIButton*)button{
@@ -177,8 +180,10 @@
 
 -(void)refreshView{
     [self.pageView removeFromSuperview];
+    
     self.pageView = nil;
     [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
 }
 #pragma mark DeviceToolDelegate
 -(void)deviceToolDidReceiveGroupList:(BOOL)success dict:(NSDictionary *)dict{

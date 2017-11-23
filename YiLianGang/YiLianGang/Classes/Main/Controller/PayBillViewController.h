@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface PayContentCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UILabel *state;
-
-@end
-
 @interface PayTitleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title;
 

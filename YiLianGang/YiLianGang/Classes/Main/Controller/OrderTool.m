@@ -42,8 +42,8 @@ static OrderTool *orderTool;
 {
     NSLog(@"返回信息%@",dict);
     BOOL isSuccess1;
-    if ([dict objectForKey:@"code"] == @200) {
-       // [ToastUtil showToast:@"预约成功！"];
+    if ([[dict objectForKey:@"code"] isEqualToString:@"200"]) {
+       //  [ToastUtil showToast:@"预约成功！"];
         isSuccess1 = YES;
     }
     else
@@ -52,7 +52,7 @@ static OrderTool *orderTool;
        // [ToastUtil showToast:@"预约失败！"];
     }
     
-    if ([_delegate respondsToSelector:@selector(OrderToolDidmake)]) {
+    if ([_delegate respondsToSelector:@selector(OrderToolDidmake:withDict:)]) {
         [_delegate OrderToolDidmake:isSuccess1 withDict:dict];
     }
 }

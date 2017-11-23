@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiLianGang/Library/datePicker/DatePickerView.m"
-            timestampString = "530621342.060627"
+            filePath = "YiLianGang/Classes/LoginAndRegister/Controller/LoginTableController.m"
+            timestampString = "533109821.669782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-selectedRow:month:day:hour:min:"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-isComplete"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -121,8 +121,8 @@
             }else{
                 [self.delegate requestTool:self isSuccess:NO dict:nil];
             }
-            NSLog(@"测试121%@",dict);
-            
+            NSLog(@"测试121%@",[dict objectForKey:@"result"]);
+            NSLog(@"测试12yuu1%@",dict);
         }else{
             [self.delegate requestTool:self isSuccess:NO dict:nil];
         }
@@ -284,7 +284,8 @@
         }
     }
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
+//    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     request.HTTPMethod=@"POST";
     request.HTTPBody=[str dataUsingEncoding:NSUTF8StringEncoding];
     

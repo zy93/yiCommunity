@@ -14,6 +14,8 @@
 #import "HCScanQRViewController.h"
 #import "DeviceAddInfoController.h"
 #import "DeviceController.h"
+#import "HelpListViewController.h"
+#import "DepositListViewController.h"
 
 
 @interface MyViewController ()
@@ -45,7 +47,28 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)logoutBtn:(id)sender {
-    [self goToLoginView];
+    UIAlertController*alert = [UIAlertController
+                               alertControllerWithTitle: @"确定退出吗？"
+                               message: @""
+                               preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消"
+                                              style:UIAlertActionStyleCancel
+                                            handler:^(UIAlertAction * _Nonnull action) {
+                                                
+                                            }]];
+    [alert addAction:[UIAlertAction
+                      actionWithTitle:@"确定"
+                      style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+    {
+        [self goToLoginView];
+    }]];
+    
+    
+    //弹出提示框
+    [self presentViewController:alert
+                       animated:YES completion:nil];
+    
+    
 }
 
 -(void)goToLoginView{
@@ -96,7 +119,6 @@
 }
 
 - (IBAction)deviceButton:(id)sender {
-    //[ToastUtil showToast:@"敬请期待！"];
     DeviceController *deviceController = [[DeviceController alloc] init];
     [self.navigationController pushViewController:deviceController animated:YES];
 }
@@ -129,21 +151,40 @@
                     info.password = dict[@"password"];
                 }
                 //进入设备编辑界面
-                UINavigationController *dvc = [UIStoryboard storyboardWithName:@"DeviceAddInfoController" bundle:nil].instantiateInitialViewController;
-                DeviceAddInfoController *daic = dvc.viewControllers[0];
+//                UINavigationController *dvc = [UIStoryboard storyboardWithName:@"DeviceAddInfoController" bundle:nil].instantiateInitialViewController;
+//                DeviceAddInfoController *daic = dvc.viewControllers[0];
+//                daic.delegate = self;
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    dvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//                    [strongSelf presentViewController:dvc animated:YES completion:nil];
+//                });
+                UIStoryboard *story = [UIStoryboard storyboardWithName:@"DeviceAddInfoController"bundle:nil];
+                DeviceAddInfoController *daic = [story instantiateViewControllerWithIdentifier:@"DeviceAddInfoController"];
                 daic.delegate = self;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    dvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                    [strongSelf presentViewController:dvc animated:YES completion:nil];
+                    [self.navigationController pushViewController:daic animated:YES];
                 });
             }
         }
-        
-        
     }];
-    [self presentViewController:scan animated:YES completion:nil];
+   // [self presentViewController:scan animated:YES completion:nil];
+    [self.navigationController pushViewController:scan animated:YES];
 }
 
+
+#pragma mark - 帮助
+- (IBAction)helpButtonMethod:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HelpListViewController" bundle:nil];
+    HelpListViewController *helpListView = [storyboard instantiateViewControllerWithIdentifier:@"HelpListViewController"];
+    [self.navigationController pushViewController:helpListView animated:YES];
+}
+
+#pragma mark - 押金
+- (IBAction)depositButtonMethod:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DepositListViewController" bundle:nil];
+    DepositListViewController *depositListView = [storyboard instantiateViewControllerWithIdentifier:@"DepositListViewController"];
+    [self.navigationController pushViewController:depositListView animated:YES];
+}
 
 /*
 #pragma mark - Navigation

@@ -83,6 +83,7 @@
 {
     [super viewWillAppear:animated];
     [self.session startRunning];
+    [self.tabBarController.tabBar setHidden:YES];
     //计时器添加到循环中去
     [self.link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 }
@@ -208,14 +209,14 @@
 #pragma mark - ---NavigationItem---
 - (void)setNavigationItem{
     if (self.navigationController) {
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationItem.title = @"二维码/条形码";
-        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                     initWithTitle:RightButtonStr
-                                     style:UIBarButtonItemStylePlain
-                                     target:self
-                                     action:@selector(openPhoto)];
-        self.navigationItem.rightBarButtonItem = rightBtn;
+        //self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        //self.navigationItem.title = @"二维码/条形码";
+//        UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+//                                     initWithTitle:RightButtonStr
+//                                     style:UIBarButtonItemStylePlain
+//                                     target:self
+//                                     action:@selector(openPhoto)];
+//        self.navigationItem.rightBarButtonItem = rightBtn;
         UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]
                                     initWithTitle:LeftButtonStr
                                     style:UIBarButtonItemStylePlain
@@ -298,6 +299,7 @@
 }
 #pragma mark 返回
 -(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
     self.block(@"");
 }
 #pragma mark - UIImagePickerControllerDelegate

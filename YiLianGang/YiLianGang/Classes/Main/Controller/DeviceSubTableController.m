@@ -23,6 +23,11 @@
 #import "SDWebImageManager.h"
 #import "DeviceController.h"
 #import "DringkingDetailViewController.h"
+#import "GetDeviceInfoRequestTool.h"
+#import "MBProgressHUDUtil.h"
+#import "ServiceReturnInformation.h"
+#import "PromptMessageViewController.h"
+#import "AFNetworking.h"
 
 #define Main_Screen_Height      [[UIScreen mainScreen] bounds].size.height
 #define Main_Screen_Width       [[UIScreen mainScreen] bounds].size.width
@@ -274,10 +279,16 @@
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
         [vc removeDeviceByIndexRow:indexPath];
-
-        
     }];
     deleteAction.backgroundColor = [UIColor redColor];
+    
+    UITableViewRowAction *updateNetworkAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"修改网络" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        [vc updateNetworkByIndexRow:indexPath];
+        
+        
+    }];
+    updateNetworkAction.backgroundColor = [UIColor colorWithRed:35.0f/255.0f green:124.0f/255.0f blue:223.0f/255.0f alpha:1];
     
     UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"共享设备" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
@@ -286,7 +297,7 @@
     }];
     shareAction.backgroundColor = HEXCOLOR(0x30efd1);
     
-    NSArray *arr = @[shareAction,deleteAction];
+    NSArray *arr = @[shareAction,updateNetworkAction,deleteAction];
     return arr;
 }
 
@@ -340,6 +351,69 @@
             }
         });
     }];
+}
+
+#pragma mark - 修改网络
+-(void)updateNetworkByIndexRow:(NSIndexPath *)indexPath
+{
+    DeviceInfo *info = self.deviceArray[indexPath.row];
+    NSString *thingId = info.thingId;
+//    [GetDeviceInfoRequestTool sharedGetDeviceInfoTool].urlString = @"Service_Platform/pe/findByThingID.do";
+//    [GetDeviceInfoRequestTool sharedGetDeviceInfoTool].parameterDict = @{@"thingID":thingId,@"county":@"海淀区"};
+//    NSLog(@"参数：%@",[GetDeviceInfoRequestTool sharedGetDeviceInfoTool].parameterDict);
+//    [[GetDeviceInfoRequestTool sharedGetDeviceInfoTool] sendGetDeviceInfoRequestWithResponse:^(NSDictionary *dict) {
+//        NSLog(@"34548748757485测试：%@",dict);
+//        if ([[dict objectForKey:@"error_code"] intValue] == 0) {
+//            ServiceReturnInformation *returnInfo = [ServiceReturnInformation sharedReturnInfo];
+//            returnInfo.returnInfoDictionary =[dict objectForKey:@"data"];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                PromptMessageViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PromptMessageViewController"];
+//
+//                UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:vc];
+//                navi.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//                if (self.mainController) {
+//                    [self.mainController presentViewController:navi animated:YES completion:nil];
+//                }
+//
+////                PromptMessageViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PromptMessageViewController"];
+////                [self.navigationController pushViewController:vc animated:YES];
+//            });
+//        }
+//        else
+//        {
+//            [MBProgressHUDUtil showMessage:@"修改失败" toView:self.view];
+//        }
+//    }];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *requestUrl =@"http://123.56.197.113/Service_Platform/pe/findByThingID.do";
+    NSDictionary *parmDict = @{@"thingID":thingId,
+                               @"county":@"海淀区"
+                               };//请求可接受订单接口
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:requestUrl parameters:parmDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([[responseObject objectForKey:@"error_code"] intValue] == 0) {
+            ServiceReturnInformation *returnInfo = [ServiceReturnInformation sharedReturnInfo];
+            returnInfo.returnInfoDictionary =[responseObject objectForKey:@"data"];
+            NSLog(@"34548748757485测试：%@",returnInfo.returnInfoDictionary);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                PromptMessageViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PromptMessageViewController"];
+                if (self.mainController) {
+                    [self.mainController.navigationController pushViewController:vc animated:YES];
+
+                }
+            });
+        }
+        else
+        {
+            [MBProgressHUDUtil showMessage:@"修改失败" toView:self.view];
+        }
+        NSLog(@"整体信息：%@",responseObject);
+        NSLog(@"json:%@",[responseObject objectForKey:@"msg"]);
+        NSLog(@"返回信息：%@",[responseObject objectForKey:@"result"]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"failure--%@",error);
+    }];
+    
 }
 
 -(void)shareDeviceByIndexRow:(NSIndexPath *)indexPath

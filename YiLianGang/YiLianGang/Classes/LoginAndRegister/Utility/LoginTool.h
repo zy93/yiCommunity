@@ -28,6 +28,7 @@ typedef void(^LoginFinishBlock) (NSDictionary *dict);
 -(void)sendLoginRequest;
 -(void)sendLoginRequestWithResponse:(LoginFinishBlock)block;
 
+
 //物业登录
 -(void)sendManagerLoginRequestWithUserName:(NSString *)userN pass:(NSString *)pass Response:(LoginFinishBlock)block;
 @property(nonatomic,weak) id<LoginToolDelegate> delegate;
