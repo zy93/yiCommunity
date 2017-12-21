@@ -137,7 +137,7 @@
         NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         //去掉多余的换行和空格
         jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+//        jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@" " withString:@""];
         data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"发送出去的数据json：%@",jsonStr);
         //编译数据
@@ -210,7 +210,7 @@
     for (int i = 0; i < length; i++) {
         sum ^= chars[i];
     }
-   // sum &= 0x000000ff;
+    sum &= 0x000000ff;
     return  sum;
 }
 
