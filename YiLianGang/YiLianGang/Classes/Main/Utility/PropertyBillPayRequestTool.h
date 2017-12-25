@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^PropertyBillPayFinishBlock) (NSDictionary *dict);
+
 @interface PropertyBillPayRequestTool : NSObject
+
+@property (nonatomic, strong) NSDictionary *parameterDict;
+@property (nonatomic, strong) NSString *urlString;
+
++(instancetype)sharedPropertyBillPayTool;
+
+-(void)sendPropertyBillPayRequestWithResponse:(PropertyBillPayFinishBlock)block;
 
 @end

@@ -478,6 +478,7 @@
 		C73D063E1FC3C3BC00D0E1F3 /* PayContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73D063D1FC3C3BC00D0E1F3 /* PayContentCell.m */; };
 		C73D066A1FC3EF7D00D0E1F3 /* PayContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73D06691FC3EF7C00D0E1F3 /* PayContentCell.xib */; };
 		C74CD2421F8F7A58006AE5F2 /* HomePageController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74CD2411F8F7A58006AE5F2 /* HomePageController.storyboard */; };
+		C79056151FCE4BC10007C48A /* PropertyBillPayRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C79056141FCE4BC10007C48A /* PropertyBillPayRequestTool.m */; };
 		C79337911F8CC9CC006E8447 /* DringkingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C793378A1F8CC9CA006E8447 /* DringkingDetailViewController.m */; };
 		C79337921F8CC9CC006E8447 /* UserUseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C793378D1F8CC9CC006E8447 /* UserUseCell.m */; };
 		C79337931F8CC9CC006E8447 /* TDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C79337901F8CC9CC006E8447 /* TDSCell.m */; };
@@ -508,6 +509,7 @@
 		C7E0ABD21FBD916300F9F691 /* GetDeviceInfoRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E0ABD11FBD916300F9F691 /* GetDeviceInfoRequestTool.m */; };
 		C7E42E531FB967830058570C /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E42E521FB967830058570C /* UIButton+countDown.m */; };
 		C7E42E7C1FB97C2F0058570C /* DoorLockDescribeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E42E7B1FB97C2F0058570C /* DoorLockDescribeViewController.m */; };
+		C7E630E51FC82701008CDBA2 /* LoginNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E630E41FC82701008CDBA2 /* LoginNewViewController.m */; };
 		C7EF58CD1FBFD34800D46479 /* PropertyBillListRequestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EF58CC1FBFD34800D46479 /* PropertyBillListRequestTool.m */; };
 		C7F908531F99A0260044F56E /* ServiceReturnInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F908521F99A0260044F56E /* ServiceReturnInformation.m */; };
 		C7F908561F99A84E0044F56E /* PromptMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F908551F99A84E0044F56E /* PromptMessageViewController.m */; };
@@ -1243,6 +1245,8 @@
 		C73D063D1FC3C3BC00D0E1F3 /* PayContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayContentCell.m; sourceTree = "<group>"; };
 		C73D06691FC3EF7C00D0E1F3 /* PayContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayContentCell.xib; sourceTree = "<group>"; };
 		C74CD2411F8F7A58006AE5F2 /* HomePageController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomePageController.storyboard; sourceTree = "<group>"; };
+		C79056131FCE4BC10007C48A /* PropertyBillPayRequestTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyBillPayRequestTool.h; sourceTree = "<group>"; };
+		C79056141FCE4BC10007C48A /* PropertyBillPayRequestTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyBillPayRequestTool.m; sourceTree = "<group>"; };
 		C792C38C1F8EDBE600FEF773 /* YiLianGang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YiLianGang.entitlements; sourceTree = "<group>"; };
 		C793378A1F8CC9CA006E8447 /* DringkingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DringkingDetailViewController.m; sourceTree = "<group>"; };
 		C793378B1F8CC9CB006E8447 /* TDSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSCell.h; sourceTree = "<group>"; };
@@ -1300,6 +1304,8 @@
 		C7E42E521FB967830058570C /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
 		C7E42E7A1FB97C2F0058570C /* DoorLockDescribeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoorLockDescribeViewController.h; sourceTree = "<group>"; };
 		C7E42E7B1FB97C2F0058570C /* DoorLockDescribeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoorLockDescribeViewController.m; sourceTree = "<group>"; };
+		C7E630E31FC82701008CDBA2 /* LoginNewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginNewViewController.h; sourceTree = "<group>"; };
+		C7E630E41FC82701008CDBA2 /* LoginNewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginNewViewController.m; sourceTree = "<group>"; };
 		C7EF58CB1FBFD34800D46479 /* PropertyBillListRequestTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyBillListRequestTool.h; sourceTree = "<group>"; };
 		C7EF58CC1FBFD34800D46479 /* PropertyBillListRequestTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyBillListRequestTool.m; sourceTree = "<group>"; };
 		C7F908511F99A0260044F56E /* ServiceReturnInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceReturnInformation.h; sourceTree = "<group>"; };
@@ -1853,6 +1859,8 @@
 				2DAE70D31D5B313900C32E71 /* ForgetPwdStoryboard.storyboard */,
 				2D2831D41D62A02B006CCED7 /* WelcomeController.h */,
 				2D2831D51D62A02B006CCED7 /* WelcomeController.m */,
+				C7E630E31FC82701008CDBA2 /* LoginNewViewController.h */,
+				C7E630E41FC82701008CDBA2 /* LoginNewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2539,6 +2547,8 @@
 				C7E0ABD11FBD916300F9F691 /* GetDeviceInfoRequestTool.m */,
 				C7EF58CB1FBFD34800D46479 /* PropertyBillListRequestTool.h */,
 				C7EF58CC1FBFD34800D46479 /* PropertyBillListRequestTool.m */,
+				C79056131FCE4BC10007C48A /* PropertyBillPayRequestTool.h */,
+				C79056141FCE4BC10007C48A /* PropertyBillPayRequestTool.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -3268,6 +3278,7 @@
 				2DB5C25B1DB7187E00ABFB4B /* DeviceCarBoxRelationView.m in Sources */,
 				2A628A761E8E64B800A49D12 /* HistoryContentView.m in Sources */,
 				2A1CEA281E812E95008D33DC /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
+				C79056151FCE4BC10007C48A /* PropertyBillPayRequestTool.m in Sources */,
 				2A1CEA271E812E95008D33DC /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				C7E42E7C1FB97C2F0058570C /* DoorLockDescribeViewController.m in Sources */,
 				C7A2893A1FBC37510017AE19 /* DoorLockListTableViewCell.m in Sources */,
@@ -3380,6 +3391,7 @@
 				C7FE32FB1FBAED6400F5DFC1 /* HelpListViewController.m in Sources */,
 				2A628A6D1E8E517C00A49D12 /* MaintenanceHistoryView.m in Sources */,
 				C7FE33071FBAFCD500F5DFC1 /* DeliveredViewController.m in Sources */,
+				C7E630E51FC82701008CDBA2 /* LoginNewViewController.m in Sources */,
 				2D945FFC1DA9DEC6007C258B /* SRSIMDHelpers.m in Sources */,
 				2D9460011DA9DEC6007C258B /* SRSecurityPolicy.m in Sources */,
 				2D636C5C1DB4C8E90081EF37 /* CloudPrinterController.m in Sources */,

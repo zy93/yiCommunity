@@ -197,7 +197,6 @@
         byte[i] = (num >> 8 * ((len-1)-i)) & 0xFF;
         NSLog(@"测试：0x%02x",byte[i]);
     }
-    
     return byte;
 }
 
@@ -210,7 +209,7 @@
     for (int i = 0; i < length; i++) {
         sum ^= chars[i];
     }
-   // sum &= 0x000000ff;
+    sum &= 0x000000ff;
     return  sum;
 }
 

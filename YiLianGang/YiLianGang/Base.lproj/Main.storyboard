@@ -360,9 +360,12 @@
                                             <constraint firstAttribute="width" constant="90" id="2ma-V7-IJc"/>
                                             <constraint firstAttribute="height" constant="40" id="c8a-Xj-u5W"/>
                                         </constraints>
-                                        <state key="normal" title="提交订单">
+                                        <state key="normal" title="微信支付">
                                             <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="billPayButtonMethod:" destination="HH9-3l-t2Y" eventType="touchUpInside" id="5t8-JF-H4z"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pq-W9-cWL">
                                         <rect key="frame" x="20" y="17" width="52" height="21"/>
@@ -396,7 +399,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="submitBtn" destination="wAQ-m8-RYq" id="IRz-qT-v3w"/>
+                        <outlet property="billPayButton" destination="wAQ-m8-RYq" id="hGx-L2-e7K"/>
                         <outlet property="table" destination="K6d-q3-3AF" id="e9G-Fq-7tX"/>
                         <outlet property="totalPriceLab" destination="PSZ-oN-nnn" id="8SS-A7-MhF"/>
                     </connections>

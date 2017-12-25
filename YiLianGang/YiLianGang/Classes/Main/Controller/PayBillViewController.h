@@ -11,6 +11,7 @@
 @interface PayTitleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title;
 
+
 @end
 
 

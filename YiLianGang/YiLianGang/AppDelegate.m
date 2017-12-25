@@ -23,6 +23,7 @@
 @interface AppDelegate ()<LoginToolDelegate, JPUSHRegisterDelegate,WXApiDelegate>
 @property(nonatomic,strong) UIView *coverView;
 @property(nonatomic,strong) WelcomeController *welcomeController;
+@property(nonatomic,strong) NSDictionary *notificationDic;
 @end
 
 @implementation AppDelegate
@@ -31,7 +32,6 @@
     //LoginViewController *lvc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     [self judgeIsNeedHidden];
     [self comfirmIfHasLoginSaved];
-    //清楚通知小红点
     
     [[UINavigationBar appearance]setTitleTextAttributes: @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -43,14 +43,11 @@
     JPUSHRegisterEntity *entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert | JPAuthorizationOptionBadge |JPAuthorizationOptionSound;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        
     }
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginJPushSuccess:) name:kJPFNetworkDidLoginNotification object:nil];
     [JPUSHService setupWithOption:launchOptions appKey:@"75e36ba58c40013577df92f4" channel:@"APP Store" apsForProduction:NO ];
-    
-    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [WXApi registerApp:@"wx6fcad0227e60327c"];
     return YES;
@@ -95,18 +92,23 @@
                 //[[NSNotificationCenter defaultCenter] postNotification:notification];
                 //NSNotification *rechargeNoti = [NSNotification notificationWithName:RECHARGE_PAY_NOTIFICATION object:@"recharge_success"];
                 //[[NSNotificationCenter defaultCenter] postNotification:rechargeNoti];
-                
+                self.notificationDic =  @{@"notificationInfo":@"支付成功！"};
                 break;
             }
                 
             default:
             {
+                self.notificationDic =  @{@"notificationInfo":@"支付失败！"};
                 strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
                 break;
             }
         }
     }
+   
+    NSNotification *notification = [NSNotification notificationWithName:@"WXRequestResult" object:nil userInfo:self.notificationDic];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
     
     //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     

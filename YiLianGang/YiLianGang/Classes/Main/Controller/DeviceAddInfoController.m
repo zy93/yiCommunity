@@ -47,7 +47,7 @@
 -(NSArray *)errorMsgArr{
     if (!_errorMsgArr) {
         _errorMsgArr = @[@"物体注册成功",@"用户没有注册物体域名",@"物体描述不存在",@"主港信息不存在",@"物体描述中某些必要字段为空",@"用户不存在",@"主港信息错误",@"无法选择备用港",@"系统错误",@"该物体已经被注册",@"该物体名称已经被注册",@"连接到主港失败",@"注册物体到主港时出错",@"连接到备用港失败",@"注册物体到备用港时出错",@"连接不到服务器，请检查网络连接情况"];
-
+        
     }
     return _errorMsgArr;
 }
@@ -112,18 +112,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self getUserThingName];
-}
-
-
 -(void)clickTopLeftButton:(UIButton*)button{
-//    if (self.navigationController) {
-//        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-//    }
+    //    if (self.navigationController) {
+    //        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    //    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -138,11 +130,11 @@
     [DeviceTool sharedDeviceTool].deviceSendInfo.community = self.deviceCommunityTexFld.text;
     [DeviceTool sharedDeviceTool].deviceSendInfo.detailLocation = self.deviceDetailAddressTexView.text;
     DeviceSendInfo *info = [DeviceTool sharedDeviceTool].deviceSendInfo;
-//    info.ProduceTime = @"2014-01-01";
-//    info.localID = @"18975679901829";
-//    info.model = @"SOIW-T100F01V01";
-//    info.producer = @"四海万联";
-//    info.type = @"车载盒子";
+    //    info.ProduceTime = @"2014-01-01";
+    //    info.localID = @"18975679901829";
+    //    info.model = @"SOIW-T100F01V01";
+    //    info.producer = @"四海万联";
+    //    info.type = @"车载盒子";
     info.userId = [NSNumber numberWithInteger:[LoginTool sharedLoginTool].userID.integerValue];
     //NSLog(@"%ld,%ld,%ld,%ld,%ld,%ld",info.thingName.length,info.groupId.stringValue.length,info.country.length,info.province.length,info.city.length,info.county.length);
     if (info.thingName.length==0 || info.groupId.stringValue.length == 0 || info.country.length == 0 ||info.province.length == 0 ||info.city.length == 0 || info.county.length == 0 ) {
@@ -162,15 +154,15 @@
                 //NSLog(@"%ld",((NSNumber*)dict[@"error_code"]).longValue);
                 NSInteger errorIndex =((NSNumber*)dict[@"error_code"]).integerValue;
                 if (errorIndex == 0) {
-//                    PromptMessageViewController *prompMessage = [[PromptMessageViewController alloc] init];
-//                    [self.navigationController pushViewController:prompMessage animated:YES];
+                    //                    PromptMessageViewController *prompMessage = [[PromptMessageViewController alloc] init];
+                    //                    [self.navigationController pushViewController:prompMessage animated:YES];
                     
                     PromptMessageViewController *vc =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PromptMessageViewController"];
                     [self.navigationController pushViewController:vc animated:YES];
-//                    [MBProgressHUD showSuccess:@"设备添加成功"];
-//                    if ([self.delegate respondsToSelector:@selector(deviceDidAdded)]) {
-//                        [self.delegate deviceDidAdded];//添加设备
-//                    }
+                    //                    [MBProgressHUD showSuccess:@"设备添加成功"];
+                    //                    if ([self.delegate respondsToSelector:@selector(deviceDidAdded)]) {
+                    //                        [self.delegate deviceDidAdded];//添加设备
+                    //                    }
                     //[self clickTopLeftButton:nil];
                 }else if (errorIndex > 0 && errorIndex < 15 &&errorIndex<self.errorMsgArr.count) {
                     
@@ -210,7 +202,7 @@
         self.groupId = self.deviceGroupIdArr[index];
     }];
     
-
+    
 }
 - (IBAction)selectCountry:(UIButton*)sender {
     [self closeKeyBoard];
@@ -222,7 +214,7 @@
                 
             }
             UIView *view = [UIApplication sharedApplication].keyWindow;
-
+            
             WNListView *listView = [WNListView listViewWithArrayStr:[mutaArr copy] acordingFrameInScreen:[sender convertRect:sender.bounds toView:view] superView:view clickResponse:^(NSUInteger index) {
                 self.deviceCountrySelectTexFld.text = mutaArr[index];
                 self.country = arr[index];
@@ -238,7 +230,7 @@
         });
     }];
     
-
+    
 }
 - (IBAction)selectProvince:(UIButton*)sender {
     [self closeKeyBoard];
@@ -253,7 +245,7 @@
                 
             }
             UIView *view = [UIApplication sharedApplication].keyWindow;
-
+            
             WNListView *listView = [WNListView listViewWithArrayStr:[mutaArr copy] acordingFrameInScreen:[sender convertRect:sender.bounds toView:view] superView:view clickResponse:^(NSUInteger index) {
                 self.deviceProvinceSelectTexFld.text = mutaArr[index];
                 self.province = arr[index];
@@ -279,7 +271,7 @@
                 
             }
             UIView *view = [UIApplication sharedApplication].keyWindow;
-
+            
             WNListView *listView = [WNListView listViewWithArrayStr:[mutaArr copy] acordingFrameInScreen:[sender convertRect:sender.bounds toView:view] superView:view clickResponse:^(NSUInteger index) {
                 self.deviceCitySelectTexFld.text = mutaArr[index];
                 self.city = arr[index];
@@ -302,7 +294,7 @@
                 [mutaArr addObject:info.countyName];
             }
             UIView *view = [UIApplication sharedApplication].keyWindow;
-
+            
             WNListView *listView = [WNListView listViewWithArrayStr:[mutaArr copy] acordingFrameInScreen:[sender convertRect:sender.bounds toView:view] superView:view clickResponse:^(NSUInteger index) {
                 self.deviceRegionSelectTexFld.text = mutaArr[index];
                 self.region = arr[index];
@@ -311,7 +303,7 @@
             
         });
     }];
-
+    
 }
 
 
@@ -325,41 +317,6 @@
 -(BOOL)disablesAutomaticKeyboardDismissal{
     return NO;
 }
-
-
-#pragma mark - 添加用户物体域名
--(void)getUserThingName
-{
-    [[DeviceTool sharedDeviceTool] getThingNameWithUserTel:[LoginTool sharedLoginTool].userTel response:^(NSDictionary *dict) {
-        NSString *erro = dict[@"error_code"];
-        if ([erro isEqualToString:@"1"]) {
-            //未注册物体域名
-            [self registerUserThingName];
-        }
-        else if ([erro isEqualToString:@"0"]) {
-            //已注册物体域名，不操作
-        }
-        else {
-            [MBProgressHUD showError:dict[@"error_msg"]];
-        }
-    }];
-}
-
--(void)registerUserThingName
-{
-    [[DeviceTool sharedDeviceTool] registerThingNameWithUserTel:[LoginTool sharedLoginTool].userTel userId:[LoginTool sharedLoginTool].userID response:^(NSDictionary *dict) {
-        NSString *erro = dict[@"error_code"];
-        if ([erro isEqualToString:@"0"]) {
-            NSLog(@"用户注册物体域名成功");
-        }
-        else {
-            [MBProgressHUD showError:dict[@"error_msg"]];
-        }
-    }];
-}
-
-
-
 #pragma mark UITextViewDelegate
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
@@ -382,3 +339,4 @@
 
 
 @end
+

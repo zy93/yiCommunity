@@ -104,16 +104,13 @@
     dispatch_source_set_event_handler(_timer, ^{
         
         if(time <= 0){ //倒计时结束，关闭
-            
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 //设置按钮的样式
                 [button setTitle:@"重新发送" forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor colorWithRed:36.f/255.f green:149.f/255.f blue:253.f/255.f alpha:1] forState:UIControlStateNormal];
                 button.userInteractionEnabled = YES;
             });
-            
         }else{
             
             int seconds = time % 60;

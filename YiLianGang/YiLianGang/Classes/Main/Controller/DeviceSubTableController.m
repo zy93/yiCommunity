@@ -297,7 +297,16 @@
     }];
     shareAction.backgroundColor = HEXCOLOR(0x30efd1);
     
-    NSArray *arr = @[shareAction,updateNetworkAction,deleteAction];
+    NSArray *arr = nil;
+    
+    DeviceInfo *info = self.deviceArray[indexPath.row];
+    
+    if ([info.permission isEqualToNumber:@(1)]) {
+       arr = @[shareAction,updateNetworkAction,deleteAction];
+    }
+    else {
+        arr = @[updateNetworkAction,deleteAction];
+    }
     return arr;
 }
 
@@ -305,8 +314,6 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
-
-
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
@@ -413,14 +420,13 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"failure--%@",error);
     }];
-    
 }
 
 -(void)shareDeviceByIndexRow:(NSIndexPath *)indexPath
 {
     DeviceInfo *info = self.deviceArray[indexPath.row];
     NSString *thingId = info.thingId;
-    
+
     UIAlertController *aler = [UIAlertController alertControllerWithTitle:@"设备授权" message:@"您可以通过该操作将设备共享或取消共享到某一个用户名下,请谨慎操作!" preferredStyle:UIAlertControllerStyleAlert];
     [aler addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"对方手机号";
@@ -434,6 +440,17 @@
         }
         [[DeviceTool sharedDeviceTool] sendPermissionWithThingId:thingId userTel:filed.text state:YES response:^(NSDictionary *dict) {
             NSLog(@"------------------** 共享设备回复:%@",dict);
+            if ([[dict objectForKey:@"error_code"] isEqualToNumber:@4]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUDUtil showMessage:@"共享成功！" toView:self.view];
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUDUtil showMessage:@"共享失败！" toView:self.view];
+                });
+                
+            }
         }];
     }];
     UIAlertAction *prohibitionAction = [UIAlertAction actionWithTitle:@"取消共享" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

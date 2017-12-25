@@ -37,6 +37,7 @@ static PropertyBillListRequestTool *propertyBillListRequestTool;
     [self.propertyBillListRequest sendPostJsonRequestWithExStr:self.urlString andParam:self.parameterDict];
 }
 
+
 -(void)requestTool:(WN_YL_RequestTool *)requestTool isSuccess:(BOOL)isSuccess dict:(NSDictionary *)dict{
     if (requestTool == self.propertyBillListRequest) {
         if (self.block) {
